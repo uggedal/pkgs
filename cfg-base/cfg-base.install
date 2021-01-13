@@ -1,0 +1,16 @@
+post_install() {
+	post_upgrade
+}
+
+post_upgrade() {
+	if ! grep -q /etc/bash.bashrc.d /etc/bash.bashrc; then
+		cat <<-"EOF" >> /etc/bash.bashrc
+		for f in /etc/bash.bashrc.d/* ; do
+			[ -r $f ] && . $f
+		done
+		unset f
+		EOF
+	fi
+
+	systemctl enable --now man-db.timer
+}

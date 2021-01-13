@@ -1,0 +1,15 @@
+#!/bin/bash -e
+
+SRC=/usr/share/pkgs
+
+_diff() {
+	if command -v git >/dev/null; then
+		git --no-pager diff --no-index "$@"
+	else
+		diff -u "$@"
+	fi
+}
+
+_diff "$SRC/$1" "$2"
+
+cat "$SRC/$1" > "$2"

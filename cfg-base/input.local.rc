@@ -1,0 +1,49 @@
+# Be 8 bit clean.
+set input-meta on
+set output-meta on
+
+# Do not display control characters:
+set echo-control-characters off
+
+# Immedeately list more than one possible completions:
+set show-all-if-ambiguous on
+
+# Do not match hidden files unless a leading dot is given:
+set match-hidden-files off
+
+# Never ask to show many matching items:
+set completion-query-items -1
+
+# Display matches one per line:
+set completion-display-width 0
+
+# Case insensitive matching:
+set completion-ignore-case on
+
+# Abbreviate similar prefixes:
+set completion-prefix-display-length 3
+
+# Use existing text for completing in the middle of a word:
+set skip-completed-text on
+
+set editing-mode vi
+
+$if mode=vi
+	# Bring back C-l in vi insert mode:
+	set keymap vi-insert
+	"\C-l":clear-screen
+
+	# Make arrow keys unusable in command mode:
+	set keymap vi-command
+	"\e[A":redraw-current-line
+	"\e[B":redraw-current-line
+	"\e[C":redraw-current-line
+	"\e[D":redraw-current-line
+
+	# Make arrow keys unusable in insert mode:
+	set keymap vi-insert
+	"\e[A":redraw-current-line
+	"\e[B":redraw-current-line
+	"\e[C":redraw-current-line
+	"\e[D":redraw-current-line
+$endif
