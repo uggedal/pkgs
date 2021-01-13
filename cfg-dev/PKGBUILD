@@ -1,0 +1,18 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=cfg-dev
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Dev configuration"
+arch=(any)
+url="https://uggedal.com"
+license=(Unlicense)
+depends=(cfg-base git)
+
+rootdir="$PWD"
+
+package() {
+	install -D -m644 "$rootdir/profile.sh" "$pkgdir/etc/profile.d/dev.sh"
+	install -D -m644 "$rootdir/bashrc" "$pkgdir/etc/bash.bashrc.d/dev.sh"
+	install -D -m644 "$rootdir/gitconfig" "$pkgdir/etc/gitconfig"
+	install -D -m644 "$rootdir/vim.local.rc" "$pkgdir/etc/vim.local.rc"
+}

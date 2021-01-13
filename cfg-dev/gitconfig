@@ -1,0 +1,27 @@
+[alias]
+	co = checkout
+	ci = commit -v
+	st = status --short --branch
+	cia = commit --amend --no-edit
+	cached = diff --cached
+	substatus = !"for g in $(find . -maxdepth 2 -name .git); do (w=${g%/*}; cd $w; if ! git diff --no-ext-diff --quiet --exit-code; then pwd; git status; echo; fi); done"
+	recent = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format="%(committerdate:iso) %(refname:short)"
+	merged = !"b=$(git symbolic-ref -q HEAD); b=${b##*/}; git co - && git pull && git branch -d $b"
+[core]
+	abbrev = 12
+[push]
+	default = simple
+	followTags = true
+[pull]
+	rebase = true
+[log]
+	date = iso
+	abbrevCommit = true
+[diff]
+	tool = vimdiff
+[merge]
+	conflictstyle = diff3
+[status]
+	showUntrackedFiles = all
+[sendemail]
+	annotate = yes
