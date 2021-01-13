@@ -1,0 +1,322 @@
+" vim: filetype=vim
+
+""
+"" General
+""
+
+" Save undo history to file (enables undo between sessions):
+set undofile
+
+" Keep : command history
+set history=500
+
+" Save undo history to separate dir:
+set undodir=~/.vim/tmp/undo//,/tmp//
+
+" Save swap files to separate dir:
+set directory=~/.vim/tmp/swap//,/tmp//
+
+" Automatically read in external changes to unchanged files:
+set autoread
+
+" Show line,column number in the statusline:
+set ruler
+
+" Show line numbers:
+set number
+
+" Disable intro messages when starting vim without a file:
+set shortmess+=I
+
+
+""
+"" Syntax
+""
+
+" Enable usage of :highlight command:
+syntax enable
+
+" Disable syntax highlighting on long lines:
+set synmaxcol=200
+
+" Enable plugin, indent settings and file type detection:
+filetype plugin indent on
+
+" Force POSIX shell syntax:
+let g:is_posix=1
+
+" Disable background color erase for tmux 256 color support:
+let &t_ut=''
+
+
+""
+"" UI
+""
+
+" Allow backspacing over autoindent, line breaks and start of insert:
+set backspace=indent,eol,start
+
+" Incrementally highlight search matches:
+set incsearch
+
+" Highlight all search matches:
+set hlsearch
+
+" Ignore case when searching with all lowercase queries:
+set smartcase
+
+" Substitute all matches on a line:
+set gdefault
+
+" Disable all bells:
+set noerrorbells
+set novisualbell
+set t_vb=
+
+" Completion settings with consecurive presses of TAB:
+" 1. Complete till longest common string
+" 2. When more than one match, list all matches
+" 3. Complete next full match. After last match, the original string is used.
+set wildmode=longest,list,full
+
+" Recursively search when using :find etc:
+set path=.,**
+
+" Keep some lines above and below cursor:
+set scrolloff=3
+
+" Show as much as possibly from lines that do not fit on screen:
+set display+=lastline
+
+" Allow placing the curser where there is no character in visual block mode:
+set virtualedit+=block
+
+" Highlight the line of the cursor only in insert mode:
+augroup ToggleCursorLine
+	autocmd!
+	autocmd InsertLeave * set nocursorline
+	autocmd InsertEnter * set cursorline
+augroup END
+
+" Wait 10ms for a key code or mapped key sequence to complete:
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+
+" Do not ask when moving from a buffer with unsaved changes:
+set hidden
+
+" Do not operate on octal numbers with <C-a>/<C-x>:
+set nrformats-=octal
+
+
+""
+"" Keybindings
+""
+
+" Disable movement with cursor keys:
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" Disable man page lookup of word under cursor with K key:
+nnoremap K <nop>
+
+" Disable tab cycling keys:
+nnoremap gT <nop>
+nnoremap gt <nop>
+
+" Move up/down by display lines when long lines wrap:
+nnoremap j gj
+nnoremap k gk
+
+" Shorter bindings for split navigation:
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Keep search matches in the middle of the window:
+nnoremap * *zzzv
+nnoremap # #zzzv
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+
+""
+"" Text
+""
+
+" Highlight column number 80:
+set colorcolumn=80
+
+" Break lines when wrapping at punctuation:
+set linebreak
+
+" Visually indent each wrapped line:
+set breakindent
+
+" Copy indent from current line when starting a new line:
+set autoindent
+
+" Highlight trailing space when not in insert mode:
+augroup HighlightTrailing
+	autocmd!
+	autocmd BufNewFile,BufRead * highlight trail_space ctermbg=1
+	autocmd InsertEnter * highlight trail_space ctermbg=NONE
+	autocmd InsertLeave * highlight trail_space ctermbg=1
+	autocmd BufNewFile,BufRead * match trail_space /\s\+$/
+augroup END
+
+" Enable concealing of some syntax (especially markdown):
+set conceallevel=2
+
+" Make <Tab> insert shiftwidth blanks when in front of line. Use
+" tabstop/softtabstop in other places. <BS> will delete shiftwidth number
+" of spaces at start of line:
+set smarttab
+
+" Number of spaces that <Tab> produces while performing editing operations:
+set softtabstop=0
+
+" Number of spaces a <Tab> in the file is displayed as:
+set tabstop=8
+
+" Number of spaces to use for each step of (auto)indent:
+set shiftwidth=8
+
+" Form folds from lines with equal indent:
+set foldmethod=indent
+
+" Maximum nesting of folds made by indentation level:
+set foldnestmax=3
+
+" Make all folds open by default:
+set nofoldenable
+
+" When it makes sence, remove a comment leader when joining lines:
+set formatoptions+=j
+
+""
+"" Languages
+""
+function Spaces(n)
+	setl expandtab
+	exec 'setl softtabstop='.a:n
+	exec 'setl tabstop='.a:n
+	exec 'setl shiftwidth='.a:n
+	setl shiftround
+endfunction
+
+command! Spaces :call Spaces(4)
+
+" Setup different levels of space based indent for some syntaxes:
+augroup SpacesOrTabs
+	autocmd!
+	autocmd FileType python,html,jinja.html,css,markdown,vimwiki
+				\ call Spaces(4)
+	autocmd FileType yaml call Spaces(2)
+augroup END
+
+" Textfiles should be broken to a limited width:
+augroup TextWidth
+	autocmd!
+	autocmd FileType mail,markdown,vimwiki
+				\ setlocal textwidth=72
+augroup END
+
+" Textfiles should not have line numbering
+augroup NoNumber
+	autocmd!
+	autocmd FileType mail,markdown,vimwiki
+				\ setlocal nonumber
+augroup END
+
+""
+"" Spell
+""
+
+set spelllang=en
+
+augroup Spell
+	autocmd!
+	autocmd FileType vimwiki
+				\ setlocal spelllang=en,nb
+	autocmd FileType gitcommit,mail,markdown,vimwiki
+				\ setlocal spell
+augroup END
+
+""
+"" Leader
+""
+let mapleader = ","
+
+" Convenience leader mappings for working with buffers:
+nnoremap <leader>p :bp<CR>
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>d :bd<CR>
+nnoremap <leader># :b#<CR>
+nnoremap <leader>1 :1b<CR>
+nnoremap <leader>2 :2b<CR>
+nnoremap <leader>3 :3b<CR>
+nnoremap <leader>4 :4b<CR>
+nnoremap <leader>5 :5b<CR>
+nnoremap <leader>6 :6b<CR>
+nnoremap <leader>7 :7b<CR>
+nnoremap <leader>8 :8b<CR>
+nnoremap <leader>9 :9b<CR>
+nnoremap <leader>0 :10b<CR>
+
+" Convenience leader mapping for toggling paste mode (no auto indent):
+nnoremap <leader>i :set invpaste<CR>
+
+" Convenience leader mapping for opening file based on current file's path:
+nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
+" Convenience leader mapping for disabling search highlight:
+nnoremap <leader>c :noh<CR>
+
+""
+"" Plugins
+""
+
+" true color support for tmux:
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" Light color scheme using true color:
+set background=light
+set termguicolors
+" TODO: colorscheme selenized_bw
+
+" netrw tree style listing:
+let g:netrw_liststyle=3
+
+" netrw banner supression:
+let g:netrw_banner=0
+
+" buftabline display when there are more than one buffer:
+let g:buftabline_show=1
+
+" buftabline numbering using actual buffer number:
+let g:buftabline_numbers=1
+
+" buftabline indicator for modified buffers:
+let g:buftabline_indicators=1
+
+" vim-picker normal mode bindings:
+nmap <unique> <c-p> <Plug>(PickerEdit)
+nmap <unique> <leader>b <Plug>(PickerBuffer)
+
+""
+"" Additional local config
+""
+
+for file in split(globpath("/etc/vim/vim.local.d", '*.vim'), '\n')
+	execute 'source' fnameescape(file)
+endfor

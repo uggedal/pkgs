@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# Recursively list files matching the given string(s).
+# Use -v as the first argument to list the matching lines.
+
+if command -v ag >/dev/null; then
+	if [ "$1" = -v ]; then
+		shift
+		exec ag -S --hidden --ignore .git "$@"
+	else
+		exec ag -S --hidden --ignore .git -l "$@"
+	fi
+
+fi
+
+[ "$1" ] || {
+	printf 'usage: %s: [-v] <str>\n' $(basename $0)
+	exit 1
+}
+
+garg=-I
+farg="-path */.git -prune -o -type f"
+
+if [ "$1" = -v ]; then
+	garg="${garg}n"
+	shift
+else
+	garg="${garg}l"
+fi
+
+printf -- "$@" | grep -ve '[A-Z]' >/dev/null && garg="${garg}i"
+
+find . $farg -print0 | xargs -0 fgrep $garg -e "$@"
