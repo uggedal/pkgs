@@ -1,0 +1,17 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=cfg-usr-base
+pkgver=0.0.2
+pkgrel=1
+pkgdesc="Base user configuration"
+arch=(any)
+url="https://uggedal.com"
+license=(Unlicense)
+depends=(cfg-base)
+
+rootdir="$PWD"
+
+package() {
+	local userdir="$pkgdir/home/eu"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/bashrc" "$userdir/.bashrc"
+	# FIXME: warning: directory permissions differ on /home/eu/ filesystem: 2750  package: 755
+}
