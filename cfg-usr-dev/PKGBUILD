@@ -1,0 +1,17 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=cfg-usr-dev
+pkgver=0.0.2
+pkgrel=1
+pkgdesc="Dev user configuration"
+arch=(any)
+url="https://uggedal.com"
+license=(Unlicense)
+depends=(cfg-dev)
+
+rootdir="$PWD"
+
+package() {
+	local userdir="$pkgdir/home/eu"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/gitconfig" "$userdir/.gitconfig"
+	# FIXME: warning: directory permissions differ on /home/eu/ filesystem: 2750  package: 755
+}
