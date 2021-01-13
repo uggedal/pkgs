@@ -3,6 +3,15 @@ post_install() {
 }
 
 post_upgrade() {
+	if ! grep -q ^en_DK /etc/locale.gen; then
+		cat <<-EOF > /etc/locale.gen
+		en_DK.UTF-8 UTF-8
+		en_US.UTF-8 UTF-8
+		EOF
+
+		locale-gen
+	fi
+
 	if ! grep -q /etc/bash.bashrc.d /etc/bash.bashrc; then
 		cat <<-"EOF" >> /etc/bash.bashrc
 		for f in /etc/bash.bashrc.d/* ; do

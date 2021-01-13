@@ -1,3 +1,6 @@
+# Better time output from coreutils:
+export TIME_STYLE="long-iso"
+
 # Sane man page width:
 export MANWIDTH=80
 
