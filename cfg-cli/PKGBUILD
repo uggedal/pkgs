@@ -1,12 +1,12 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-cli
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)
 url="https://uggedal.com"
 license=(Unlicense)
-depends=(cfg-base bash-completion tmux the_silver_searcher vim)
+depends=(cfg-base bash-completion curl tmux the_silver_searcher vim)
 
 rootdir="$PWD"
 
