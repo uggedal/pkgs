@@ -1,12 +1,12 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-base
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Base configuration"
 arch=(any)
 url="https://uggedal.com"
 license=(Unlicense)
-depends=(man-db python sudo )
+depends=(man-db pacman-contrib python sudo)
 install=cfg-base.install
 
 rootdir="$PWD"

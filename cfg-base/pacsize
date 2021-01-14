@@ -30,7 +30,7 @@ def human(n):
 
 
 def shlst(c):
-    return subprocess.check_output(c.split(' ')).decode('ascii').splitlines()
+    return subprocess.check_output(c, shell=True).decode('ascii').splitlines()
 
 
 def size(p):
@@ -49,7 +49,7 @@ def size(p):
 pkgs = {}
 deps = {}
 maxpkg = 0
-basepkgs = shlst('pacman -Qgq base')
+basepkgs = shlst("pacman -Qi base | awk -F: '/^Depends On/ { print $2 }' | tr ' ' '\n' | sed '/^$/d'")
 
 for p in shlst('pacman -Qetq'):
     pkgs[p] = {
