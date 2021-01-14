@@ -10,6 +10,10 @@ _diff() {
 	fi
 }
 
+if [ ! -e "$2" ]; then
+	touch "$2"
+fi
+
 _diff "$2" "$SRC/$1"
 
 cat "$SRC/$1" > "$2"
