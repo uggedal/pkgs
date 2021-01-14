@@ -4,6 +4,7 @@ post_install() {
 
 post_upgrade() {
 	pacoverride locale.conf /etc/locale.conf
+	pacoverride mirrorlist /etc/pacman.d/mirrorlist
 
 	if ! grep -q ^en_DK /etc/locale.gen; then
 		cat <<-EOF > /etc/locale.gen

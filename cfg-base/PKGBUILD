@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-base
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Base configuration"
 arch=(any)
@@ -23,6 +23,7 @@ package() {
 	install -D -m755 "$rootdir/pacoverride" "$pkgdir/usr/bin/pacoverride"
 
 	install -D -m644 "$rootdir/locale.conf" "$pkgdir/usr/share/pacman/override/locale.conf"
+	install -D -m644 "$rootdir/mirrorlist" "$pkgdir/usr/share/pacman/override/mirrorlist"
 
 	install -D -m644 "$rootdir/profile.sh" "$pkgdir/etc/profile.d/base.sh"
 	install -D -m644 "$rootdir/input.local.rc" "$pkgdir/etc/input.local.rc"
