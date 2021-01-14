@@ -1,0 +1,20 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=cfg-pkg
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Packaging configuration"
+arch=(any)
+url="https://uggedal.com"
+license=(Unlicense)
+depends=(
+	autoconf
+	automake
+	bison
+	devtools
+	flex
+	gcc
+	make
+	patch
+	pkgconf
+	which
+)
