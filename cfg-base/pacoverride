@@ -4,7 +4,7 @@ SRC=/usr/share/pacman/override
 
 _diff() {
 	if command -v git >/dev/null; then
-		git --no-pager diff --no-index "$@"
+		git --no-pager diff --no-index --color=always "$@"
 	else
 		diff -u "$@"
 	fi
