@@ -13,7 +13,7 @@ rootdir="$PWD"
 
 package() {
 	install -D -m755 "$rootdir/pacsize" "$pkgdir/usr/bin/pacsize"
-	install -D -m755 "$rootdir/pkgoverride" "$pkgdir/usr/bin/pacoverride"
+	install -D -m755 "$rootdir/pacoverride" "$pkgdir/usr/bin/pacoverride"
 
 	install -D -m644 "$rootdir/locale.conf" "$pkgdir/usr/share/pacman/override/locale.conf"
 	install -D -m644 "$rootdir/profile.sh" "$pkgdir/etc/profile.d/base.sh"
