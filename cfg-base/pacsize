@@ -1,0 +1,126 @@
+#!/usr/bin/env python3
+
+import sys
+import glob
+import signal
+import subprocess
+
+signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+
+VERBOSE = len(sys.argv) > 1 and sys.argv[1] == '-v'
+
+
+size_lookup = {}
+
+
+def human(n):
+    suffixes = ['B', 'KB', 'MB', 'GB', 'TB']
+
+    n = float(n)
+
+    if n == 0:
+        return '0'
+
+    i = 0
+    while n >= 1024 and i < len(suffixes)-1:
+        n /= 1024.
+        i += 1
+
+    return '%s%s' % (('%.2f' % n).rstrip('.'), suffixes[i])
+
+
+def shlst(c):
+    return subprocess.check_output(c.split(' ')).decode('ascii').splitlines()
+
+
+def size(p):
+    if p in size_lookup:
+        return size_lookup[p]
+
+    f = glob.glob('/var/lib/pacman/local/{}-*/desc'.format(p))[0]
+
+    with open(f, 'r') as fp:
+        for l in fp:
+            if l.startswith('%SIZE%'):
+                size_lookup[p] = int(next(fp, '').strip())
+                return size_lookup[p]
+
+
+pkgs = {}
+deps = {}
+maxpkg = 0
+basepkgs = shlst('pacman -Qgq base')
+
+for p in shlst('pacman -Qetq'):
+    pkgs[p] = {
+        'size': size(p),
+        'deps': {}
+    }
+
+    maxpkg = max(maxpkg, len(p))
+
+    for d in set(shlst('pactree -u {}'.format(p))):
+        # pactree includes given package in dep list:
+        if d != p and d not in basepkgs:
+            pkgs[p]['deps'][d] = {'size': size(d)}
+
+            if VERBOSE:
+                maxpkg = max(maxpkg, len(d))
+
+        # track number of rdeps:
+        if d in deps:
+            deps[d] += 1
+        else:
+            deps[d] = 1
+
+
+for _, p in pkgs.items():
+    p['total'] = p['size']
+    p['wtotal'] = p['size']
+
+    for dn, d in p['deps'].items():
+        p['total'] += d['size']
+        d['wsize'] = d['size'] / float(deps[dn])
+        p['wtotal'] += d['wsize']
+
+
+pkgfmt = '{:' + str(maxpkg + 4 if VERBOSE else maxpkg) + '} '
+w = 47
+vw = w + 31
+
+def head():
+    sys.stdout.write(pkgfmt.format('Package'))
+    sys.stdout.write('{:>9} '.format('Size'))
+    sys.stdout.write('{:>9} '.format('Total'))
+    sys.stdout.write('{:>9} '.format('W Total'))
+    if VERBOSE:
+        sys.stdout.write('{:>6} '.format('Rdeps'))
+        sys.stdout.write('{:>9}\n'.format('W Size'))
+        sys.stdout.write('-' * vw)
+    else:
+        sys.stdout.write('\n')
+        sys.stdout.write('-' * w)
+    sys.stdout.write('\n')
+
+if not VERBOSE:
+    head()
+
+for p in sorted(pkgs.items(), key=lambda p: p[1]['wtotal'], reverse=True):
+    if VERBOSE:
+        head()
+    sys.stdout.write(pkgfmt.format(p[0]))
+    sys.stdout.write('{:>9} '.format(human(p[1]['size'])))
+    sys.stdout.write('{:>9} '.format(human(p[1]['total'])))
+    sys.stdout.write('{:>9}\n'.format(human(p[1]['wtotal'])))
+
+    if VERBOSE:
+        sys.stdout.write('-' * vw)
+        sys.stdout.write('\n')
+        for d in sorted(p[1]['deps'].items(), key=lambda d: d[1]['wsize'], reverse=True):
+            sys.stdout.write(pkgfmt.format('    ' + d[0]))
+            sys.stdout.write('{:>9} '.format(human(d[1]['size'])))
+            sys.stdout.write('{:>9} '.format(''))
+            sys.stdout.write('{:>9} '.format(''))
+            sys.stdout.write('{:>6} '.format(deps[d[0]]))
+            sys.stdout.write('{:>9}\n'.format(human(d[1]['wsize'])))
+        sys.stdout.write('\n')

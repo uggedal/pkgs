@@ -1,17 +1,18 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-base
-pkgver=0.0.9
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Base configuration"
 arch=(any)
 url="https://uggedal.com"
 license=(Unlicense)
-depends=(man-db sudo)
+depends=(man-db python sudo )
 install=cfg-base.install
 
 rootdir="$PWD"
 
 package() {
+	install -D -m755 "$rootdir/pacsize" "$pkgdir/usr/bin/pacsize"
 	install -D -m755 "$rootdir/pkgoverride" "$pkgdir/usr/bin/pkgoverride"
 
 	install -D -m644 "$rootdir/locale.conf" "$pkgdir/etc/locale.conf"
