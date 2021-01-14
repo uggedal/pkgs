@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-base
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Base configuration"
 arch=(any)
@@ -16,9 +16,11 @@ package() {
 	install -D -m755 "$rootdir/pacoverride" "$pkgdir/usr/bin/pacoverride"
 
 	install -D -m644 "$rootdir/locale.conf" "$pkgdir/usr/share/pacman/override/locale.conf"
+
 	install -D -m644 "$rootdir/profile.sh" "$pkgdir/etc/profile.d/base.sh"
 	install -D -m644 "$rootdir/input.local.rc" "$pkgdir/etc/input.local.rc"
 	install -D -m644 "$rootdir/bashrc" "$pkgdir/etc/bash.bashrc.d/base.sh"
+	install -D -m644 "$rootdir/sysctl.conf" "$pkgdir/etc/sysctl.d/base.conf"
 
 	install -d -m750 "$pkgdir/etc/sudoers.d"
 	install -m640 "$rootdir/wheel.sudoers" "$pkgdir/etc/sudoers.d/wheel"
