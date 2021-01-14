@@ -10,6 +10,6 @@ _diff() {
 	fi
 }
 
-_diff "$SRC/$1" "$2"
+_diff "$2" "$SRC/$1"
 
 cat "$SRC/$1" > "$2"
