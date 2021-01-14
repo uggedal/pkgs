@@ -3,6 +3,8 @@ post_install() {
 }
 
 post_upgrade() {
+	pacoverride locale.conf /etc/locale.conf
+
 	if ! grep -q ^en_DK /etc/locale.gen; then
 		cat <<-EOF > /etc/locale.gen
 		en_DK.UTF-8 UTF-8
