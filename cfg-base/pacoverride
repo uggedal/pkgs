@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-SRC=/usr/share/pkgs
+SRC=/usr/share/pacman/override
 
 _diff() {
 	if command -v git >/dev/null; then
