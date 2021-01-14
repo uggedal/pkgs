@@ -45,13 +45,17 @@ def size(p):
                 size_lookup[p] = int(next(fp, '').strip())
                 return size_lookup[p]
 
+        size_lookup[p] = 0
+        return 0
+
+
 
 pkgs = {}
 deps = {}
 maxpkg = 0
 basepkgs = shlst("pacman -Qi base | awk -F: '/^Depends On/ { print $2 }' | tr ' ' '\n' | sed '/^$/d'")
 
-for p in shlst('pacman -Qetq'):
+for p in shlst('pacman -Qq'):
     pkgs[p] = {
         'size': size(p),
         'deps': {}
