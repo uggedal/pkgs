@@ -1,12 +1,12 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-dev
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Dev user configuration"
 arch=(any)
 url="https://uggedal.com"
 license=(Unlicense)
-depends=(cfg-dev)
+depends=(cfg-dev cfg-usr-base)
 
 rootdir="$PWD"
 
