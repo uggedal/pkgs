@@ -17,8 +17,8 @@ set completion-query-items -1
 # Display matches one per line:
 set completion-display-width 0
 
-# Case insensitive matching:
-set completion-ignore-case on
+# Case sensitive matching:
+set completion-ignore-case off
 
 # Abbreviate similar prefixes:
 set completion-prefix-display-length 3
