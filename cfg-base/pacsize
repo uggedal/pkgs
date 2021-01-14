@@ -53,7 +53,7 @@ def size(p):
 pkgs = {}
 deps = {}
 maxpkg = 0
-basepkgs = shlst("pacman -Qi base | awk -F: '/^Depends On/ { print $2 }' | tr ' ' '\n' | sed '/^$/d'")
+basepkgs = shlst("pactree -d 1 -u base")
 
 for p in shlst('pacman -Qq'):
     pkgs[p] = {
