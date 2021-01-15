@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-dev
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Dev user configuration"
 arch=(any)
@@ -11,7 +11,8 @@ depends=(cfg-dev cfg-usr-base)
 rootdir="$PWD"
 
 package() {
-	local userdir="$pkgdir/home/eu"
-	install -D -m644 -o 1000 -g 1000 "$rootdir/gitconfig" "$userdir/.gitconfig"
-	# FIXME: warning: directory permissions differ on /home/eu/ filesystem: 2750  package: 755
+	install -d "$pkgdir/home"
+	install -d -m2750 -o 1000 -g 1000 "$pkgdir/home/eu"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/gitconfig" \
+		"$pkgdir/home/eu/.gitconfig"
 }
