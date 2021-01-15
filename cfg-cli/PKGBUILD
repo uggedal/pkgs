@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-cli
-pkgver=0.0.9
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)
@@ -17,6 +17,7 @@ depends=(
 	the_silver_searcher vim
 	vim
 	vim-lastplace
+	vim-selenized-git
 )
 
 rootdir="$PWD"
