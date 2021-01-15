@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-base
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Base user configuration"
 arch=(any)

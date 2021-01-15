@@ -4,3 +4,8 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+for f in $HOME/.bashrc.d/* ; do
+	[ -r $f ] && . $f
+done
+unset f
