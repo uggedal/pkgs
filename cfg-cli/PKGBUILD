@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-cli
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)
@@ -11,6 +11,7 @@ depends=(
 	bash-completion
 	curl
 	htop
+	ncdu
 	ps_mem
 	tmux
 	the_silver_searcher vim
