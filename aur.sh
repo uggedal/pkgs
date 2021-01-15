@@ -5,6 +5,7 @@ AUR_URL='https://aur.archlinux.org/cgit/aur.git/snapshot'
 AUR_PACKAGES='
 	needrestart
 	vim-lastplace
+	vim-selenized-git
 '
 
 for p in $AUR_PACKAGES; do

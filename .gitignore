@@ -1,3 +1,5 @@
 /chroot/
 /*/*.log
 /*/*.tar.*
+
+/vim-selenized-git/vim-selenized
