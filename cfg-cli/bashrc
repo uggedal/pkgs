@@ -1,0 +1,2 @@
+# Shorthand for downloading with curl:
+alias c='curl -LJO'
