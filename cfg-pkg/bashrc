@@ -1,0 +1,6 @@
+# git commit prefixer for packaging:
+pgc() {
+	gc -t <(printf '%s: ' $(dirname
+		$(git status --porcelain |
+			awk '/^M/ { print $2 }') | sort -u | head -n1))
+}

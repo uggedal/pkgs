@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-pkg
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Packaging configuration"
 arch=(any)
@@ -18,3 +18,9 @@ depends=(
 	pkgconf
 	which
 )
+
+rootdir="$PWD"
+
+package() {
+	install -D -m644 "$rootdir/bashrc" "$pkgdir/etc/bash.bashrc.d/pkg.sh"
+}
