@@ -1,0 +1,16 @@
+#!/bin/sh -e
+
+t='Terminal colors'
+
+n=16
+[ -z "$1" ] || n=$1
+
+for i in $(seq 0 $n); do
+	printf '%3d ' $i
+	printf "$(tput setab $i) %0*s $(tput sgr0)" ${#t} ' '
+	printf "$(tput setaf $i) %s $(tput sgr0)" "$t"
+	printf "$(tput setab $i) %s $(tput sgr0)" "$t"
+	printf ' '
+	printf "$(tput setab $i)$(tput setaf 0) %s $(tput sgr0)" "$t"
+	printf '\n'
+done
