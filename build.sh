@@ -62,5 +62,5 @@ for f in $ROOT/*/PKGBUILD; do
 
 	sudo cp $d/$p $REPO/
 	sudo repo-add $REPODB $REPO/$p
-	sudo rm $REPO/$p
+	rm $d/$p
 done
