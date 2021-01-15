@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-cli
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)
@@ -15,6 +15,8 @@ depends=(
 	ps_mem
 	tmux
 	the_silver_searcher vim
+	vim
+	vim-lastplace
 )
 
 rootdir="$PWD"
