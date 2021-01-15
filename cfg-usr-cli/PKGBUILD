@@ -1,0 +1,18 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=cfg-usr-cli
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="CLI user configuration"
+arch=(any)
+url="https://uggedal.com"
+license=(Unlicense)
+depends=(cfg-cli cfg-usr-base)
+
+rootdir="$PWD"
+
+package() {
+	install -d "$pkgdir/home"
+	install -d -m2750 -o 1000 -g 1000 "$pkgdir/home/eu"
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.vim/tmp/swap"
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.vim/tmp/undo"
+}
