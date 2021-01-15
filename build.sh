@@ -25,7 +25,7 @@ if ! grep -q $REPO $CHROOT_CONF; then
 	Server = file:///var/local/repo
 	EOF
 fi
-	
+
 
 pkgf() {
 	local d=$1
@@ -62,4 +62,5 @@ for f in $ROOT/*/PKGBUILD; do
 
 	sudo cp $d/$p $REPO/
 	sudo repo-add $REPODB $REPO/$p
+	sudo rm $REPO/$p
 done
