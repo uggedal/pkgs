@@ -292,7 +292,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " Light color scheme using true color:
 set background=light
 set termguicolors
-" TODO: colorscheme selenized_bw
+colorscheme selenized_bw
 
 " netrw tree style listing:
 let g:netrw_liststyle=3
