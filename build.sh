@@ -42,7 +42,7 @@ pkgf() {
 
 arch-nspawn $CHROOT/root --bind-ro=$REPO pacman -Syu --noconfirm
 
-for f in $ROOT/*/PKGBUILD; do
+for f in $ROOT/*/PKGBUILD $ROOT/../priv-pkgs/*/PKGBUILD; do
 	d=$(dirname $f)
 	n=$(basename $d)
 	p=$(pkgf $d)
