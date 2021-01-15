@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-pkg
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Packaging configuration"
 arch=(any)
