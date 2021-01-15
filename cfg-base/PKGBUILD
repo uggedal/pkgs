@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-base
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Base configuration"
 arch=(any)
@@ -13,6 +13,7 @@ depends=(
 	needrestart
 	pacman-contrib
 	python
+	openssh
 	sudo
 )
 install=cfg-base.install
