@@ -1,12 +1,12 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-dev
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Dev configuration"
 arch=(any)
 url="https://uggedal.com"
 license=(Unlicense)
-depends=(cfg-cli git)
+depends=(cfg-cli git python-black)
 
 rootdir="$PWD"
 
