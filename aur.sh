@@ -8,8 +8,18 @@ AUR_PACKAGES='
 	vim-selenized-git
 '
 
+. $ROOT/../priv-pkgs/aur.sh
+
+fetch() {
+	curl $AUR_URL/$2.tar.gz | tar -C $1 -xz
+	rm -f $1/$2/.SRCINFO
+	rm -f $1/$2/.gitignore
+}
+
 for p in $AUR_PACKAGES; do
-	curl $AUR_URL/$p.tar.gz | tar -C $ROOT -xz
-	rm -f $ROOT/$p/.SRCINFO
-	rm -f $ROOT/$p/.gitignore
+	fetch $ROOT $p
+done
+
+for p in $PRIV_AUR_PACKAGES; do
+	fetch $ROOT/../priv-pkgs $p
 done
