@@ -1,0 +1,20 @@
+#!/usr/bin/python3
+
+import re
+import fileinput
+
+with fileinput.FileInput("PKGBUILD", inplace=True) as f:
+    for l in f:
+        m = re.match(r"^pkgver=([0-9.]+$)", l)
+        if m:
+            numbers = [int(i) for i in m.group(1).split('.')]
+            for i in range(1, len(numbers)+1):
+                if numbers[-i] == 9 and i != len(numbers):
+                    numbers[-i] = 0
+                else:
+                    numbers[-i] = numbers[-i] + 1
+                    break
+            new_ver = ".".join([str(i) for i in numbers])
+            print(f"pkgver={new_ver}")
+        else:
+            print(l, end='')

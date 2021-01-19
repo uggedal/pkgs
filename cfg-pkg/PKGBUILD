@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-pkg
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Packaging configuration"
 arch=(any)
@@ -22,5 +22,7 @@ depends=(
 rootdir="$PWD"
 
 package() {
+	install -D -m755 "$rootdir/pincr" "$pkgdir/usr/bin/pincr"
+
 	install -D -m644 "$rootdir/bashrc" "$pkgdir/etc/bash.bashrc.d/pkg.sh"
 }
