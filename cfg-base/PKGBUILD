@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-base
-pkgver=0.2.8
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Base configuration"
 arch=(any)
@@ -9,6 +9,7 @@ license=(Unlicense)
 depends=(
 	arch-audit
 	base
+	logrotate
 	man-db
 	needrestart
 	pacman-contrib
@@ -36,4 +37,5 @@ package() {
 
 	install -d -m750 "$pkgdir/etc/sudoers.d"
 	install -m640 "$rootdir/wheel.sudoers" "$pkgdir/etc/sudoers.d/wheel"
+	install -D -m640 "$rootdir/base.logrotate" "$pkgdir/etc/logrotate.d/base"
 }
