@@ -1,2 +1,7 @@
 # Shorthand for downloading with curl:
 alias c='curl -LJO'
+
+# Reverse DNS lookup:
+rdns () {
+	    drill -x $1 | sed '/^\(;;\|$\)/d'
+}
