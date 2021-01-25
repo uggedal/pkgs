@@ -6,6 +6,7 @@ AUR_PACKAGES='
 	needrestart
 	vim-lastplace
 	vim-selenized-git
+	vim-vimwiki
 '
 
 . $ROOT/../priv-pkgs/aur.sh
