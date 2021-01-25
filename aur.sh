@@ -4,6 +4,7 @@ ROOT=$(cd "$(dirname "$0")"; pwd -P)
 AUR_URL='https://aur.archlinux.org/cgit/aur.git/snapshot'
 AUR_PACKAGES='
 	needrestart
+	python-tasklib
 	vim-lastplace
 	vim-selenized-git
 	vim-vimwiki
