@@ -23,3 +23,16 @@ done
 for p in $PRIV_AUR_PACKAGES; do
 	fetch $ROOT/../priv-pkgs $p
 done
+
+# Check -git packages for updates:
+for d in $ROOT/*-git $ROOT/../priv-pkgs/*-git; do
+	case "$d" in
+		*\**)
+			continue
+			;;
+	esac
+	(
+		cd $d
+		GIT_CONFIG_NOSYSTEM=1 makepkg -o
+	)
+done

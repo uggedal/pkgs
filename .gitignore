@@ -2,6 +2,7 @@
 /*/*.log
 /*/*.tar.*
 
+/*/src/
 /vim-buftabline-git/vim-buftabline
 /vim-commentary-git/vim-commentary
 /vim-picker-git/vim-picker
