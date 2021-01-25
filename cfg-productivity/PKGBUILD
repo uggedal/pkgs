@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-productivity
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Productivity configuration"
 arch=(any)
@@ -8,7 +8,7 @@ url="https://uggedal.com"
 license=(Unlicense)
 depends=(
 	cfg-cli
-	vim-vimwiki
+	vim-taskwiki-git
 )
 
 rootdir="$PWD"
