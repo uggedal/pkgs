@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-cli
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)
@@ -21,6 +21,7 @@ depends=(
 	vim-lastplace
 	vim-picker-git
 	vim-selenized-git
+	vim-spell-nb
 )
 
 rootdir="$PWD"
