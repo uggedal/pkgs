@@ -1,0 +1,106 @@
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Data
+data.location=~/.task
+
+# Style
+rule.color.merged=0
+
+# Date
+weekstart=Monday
+
+# Default values
+default.project=Inbox
+
+# Urgency
+urgency.annotations.coefficient=0.0
+urgency.project.coefficient=0.0
+urgency.tags.coefficient=0.0
+
+urgency.uda.priority.H.coefficient=3.0
+urgency.uda.priority.M.coefficient=1.0
+urgency.uda.priority.L.coefficient=-2.0
+
+urgency.blocked.coefficient=0.0
+urgency.blocking.coefficient=0.0
+urgency.inherit=1
+
+##
+## Selenized white theme
+##
+
+rule.precedence.color=deleted,completed,active,keyword.,tag.,project.,overdue,scheduled,due.today,due,blocked,blocking,recurring,tagged,uda.
+
+# General decoration
+color.label=
+color.label.sort=
+color.alternate=
+color.header=color2
+color.footnote=color2
+color.warning=color0 on color3
+color.error=color1
+color.debug=color5
+
+# Task state
+color.completed=
+color.deleted=
+color.active=color9
+color.recurring=color4
+color.scheduled=
+color.until=
+color.blocked=color12 on color0
+color.blocking=color12
+
+# Project
+color.project.none=
+
+# Priority
+color.uda.priority.H=bold color9
+color.uda.priority.M=bold color11
+color.uda.priority.L=bold color14
+
+# Tags
+color.tag.next=
+color.tag.none=
+color.tagged=
+
+# Due
+color.due=color9
+color.due.today=color1
+color.overdue=color5
+
+# Report: burndown
+color.burndown.done=color0 on color6
+color.burndown.pending=color0 on color1
+color.burndown.started=color0 on color3
+
+# Report: history
+color.history.add=color0 on color1
+color.history.delete=color0 on color3
+color.history.done=color0 on color6
+
+# Report: summary
+color.summary.background=on color7
+color.summary.bar=color0 on color6
+
+# Command: calendar
+color.calendar.due=color7 on color9
+color.calendar.due.today=color7 on color1
+color.calendar.holiday=color7 on color3
+color.calendar.overdue=color7 on color5
+color.calendar.today=color7 on color4
+color.calendar.weekend=on color7
+color.calendar.weeknumber=color14
+
+# Command: sync
+color.sync.added=color10
+color.sync.changed=color9
+color.sync.rejected=color13
+
+# Command: undo
+color.undo.after=color2
+color.undo.before=color1

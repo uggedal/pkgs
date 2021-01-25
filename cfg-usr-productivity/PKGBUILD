@@ -1,0 +1,18 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=cfg-usr-productivity
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Productivity user configuration"
+arch=(any)
+url="https://uggedal.com"
+license=(Unlicense)
+depends=(cfg-productivity cfg-usr-cli)
+
+rootdir="$PWD"
+
+package() {
+	install -d "$pkgdir/home"
+	install -d -m2750 -o 1000 -g 1000 "$pkgdir/home/eu"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/taskrc" \
+		"$pkgdir/home/eu/.taskrc"
+}
