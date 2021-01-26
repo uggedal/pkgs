@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-www
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="WWW configuration"
 arch=(any)
@@ -27,4 +27,6 @@ package() {
 		"$pkgdir/etc/nginx/conf.d/site.conf.j2"
 	install -D -m644 "$rootdir/site.passwd.j2" \
 		"$pkgdir/etc/nginx/conf.d/site.passwd.j2"
+
+	install -D -m755 "$rootdir/htpasswd" "$pkgdir/usr/bin/htpasswd"
 }
