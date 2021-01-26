@@ -1,0 +1,30 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=cfg-www
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="WWW configuration"
+arch=(any)
+url="https://uggedal.com"
+license=(Unlicense)
+depends=(
+	cfg-base
+	nginx
+)
+install=cfg-www.install
+
+rootdir="$PWD"
+
+package() {
+	install -D -m644 "$rootdir/nginx.conf" \
+		"$pkgdir/usr/share/pacman/override/nginx.conf"
+	install -D -m644 "$rootdir/ffdhe4096.pem" \
+		"$pkgdir/etc/nginx/ffdhe4096.pem"
+	install -D -m644 "$rootdir/default.conf" \
+		"$pkgdir/etc/nginx/conf.d/default.conf"
+	install -D -m644 "$rootdir/ssl.part" \
+		"$pkgdir/etc/nginx/conf.d/ssl.part"
+	install -D -m644 "$rootdir/site.conf.j2" \
+		"$pkgdir/etc/nginx/conf.d/site.conf.j2"
+	install -D -m644 "$rootdir/site.passwd.j2" \
+		"$pkgdir/etc/nginx/conf.d/site.passwd.j2"
+}

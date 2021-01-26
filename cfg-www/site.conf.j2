@@ -1,0 +1,74 @@
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name {{ tld }}{% if aliases is defined %} {{ aliases|join(" ") }}{% endif %};
+
+	location / {
+		return 301 https://{{ tld }}$request_uri;
+	}
+}
+
+server {
+	listen 443 ssl http2;
+	listen [::]:443 ssl http2;
+
+	server_name {{ tld }}{% if aliases is defined %} {{ aliases|join(" ") }}{% endif %};
+
+	access_log /var/log/nginx/{{ _key }}_access.log;
+	error_log /var/log/nginx/{{ _key }}_error.log;
+
+	ssl_certificate /etc/dehydrated/certs/{{ cert }}/fullchain.pem;
+	ssl_certificate_key /etc/dehydrated/certs/{{ cert }}/privkey.pem;
+	include /etc/nginx/conf.d/ssl.part;
+
+	root {{ root }};
+
+	{% if autoindex is defined and autoindex %}
+	fancyindex on;
+	fancyindex_exact_size off;
+	fancyindex_name_length 200;
+	{% endif %}
+
+	charset UTF-8;
+
+	{% if auth_basic is defined %}
+	auth_basic "priv";
+	auth_basic_user_file /etc/nginx/conf.d/{{ _key }}.passwd;
+	{% endif %}
+
+	{% if proxy is defined %}
+	try_files $uri @{{ _key }}-proxy;
+
+	location @{{ _key }}-proxy {
+		proxy_set_header HOST $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+		proxy_pass {{ proxy }};
+	}
+	{% endif %}
+	{% if proxies is defined %}
+	{% for p in proxies %}
+	location {{ p.path }} {
+		proxy_set_header HOST $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		{% if 'ws' in p %}
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "Upgrade";
+		proxy_read_timeout 604800;
+		{% endif %}
+
+		proxy_pass {{ p.downstream }};
+	}
+	{% endfor %}
+	{% endif %}
+}
+
+{% if inline_conf is defined %}
+{{ inline_conf }}
+{% endif %}
