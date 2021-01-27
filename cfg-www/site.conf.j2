@@ -25,9 +25,8 @@ server {
 	root {{ root }};
 
 	{% if autoindex is defined and autoindex %}
-	fancyindex on;
-	fancyindex_exact_size off;
-	fancyindex_name_length 200;
+	autoindex on;
+	autoindex_exact_size off;
 	{% endif %}
 
 	charset UTF-8;
