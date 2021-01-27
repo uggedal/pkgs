@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-www
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="WWW configuration"
 arch=(any)
@@ -9,6 +9,7 @@ license=(Unlicense)
 depends=(
 	cfg-base
 	dehydrated
+	jq
 	nginx
 )
 install=cfg-www.install
