@@ -1,0 +1,32 @@
+# Which user should dehydrated run as? This will be implictly enforced when running as root
+#DEHYDRATED_USER=
+
+# Which group should dehydrated run as? This will be implictly enforced when running as root
+#DEHYDRATED_GROUP=
+
+# Which challenge should be used? Currently http-01, dns-01 and tls-alpn-01 are supported
+CHALLENGETYPE="dns-01"
+
+# Default keysize for private keys (default: 4096)
+#KEYSIZE="4096"
+
+# Program or function called in certain situations
+#
+# After generating the challenge-response, or after failed challenge (in this case altname is empty)
+# Given arguments: clean_challenge|deploy_challenge altname token-filename token-content
+#
+# After successfully signing certificate
+# Given arguments: deploy_cert domain path/to/privkey.pem path/to/cert.pem path/to/fullchain.pem
+#
+# BASEDIR and WELLKNOWN variables are exported and can be used in an external program
+# default: <unset>
+HOOK=$BASEDIR/hooks/cf.sh
+
+# Which public key algorithm should be used? Supported: rsa, prime256v1 and secp384r1
+KEY_ALGO=secp384r1
+
+# E-mail to use during the registration (default: <unset>)
+CONTACT_EMAIL={{ tls.email }}
+
+# Automatic cleanup (default: no)
+#AUTO_CLEANUP="no"

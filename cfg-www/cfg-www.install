@@ -6,4 +6,5 @@ post_upgrade() {
 	pacoverride nginx.conf /etc/nginx/nginx.conf
 
 	systemctl enable --now nginx.service
+	systemctl enable --now dehydrated.timer
 }

@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-www
-pkgver=0.0.4
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="WWW configuration"
 arch=(any)
@@ -8,6 +8,7 @@ url="https://uggedal.com"
 license=(Unlicense)
 depends=(
 	cfg-base
+	dehydrated
 	nginx
 )
 install=cfg-www.install
@@ -29,4 +30,11 @@ package() {
 		"$pkgdir/etc/nginx/conf.d/site.passwd.j2"
 
 	install -D -m755 "$rootdir/htpasswd" "$pkgdir/usr/bin/htpasswd"
+
+	install -D -m644 "$rootdir/dehydrated-config.j2" \
+		"$pkgdir/etc/dehydrated/config.j2"
+	install -D -m644 "$rootdir/dehydrated-domains.txt.j2" \
+		"$pkgdir/etc/dehydrated/domains.txt.j2"
+	install -D -m644 "$rootdir/dehydrated-hooks-cf.sh.j2" \
+		"$pkgdir/etc/dehydrated/hooks/cf.sh.j2"
 }
