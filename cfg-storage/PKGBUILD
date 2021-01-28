@@ -1,0 +1,18 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=cfg-storage
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Storage configuration"
+arch=(any)
+url="https://uggedal.com"
+license=(Unlicense)
+depends=(
+	smartmontools
+)
+install=cfg-storage.install
+
+rootdir="$PWD"
+
+package() {
+	:
+}
