@@ -3,5 +3,6 @@ post_install() {
 }
 
 post_upgrade() {
+	pacoverride smartd.conf /etc/smartd.conf
 	systemctl enable --now smartd.service
 }
