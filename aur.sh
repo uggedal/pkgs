@@ -6,6 +6,7 @@ AUR_PACKAGES='
 	needrestart
 	python-j2cli
 	python-tasklib
+	vim-eunuch-git
 	vim-lastplace
 	vim-selenized-git
 	vim-vimwiki
