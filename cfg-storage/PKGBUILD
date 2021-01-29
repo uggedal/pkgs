@@ -1,12 +1,13 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-storage
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Storage configuration"
 arch=(any)
 url="https://uggedal.com"
 license=(Unlicense)
 depends=(
+	compsize
 	hdparm
 	smartmontools
 )
