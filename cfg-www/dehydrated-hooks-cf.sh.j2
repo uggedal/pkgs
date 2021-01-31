@@ -21,7 +21,7 @@ deploy_challenge() {
 	local TOKEN_FILENAME=$2
 	local TOKEN_VALUE="$3"
 
-	curl -X POST \
+	curl -sX POST \
 		https://api.cloudflare.com/client/v4/zones/$(zone $DOMAIN)/dns_records \
 		-H "X-Auth-Email: $EMAIL" \
 		-H "X-Auth-Key: $API_KEY" \
@@ -46,7 +46,7 @@ clean_challenge() {
 	local TOKEN_VALUE="$3"
 
 	local id=$(jq -r '.result.id' $ROOT/$DOMAIN.json)
-	curl -X DELETE \
+	curl -sX DELETE \
 		https://api.cloudflare.com/client/v4/zones/$(zone $DOMAIN)/dns_records/$id \
 	 -H "X-Auth-Email: $EMAIL"\
 	 -H "X-Auth-Key: $API_KEY"\
