@@ -1,9 +1,14 @@
+_user_svc_enable() {
+	local r=/run/user/1000
+	su - $(id -u -n 1000) -c "env DBUS_SESSION_BUS_ADDRESS=unix:path=$r/bus XDG_RUNTIME_DIR=$r systemctl --user enable --now $1"
+}
+
 post_install() {
 	post_upgrade
 }
 
 post_upgrade() {
-	su - $(id -u -n 1000) -c 'systemctl --user enable --now swayidle.service'
-	su - $(id -u -n 1000) -c 'systemctl --user enable --now waybar.service'
-	su - $(id -u -n 1000) -c 'systemctl --user enable --now wlsunset.service'
+	_user_svc_enable swayidle
+	_user_svc_enable waybar
+	_user_svc_enable wlsunset
 }
