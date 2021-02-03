@@ -1,0 +1,8 @@
+#!/bin/sh
+
+exec kitty \
+	--class KittyMenu \
+	-d 40 11 \
+	-e /bin/bash -c '
+		compgen -c | sort -u | fzy | xargs -r swaymsg -t command exec
+	'
