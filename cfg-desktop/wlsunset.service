@@ -1,0 +1,11 @@
+[Unit]
+Description=Day/night gamma adjustments for wayland
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/wlsunset -l 58.1 -L 8.0 -t 4500
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-desktop
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Desktop configuration"
 arch=(any)
@@ -28,4 +28,6 @@ rootdir="$PWD"
 package() {
 	install -D -m644 "$rootdir/swayidle.service" \
 		"$pkgdir//usr/lib/systemd/user/swayidle.service"
+	install -D -m644 "$rootdir/wlsunset.service" \
+		"$pkgdir//usr/lib/systemd/user/wlsunset.service"
 }
