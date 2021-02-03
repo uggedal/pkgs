@@ -1,0 +1,9 @@
+post_install() {
+	post_upgrade
+}
+
+post_upgrade() {
+	su - $(id -u -n 1000) -c 'systemctl --user enable --now swayidle.service'
+	su - $(id -u -n 1000) -c 'systemctl --user enable --now waybar.service'
+	su - $(id -u -n 1000) -c 'systemctl --user enable --now wlsunset.service'
+}

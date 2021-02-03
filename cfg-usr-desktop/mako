@@ -1,0 +1,15 @@
+font=IBM Plex Mono 14px
+background-color=#008400
+text-color=#ffffff
+border-size=0
+
+default-timeout=5000
+
+[urgency=low]
+background-color=#0054cf
+text-color=#ffffff
+
+[urgency=high]
+background-color=#bf0000
+text-color=#ffffff
+default-timeout=0

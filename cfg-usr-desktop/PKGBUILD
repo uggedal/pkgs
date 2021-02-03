@@ -1,0 +1,34 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=cfg-usr-desktop
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Desktop user configuration"
+arch=(any)
+url="https://uggedal.com"
+license=(Unlicense)
+depends=(cfg-desktop)
+install=cfg-usr-desktop.install
+
+rootdir="$PWD"
+
+package() {
+	install -d "$pkgdir/home"
+	install -d -m2750 -o 1000 -g 1000 "$pkgdir/home/eu"
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/pic"
+
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config"
+
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/sway"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/sway" \
+		"$pkgdir/home/eu/.config/sway/config"
+
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/waybar"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/waybar" \
+		"$pkgdir/home/eu/.config/waybar/config"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/waybar.css" \
+		"$pkgdir/home/eu/.config/waybar/style.css"
+
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/mako"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/mako" \
+		"$pkgdir/home/eu/.config/mako/config"
+}

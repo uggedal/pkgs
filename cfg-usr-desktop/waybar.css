@@ -1,0 +1,68 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: IBM Plex Mono;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #fff;
+    color: #474747;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: inherit;
+}
+
+#workspaces button.focused {
+    background-color: #1d9700;
+    color: #fff;
+}
+
+#workspaces button.urgent {
+    background-color: #c49700;
+}
+
+#mode,
+#idle_inhibitor,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#temperature,
+#disk,
+#clock,
+#tray {
+    margin: 0 14px;
+}
+
+#idle_inhibitor.activated {
+    color: #0064e4;
+}
+
+#pulseaudio.warning,
+#cpu.warning,
+#memory.warning,
+#battery.warning {
+    color: #c49700;
+}
+
+#pulseaudio.critical,
+#cpu.critical,
+#memory.critical,
+#temperature.critical,
+#battery.critical {
+    color: #d6000c;
+}
