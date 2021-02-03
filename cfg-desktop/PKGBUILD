@@ -1,0 +1,31 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=cfg-desktop
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Desktop configuration"
+arch=(any)
+url="https://uggedal.com"
+license=(Unlicense)
+depends=(
+	firefox
+	fzy
+	grim
+	imv
+	kitty
+	mako
+	slurp
+	sway
+	swayidle
+	swaylock
+	ttf-ibm-plex
+	waybar
+	wl-clipboard
+	wlsunset
+)
+
+rootdir="$PWD"
+
+package() {
+	install -D -m644 "$rootdir/swayidle.service" \
+		"$pkgdir//usr/lib/systemd/user/swayidle.service"
+}
