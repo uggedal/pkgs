@@ -2,7 +2,8 @@
 
 exec kitty \
 	--class KittyMenu \
-	-d 40 11 \
+	-o initial_window_width=40 \
+	-o initial_window_height=11 \
 	-e /bin/bash -c '
 		compgen -c | sort -u | fzy | xargs -r swaymsg -t command exec
 	'
