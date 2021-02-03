@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-desktop
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Desktop configuration"
 arch=(any)
@@ -27,6 +27,8 @@ depends=(
 rootdir="$PWD"
 
 package() {
+	install -D -m755 "$rootdir/kitty_menu" "$pkgdir/usr/bin/kitty_menu"
+
 	install -D -m644 "$rootdir/swayidle.service" \
 		"$pkgdir//usr/lib/systemd/user/swayidle.service"
 	install -D -m644 "$rootdir/wlsunset.service" \
