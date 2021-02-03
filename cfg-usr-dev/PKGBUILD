@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-dev
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Dev user configuration"
 arch=(any)
@@ -12,7 +12,7 @@ rootdir="$PWD"
 
 package() {
 	install -d "$pkgdir/home"
-	install -d -m2750 -o 1000 -g 1000 "$pkgdir/home/eu"
+	install -d -m750 -o 1000 -g 1000 "$pkgdir/home/eu"
 	install -D -m644 -o 1000 -g 1000 "$rootdir/gitconfig" \
 		"$pkgdir/home/eu/.gitconfig"
 }

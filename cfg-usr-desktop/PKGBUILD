@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-desktop
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Desktop user configuration"
 arch=(any)
@@ -13,7 +13,7 @@ rootdir="$PWD"
 
 package() {
 	install -d "$pkgdir/home"
-	install -d -m2750 -o 1000 -g 1000 "$pkgdir/home/eu"
+	install -d -m750 -o 1000 -g 1000 "$pkgdir/home/eu"
 	install -d -o 1000 -g 1000 "$pkgdir/home/eu/pic"
 
 	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config"

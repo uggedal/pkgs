@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-cli
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="CLI user configuration"
 arch=(any)
@@ -12,7 +12,7 @@ rootdir="$PWD"
 
 package() {
 	install -d "$pkgdir/home"
-	install -d -m2750 -o 1000 -g 1000 "$pkgdir/home/eu"
+	install -d -m750 -o 1000 -g 1000 "$pkgdir/home/eu"
 	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.vim"
 	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.vim/tmp"
 	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.vim/tmp/swap"
