@@ -1,7 +1,7 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=vim-taskwiki-git
 _pkgname=taskwiki
-pkgver=r842.72397a8
+pkgver=r843.a3ae9c5
 pkgrel=1
 arch=('any')
 url='https://github.com/tools-life/taskwiki'
