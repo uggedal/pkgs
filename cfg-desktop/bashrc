@@ -1,0 +1,7 @@
+# Autolaunch sway:
+if command -v sway >/dev/null && [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+	exec systemd-cat -t sway sway
+fi
+
+# Shorthand for copying to clipboard:
+alias wcp='wl-copy -p'
