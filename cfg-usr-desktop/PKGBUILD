@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-desktop
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Desktop user configuration"
 arch=(any)
@@ -31,4 +31,8 @@ package() {
 	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/mako"
 	install -D -m644 -o 1000 -g 1000 "$rootdir/mako" \
 		"$pkgdir/home/eu/.config/mako/config"
+
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/kitty"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/kitty.conf" \
+		"$pkgdir/home/eu/.config/kitty/kitty.conf"
 }
