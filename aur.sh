@@ -11,6 +11,7 @@ AUR_PACKAGES='
 	vim-lastplace
 	vim-selenized-git
 	vim-vimwiki
+	wlsunset
 '
 
 . $ROOT/../priv-pkgs/aur.sh
