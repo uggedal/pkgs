@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-desktop
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Desktop configuration"
 arch=(any)
@@ -13,6 +13,7 @@ depends=(
 	imv
 	kitty
 	mako
+	pipewire-pulse
 	slurp
 	sway
 	swayidle
