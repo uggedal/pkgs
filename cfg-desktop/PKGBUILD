@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-desktop
-pkgver=0.0.9
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Desktop configuration"
 arch=(any)
@@ -28,6 +28,7 @@ depends=(
 rootdir="$PWD"
 
 package() {
+	install -D -m644 "$rootdir/profile.sh" "$pkgdir/etc/profile.d/desktop.sh"
 	install -D -m644 "$rootdir/bashrc" "$pkgdir/etc/bash.bashrc.d/desktop.sh"
 
 	install -D -m755 "$rootdir/kitty_menu" "$pkgdir/usr/bin/kitty_menu"
