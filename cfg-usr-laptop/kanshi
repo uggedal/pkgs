@@ -1,0 +1,8 @@
+profile usb-c {
+	output eDP-1 disable
+	output DP-1 enable
+}
+
+profile default {
+	output eDP-1 enable
+}

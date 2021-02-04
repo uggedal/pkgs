@@ -1,0 +1,12 @@
+_user_svc_enable() {
+	local r=/run/user/1000
+	su - $(id -u -n 1000) -c "env DBUS_SESSION_BUS_ADDRESS=unix:path=$r/bus XDG_RUNTIME_DIR=$r systemctl --user enable $1"
+}
+
+post_install() {
+	post_upgrade
+}
+
+post_upgrade() {
+	_user_svc_enable kanshi
+}

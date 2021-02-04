@@ -1,0 +1,23 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=cfg-usr-laptop
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Laptop user configuration"
+arch=(any)
+url="https://uggedal.com"
+license=(Unlicense)
+depends=(cfg-laptop)
+install=cfg-usr-laptop.install
+
+rootdir="$PWD"
+
+package() {
+	install -d "$pkgdir/home"
+	install -d -m750 -o 1000 -g 1000 "$pkgdir/home/eu"
+
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config"
+
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/kanshi"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/kanshi" \
+		"$pkgdir/home/eu/.config/kanshi/config"
+}
