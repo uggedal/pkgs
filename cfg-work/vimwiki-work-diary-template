@@ -1,0 +1,20 @@
+#!/usr/bin/python3
+
+import os
+import sys
+import datetime
+
+template = """# {datestr}
+
+## Tasks | project:Diary +PENDING
+
+## 09:00 Meeting"""
+
+# Use YYYY-MM-DD.md argument or today's date:
+date = datetime.datetime.now()
+if len(sys.argv) == 2:
+    date = datetime.datetime.strptime(
+        os.path.basename(sys.argv[1]).rsplit(".", 1)[0], "%Y-%m-%d"
+    )
+
+print(template.format(datestr=date.strftime("%Y-%m-%d %A")))

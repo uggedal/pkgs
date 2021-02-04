@@ -1,0 +1,22 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=cfg-work
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="CLI configuration"
+arch=(any)
+url="https://uggedal.com"
+license=(Unlicense)
+depends=(
+	cfg-productivity
+	git-crypt
+)
+
+rootdir="$PWD"
+
+package() {
+	install -D -m755 "$rootdir/vimwiki-work-diary-template" \
+		"$pkgdir/usr/bin/vimwiki-work-diary-template"
+
+	install -D -m644 "$rootdir/work.vim" \
+		"$pkgdir/etc/vim/vim.local.d/work.vim"
+}
