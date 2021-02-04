@@ -1,0 +1,18 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=cfg-laptop
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Laptop configuration"
+arch=(any)
+url="https://uggedal.com"
+license=(Unlicense)
+depends=(
+	kanshi
+)
+
+rootdir="$PWD"
+
+package() {
+	install -D -m644 "$rootdir/kanshi.service" \
+		"$pkgdir//usr/lib/systemd/user/kanshi.service"
+}
