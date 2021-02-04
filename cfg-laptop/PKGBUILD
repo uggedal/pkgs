@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-laptop
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Laptop configuration"
 arch=(any)
@@ -8,6 +8,7 @@ url="https://uggedal.com"
 license=(Unlicense)
 depends=(
 	kanshi
+	light
 )
 
 rootdir="$PWD"
