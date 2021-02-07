@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-desktop
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Desktop configuration"
 arch=(any)
@@ -22,6 +22,7 @@ depends=(
 	swaylock
 	ttf-dejavu
 	ttf-ibm-plex
+	udisks2
 	waybar
 	wl-clipboard
 	wlsunset
