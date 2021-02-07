@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-desktop
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Desktop configuration"
 arch=(any)
@@ -22,7 +22,6 @@ depends=(
 	swaylock
 	ttf-dejavu
 	ttf-ibm-plex
-	udisks2
 	waybar
 	wl-clipboard
 	wlsunset
@@ -35,12 +34,14 @@ package() {
 	install -D -m644 "$rootdir/profile.sh" "$pkgdir/etc/profile.d/desktop.sh"
 	install -D -m644 "$rootdir/bashrc" "$pkgdir/etc/bash.bashrc.d/desktop.sh"
 
+	install -D -m644 "$rootdir/fwupd-uefi.conf" "$pkgdir/etc/fwupd/uefi.conf"
+
 	install -D -m755 "$rootdir/kitty_menu" "$pkgdir/usr/bin/kitty_menu"
 
 	install -D -m644 "$rootdir/sway-session.target" \
-		"$pkgdir//usr/lib/systemd/user/sway-session.target"
+		"$pkgdir/usr/lib/systemd/user/sway-session.target"
 	install -D -m644 "$rootdir/swayidle.service" \
-		"$pkgdir//usr/lib/systemd/user/swayidle.service"
+		"$pkgdir/usr/lib/systemd/user/swayidle.service"
 	install -D -m644 "$rootdir/wlsunset.service" \
-		"$pkgdir//usr/lib/systemd/user/wlsunset.service"
+		"$pkgdir/usr/lib/systemd/user/wlsunset.service"
 }
