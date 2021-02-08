@@ -1,7 +1,7 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=vim-picker-git
 _pkgname=vim-picker
-pkgver=r128.e18d43f
+pkgver=r129.fe85d0e
 pkgrel=1
 arch=('any')
 url='https://github.com/srstevenson/vim-picker'
