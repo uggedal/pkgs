@@ -8,6 +8,7 @@ post_install() {
 }
 
 post_upgrade() {
+	_user_svc_enable mako
 	_user_svc_enable swayidle
 	_user_svc_enable waybar
 	_user_svc_enable wlsunset
