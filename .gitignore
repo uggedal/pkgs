@@ -3,6 +3,7 @@
 /*/*.tar.*
 
 /*/src/
+/mako-git/mako
 /vim-buftabline-git/vim-buftabline
 /vim-eunuch-git/vim-eunuch
 /vim-commentary-git/vim-commentary
