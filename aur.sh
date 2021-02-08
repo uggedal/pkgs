@@ -39,6 +39,6 @@ for d in $ROOT/*-git $ROOT/../priv-pkgs/*-git; do
 	esac
 	(
 		cd $d
-		GIT_CONFIG_NOSYSTEM=1 makepkg -o
+		GIT_CONFIG_NOSYSTEM=1 makepkg -od
 	)
 done
