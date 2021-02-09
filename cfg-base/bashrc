@@ -25,5 +25,8 @@ alias ls='ls -1Fh --group-directories-first'
 # Colors for ip:
 alias ip='ip --color=auto'
 
+# Colors for grep:
+alias grep='grep --color=auto'
+
 # Less noisy df:
 alias df='df -x squashfs -x tmpfs -x devtmpfs -x fuse.rar2fs'
