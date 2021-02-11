@@ -1,0 +1,14 @@
+[Unit]
+Description=WeeChat in tmux
+After=network.target
+
+[Service]
+Type=forking
+User=weechat
+Group=weechat
+UMask=0002
+ExecStart=/usr/bin/tmux -u2 new-session -d -s weechat -- weechat -d /var/lib/weechat
+Restart=always
+
+[Install]
+WantedBy=default.target
