@@ -1,0 +1,53 @@
+#!/bin/sh
+
+w_run() {
+	local f=/var/lib/weechat/weechat_fifo
+
+	if ! [ -e $f ]; then
+		echo Missing weechat fifo file
+		exit 1
+	fi
+
+	echo "$1" | sed 's/^/*/' > $f
+}
+
+w_has() {
+	local kv="$1"
+	local cfg="$2"
+	local r=/var/lib/weechat
+
+	fgrep -q "$kv" $r/$cfg.conf
+}
+
+w_set() {
+	local set_key=$1
+	local val="$2"
+	local cfg=${set_key%%.*}
+	local cfg_key=$(echo $set_key | cut -d. -f3-)
+
+	if echo "$val" | egrep -vq '^[a-z0-9]{1,14}$'; then
+		val="\"$val\""
+	fi
+
+	case  "$set_key" in
+		*nicks|*realname|*sasl_username|weechat.bar.buflist.items|*default_dict)
+			val="\"$val\""
+			;;
+	esac
+
+
+	if ! w_has "$cfg_key = $val" $cfg; then
+		echo weechat $set_key $val
+		w_run "/set $set_key $val"
+		w_run '/save'
+	fi
+}
+
+cmd=$1
+shift
+
+case "$cmd" in
+	has|set|run)
+		w_$cmd "$@"
+		;;
+esac
