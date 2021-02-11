@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-irc
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="IRC configuration"
 arch=(any)
@@ -19,4 +19,6 @@ package() {
 		"$pkgdir/usr/lib/systemd/system/weechat.service"
 	install -Dm644 "${rootdir}/weechat.sysusers" \
 		"${pkgdir}/usr/lib/sysusers.d/weechat.conf"
+	install -Dm644 "${rootdir}/weechat.tmpfiles" \
+		"${pkgdir}/usr/lib/tmpfiles.d/weechat.conf"
 }
