@@ -1,0 +1,28 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=weechat-colorize-nicks-git
+_pkgname=weechat-colorize-nicks
+pkgver=r26.bc8a905
+pkgrel=1
+arch=('any')
+url='https://github.com/weechat/scripts'
+license=('GPL3')
+makedepends=('git')
+pkgdesc="Colorize nicks in the actual IRC message"
+depends=('weechat')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+_script=python/colorize_nicks.py
+
+pkgver() {
+	cd "${srcdir}/${_pkgname}"
+	printf "r%s.%.7s" "$(git rev-list --count HEAD $_script)" \
+		"$(git rev-list -1 HEAD $_script)"
+}
+
+package() {
+	cd "${srcdir}/${_pkgname}"
+	install -Dm644 "$_script" \
+		"${pkgdir}/usr/lib/weechat/python/$(basename $_script)"
+}
