@@ -1,0 +1,8 @@
+#!/bin/sh
+
+
+if [ "$1" ]; then
+	ssh -t $1 irc
+else
+	exec sudo -u weechat tmux -u2 attach
+fi
