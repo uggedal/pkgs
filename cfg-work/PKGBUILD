@@ -1,12 +1,13 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-work
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)
 url="https://uggedal.com"
 license=(Unlicense)
 depends=(
+	azure-cli
 	cfg-productivity
 	git-crypt
 )
