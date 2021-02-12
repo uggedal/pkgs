@@ -3,6 +3,7 @@
 ROOT=$(cd "$(dirname "$0")"; pwd -P)
 AUR_URL='https://aur.archlinux.org/cgit/aur.git/snapshot'
 AUR_PACKAGES='
+	azure-cli
 	inadyn-fork
 	mako-git
 	needrestart
