@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-irc
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="IRC configuration"
 arch=(any)
@@ -9,6 +9,8 @@ license=(Unlicense)
 depends=(
 	tmux
 	weechat
+	weechat-autosort
+	weechat-colorize-nicks-git
 )
 install=cfg-irc.install
 
@@ -21,6 +23,13 @@ package() {
 		"${pkgdir}/usr/lib/sysusers.d/weechat.conf"
 	install -Dm644 "${rootdir}/weechat.tmpfiles" \
 		"${pkgdir}/usr/lib/tmpfiles.d/weechat.conf"
+
+	install -d -m750 "${pkgdir}/var/lib/weechat"
+	install -d -m755 "${pkgdir}/var/lib/weechat/python/autoload"
+	ln -sf ../../../../../usr/lib/weechat/python/autosort.py \
+		"${pkgdir}/var/lib/weechat/python/autoload/autosort.py"
+	ln -sf ../../../../../usr/lib/weechat/python/colorize_nicks.py \
+		"${pkgdir}/var/lib/weechat/python/autoload/colorize_nicks.py"
 
 	install -Dm755 "${rootdir}/weechat-conf" \
 		"${pkgdir}/usr/bin/weechat-conf"
