@@ -1,2 +1,9 @@
 # Keep 10 years worth of backlogs:
 rotate 540
+
+# Compression with zstd:
+compress
+compresscmd /usr/bin/zstd
+compressext .zst
+compressoptions -9 --long -T0 --rm
+uncompresscmd /usr/bin/unzstd

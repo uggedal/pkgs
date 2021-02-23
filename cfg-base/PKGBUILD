@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-base
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Base configuration"
 arch=(any)
@@ -37,5 +37,5 @@ package() {
 
 	install -d -m750 "$pkgdir/etc/sudoers.d"
 	install -m640 "$rootdir/wheel.sudoers" "$pkgdir/etc/sudoers.d/wheel"
-	install -D -m640 "$rootdir/base.logrotate" "$pkgdir/etc/logrotate.d/base"
+	install -D -m644 "$rootdir/base.logrotate" "$pkgdir/etc/logrotate.d/base"
 }
