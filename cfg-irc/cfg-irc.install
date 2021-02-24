@@ -17,6 +17,9 @@ post_install() {
 post_upgrade() {
 	systemctl enable --now weechat.service
 
+	_w_set weechat.plugin.autoload \
+		'*,!lua,!tcl,!ruby,!perl,!guile,!script,!exec,!xfer,!fset'
+
 	_w_set weechat.look.buffer_time_format '%H:%M'
 	_w_set weechat.look.prefix_suffix ''
 	_w_set weechat.look.prefix_align none

@@ -1,12 +1,13 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-irc
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="IRC configuration"
 arch=(any)
 url="https://uggedal.com"
 license=(Unlicense)
 depends=(
+	aspell
 	tmux
 	weechat
 	weechat-autosort
