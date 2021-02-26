@@ -1,0 +1,6 @@
+#!/bin/sh
+
+[ "$(id -u)" = 0 ] || exec sudo "$0"
+
+pacman -Syu --ignore linux-lts
+pacdiff

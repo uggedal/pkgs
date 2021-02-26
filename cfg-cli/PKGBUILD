@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-cli
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)
@@ -33,6 +33,7 @@ rootdir="$PWD"
 package() {
 	install -D -m755 "$rootdir/f" "$pkgdir/usr/bin/f"
 	install -D -m755 "$rootdir/t" "$pkgdir/usr/bin/t"
+	install -D -m755 "$rootdir/pacup" "$pkgdir/usr/bin/pacup"
 	install -D -m755 "$rootdir/irc" "$pkgdir/usr/bin/irc"
 	install -D -m755 "$rootdir/termcolors" "$pkgdir/usr/bin/termcolors"
 
