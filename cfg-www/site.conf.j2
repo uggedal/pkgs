@@ -4,6 +4,8 @@ server {
 
 	server_name {{ tld }}{% if aliases is defined %} {{ aliases|join(" ") }}{% endif %};
 
+	root /var/empty;
+
 	location / {
 		return 301 https://{{ tld }}$request_uri;
 	}
