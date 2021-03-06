@@ -1,7 +1,7 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=weechat-colorize-nicks-git
 _pkgname=weechat-colorize-nicks
-pkgver=r26.bc8a905
+pkgver=r27.2a32916
 pkgrel=1
 arch=('any')
 url='https://github.com/weechat/scripts'
