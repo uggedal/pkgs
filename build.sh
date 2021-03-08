@@ -55,10 +55,12 @@ for f in $ROOT/*/PKGBUILD $ROOT/../priv-pkgs/*/PKGBUILD; do
 		cd $d
 		case $n in
 			*)
-				makechrootpkg -c -D $REPO -r $CHROOT
+				makechrootpkg -c -D $REPO -r $CHROOT || :
 				;;
 		esac
 	)
+
+	[ -e $d/$p ] || continue
 
 	sudo cp $d/$p $REPO/
 	sudo repo-add $REPODB $REPO/$p
