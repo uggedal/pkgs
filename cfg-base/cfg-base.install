@@ -30,4 +30,5 @@ post_upgrade() {
 
 	systemctl enable --now man-db.timer
 	systemctl enable --now logrotate.timer
+	systemctl enable --now paccache.timer
 }
