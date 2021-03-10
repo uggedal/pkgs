@@ -3,12 +3,15 @@
 /*/*.tar.*
 
 /*/src/
+/*/*/branches/
+/*/*/hooks/
+/*/*/info/
+/*/*/objects/
+/*/*/refs/
+/*/*/FETCH_HEAD
+/*/*/HEAD
+/*/*/config
+/*/*/description
+/*/*/packed-refs
+
 /azure-cli/install-*.py
-/mako-git/mako
-/vim-buftabline-git/vim-buftabline
-/vim-eunuch-git/vim-eunuch
-/vim-commentary-git/vim-commentary
-/vim-picker-git/vim-picker
-/vim-selenized-git/vim-selenized
-/vim-taskwiki-git/taskwiki
-/weechat-colorize-nicks-git/weechat-colorize-nicks
