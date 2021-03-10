@@ -182,9 +182,6 @@ gaps inner 10px
 for_window [app_id="KittyMenu"] border pixel 2
 for_window [app_id="KittyMenu"] floating enable
 
-# Disable xwayland:
-xwayland disable
-
 # Include system config (environment setup):
 include /etc/sway/config.d/*
 
