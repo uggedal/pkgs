@@ -9,6 +9,7 @@ AUR_PACKAGES='
 	needrestart
 	python-j2cli
 	python-tasklib
+	teams
 	vim-eunuch-git
 	vim-lastplace
 	vim-selenized-git

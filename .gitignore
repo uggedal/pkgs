@@ -1,6 +1,7 @@
 /chroot/
 /*/*.log
 /*/*.tar.*
+/*/*.deb
 
 /*/src/
 /*/*/branches/
