@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-desktop
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Desktop configuration"
 arch=(any)
@@ -25,6 +25,7 @@ depends=(
 	waybar
 	wl-clipboard
 	wlsunset
+	xdg-desktop-portal-wlr
 	xdg-utils
 	zathura-pdf-poppler
 )
