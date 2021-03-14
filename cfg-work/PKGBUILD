@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-work
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)
@@ -10,6 +10,8 @@ depends=(
 	azure-cli
 	cfg-productivity
 	git-crypt
+	teams
+	xorg-xwayland
 )
 
 rootdir="$PWD"
