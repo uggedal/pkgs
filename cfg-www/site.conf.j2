@@ -55,6 +55,7 @@ server {
 
 	location @{{ _key }}-scgi {
 		include scgi_params;
+		client_max_body_size 4m;
 		scgi_param DOCUMENT_ROOT {{ root}};
 		scgi_pass {{ scgi }};
 	}
