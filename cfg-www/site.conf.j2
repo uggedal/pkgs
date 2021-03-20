@@ -50,23 +50,14 @@ server {
 		proxy_pass {{ proxy }};
 	}
 	{% endif %}
-	{% if proxies is defined %}
-	{% for p in proxies %}
-	location {{ p.path }} {
-		proxy_set_header HOST $host;
-		proxy_set_header X-Real-IP $remote_addr;
-		proxy_set_header X-Forwarded-Proto $scheme;
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-		{% if 'ws' in p %}
-		proxy_http_version 1.1;
-		proxy_set_header Upgrade $http_upgrade;
-		proxy_set_header Connection "Upgrade";
-		proxy_read_timeout 604800;
-		{% endif %}
+	{% if scgi is defined %}
+	try_files $uri @{{ _key }}-scgi;
 
-		proxy_pass {{ p.downstream }};
+	location @{{ _key }}-scgi {
+		include scgi_params;
+		scgi_param DOCUMENT_ROOT {{ root}};
+		scgi_pass {{ scgi }};
 	}
-	{% endfor %}
 	{% endif %}
 }
 

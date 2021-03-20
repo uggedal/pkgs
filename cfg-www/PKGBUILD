@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-www
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="WWW configuration"
 arch=(any)
