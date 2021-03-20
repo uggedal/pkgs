@@ -24,6 +24,8 @@ server {
 	ssl_certificate_key /etc/dehydrated/certs/{{ cert }}/privkey.pem;
 	include /etc/nginx/conf.d/ssl.part;
 
+	client_max_body_size 4m;
+
 	root {{ root }};
 
 	{% if autoindex is defined and autoindex %}
@@ -55,7 +57,6 @@ server {
 
 	location @{{ _key }}-scgi {
 		include scgi_params;
-		client_max_body_size 4m;
 		scgi_param DOCUMENT_ROOT {{ root}};
 		scgi_pass {{ scgi }};
 	}
