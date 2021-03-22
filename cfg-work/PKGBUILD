@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-work
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)
@@ -11,6 +11,7 @@ depends=(
 	cfg-productivity
 	git-crypt
 	teams
+	tokei
 	xorg-xwayland
 )
 
