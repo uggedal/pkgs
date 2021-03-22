@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-cli
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)
@@ -11,6 +11,7 @@ depends=(
 	bash-completion
 	curl
 	htop
+	jq
 	moreutils
 	ncdu
 	ps_mem
