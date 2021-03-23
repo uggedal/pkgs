@@ -1,7 +1,7 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=vim-commentary-git
 _pkgname=vim-commentary
-pkgver=r55.f8238d7
+pkgver=r56.349340d
 pkgrel=1
 arch=('any')
 url='https://github.com/tpope/vim-commentary'
