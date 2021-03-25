@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-desktop
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Desktop configuration"
 arch=(any)
@@ -18,7 +18,7 @@ depends=(
 	pipewire-pulse
 	pulsemixer
 	slurp
-	sway
+	sway-git
 	swayidle
 	swaylock
 	ttf-dejavu
