@@ -1,0 +1,5 @@
+/var/log/backup/*.log
+{
+	missingok
+	delaycompress
+}

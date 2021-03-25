@@ -1,0 +1,46 @@
+#!/bin/sh
+
+NAME={{ _key }}
+DEST={{ dest }}
+
+fail() {
+	>&2 echo "$0: failure in $@"
+	exit 1
+}
+
+export B2_ACCOUNT_ID='{{ b2_id }}'
+export B2_ACCOUNT_KEY='{{ b2_key }}'
+export RESTIC_PASSWORD='{{ passphrase }}'
+
+if [ "$1" ]; then
+	exec restic -r $DEST "$@"
+fi
+
+(
+	flock -n 9 || {
+		>&2 echo "$0: unable to acquire lock"
+		exit 1
+	}
+
+{% if commands is defined %}
+{% for cmd in commands %}
+	(
+		{{ cmd }}
+	) 2>&1 || fail command
+{% endfor %}
+{% endif %}
+
+	2>&1 restic backup \
+		-r $DEST \
+		{% if exclude is defined %}{% for p in exclude %}--exclude='{{ p }}' {% endfor %}{% endif %} \
+		{% if excludefile is defined %}--exclude-file={{ excludefile }}{% endif %} \
+		{{ src|join(' ') }} || fail backup
+
+	2>&1 restic forget \
+		-r $DEST \
+		--keep-hourly 24 \
+		--keep-daily 3 \
+		--keep-monthly 6 \
+		--prune || fail forget
+
+) 9>/run/lock/$(basename $0).lock | ts >>/var/log/backup/${NAME}.log

@@ -1,0 +1,30 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=cfg-backup
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Backup configuration"
+arch=(any)
+url="https://uggedal.com"
+license=(Unlicense)
+depends=(
+	cfg-base
+	moreutils
+	restic
+)
+
+rootdir="$PWD"
+
+package() {
+	install -D -m544 "$rootdir/restic-backup.j2" \
+		"$pkgdir/usr/share/backup/restic-backup.j2"
+
+	install -D -m644 "$rootdir/restic-backup@.service" \
+		"$pkgdir/usr/lib/systemd/system/restic-backup@.service"
+	install -D -m644 "$rootdir/restic-backup@.timer" \
+		"$pkgdir/usr/lib/systemd/system/restic-backup@.timer"
+	install -D -m644 "$rootdir/backup.logrotate" \
+		"$pkgdir/etc/logrotate.d/backup"
+
+	install -d -m755 "$pkgdir/var/log/backup"
+	install -d -m750 "$pkgdir/var/cache/backup"
+}

@@ -1,0 +1,12 @@
+[Unit]
+Description=Restic backup for %i
+ConditionACPower=true
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/sbin/restic-backup-%i
+
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
