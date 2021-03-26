@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-backup
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Backup configuration"
 arch=(any)
@@ -17,6 +17,8 @@ rootdir="$PWD"
 package() {
 	install -D -m544 "$rootdir/restic-backup.j2" \
 		"$pkgdir/usr/share/backup/restic-backup.j2"
+	install -D -m544 "$rootdir/backup.key.j2" \
+		"$pkgdir/usr/share/backup/backup.key.j2"
 
 	install -D -m644 "$rootdir/restic-backup@.service" \
 		"$pkgdir/usr/lib/systemd/system/restic-backup@.service"
