@@ -27,7 +27,7 @@ if ! grep -q $REPO $CHROOT_CONF; then
 fi
 
 
-pkgf() {
+pkgver() {
 	local d=$1
 	local v=$(awk -F= '/^pkgver=/ { print $2 }' $d/PKGBUILD)
 	local r=$(awk -F= '/^pkgrel=/ { print $2 }' $d/PKGBUILD)
@@ -37,7 +37,23 @@ pkgf() {
 		e=$e:
 	fi
 
-	echo $(basename $d)-${e}${v}-${r}-*.pkg.tar.*
+	echo ${e}${v}-${r}-*.pkg.tar.*
+}
+
+pkgsplitnames() {
+	local d=$1
+	awk -F= '/^pkgname=/ { gsub(/[()]/, ""); print $2 }' $d/PKGBUILD
+}
+
+pkgadd() {
+	local d=$1
+	local p=$2
+
+	[ -e $d/$p ] || continue
+
+	sudo cp $d/$p $REPO/
+	sudo repo-add $REPODB $REPO/$p
+	rm $d/$p
 }
 
 arch-nspawn $CHROOT/root --bind-ro=$REPO pacman -Syu --noconfirm
@@ -45,9 +61,10 @@ arch-nspawn $CHROOT/root --bind-ro=$REPO pacman -Syu --noconfirm
 for f in $ROOT/*/PKGBUILD $ROOT/../priv-pkgs/*/PKGBUILD; do
 	d=$(dirname $f)
 	n=$(basename $d)
-	p=$(pkgf $d)
+	pv=$(pkgver $d)
+	base_pkgf=$n-$pv
 
-	if [ -e $REPO/$p ]; then
+	if [ -e $REPO/$base_pkgf ]; then
 		continue
 	fi
 
@@ -60,9 +77,12 @@ for f in $ROOT/*/PKGBUILD $ROOT/../priv-pkgs/*/PKGBUILD; do
 		esac
 	)
 
-	[ -e $d/$p ] || continue
 
-	sudo cp $d/$p $REPO/
-	sudo repo-add $REPODB $REPO/$p
-	rm $d/$p
+	if grep -q ^pkgbase= $f; then
+		for s in $(pkgsplitnames $d); do
+			pkgadd $d $s-$pv
+		done
+	else
+		pkgadd $d $base_pkgf
+	fi
 done
