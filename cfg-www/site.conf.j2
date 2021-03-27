@@ -50,7 +50,7 @@ server {
 		{% if 'scgi' in proxy %}
 		include scgi_params;
 		scgi_param DOCUMENT_ROOT {{ root}};
-		scgi_pass {{ scgi.uri }};
+		scgi_pass {{ proxy.uri }};
 		{% else %}
 		proxy_set_header HOST $host;
 		proxy_set_header X-Real-IP $remote_addr;
