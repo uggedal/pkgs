@@ -26,23 +26,23 @@ if ! grep -q $REPO $CHROOT_CONF; then
 	EOF
 fi
 
+_g() {
+	local d=$1
+	local k=$2
+	awk -F= "/^${k}=/ { gsub(/[()']/, \"\"); print \$2 }" $d/PKGBUILD
+}
 
 pkgver() {
 	local d=$1
-	local v=$(awk -F= '/^pkgver=/ { print $2 }' $d/PKGBUILD)
-	local r=$(awk -F= '/^pkgrel=/ { print $2 }' $d/PKGBUILD)
-	local e=$(awk -F= '/^epoch=/ { print $2 }' $d/PKGBUILD)
+	local v=$(_g $d pkgver)
+	local r=$(_g $d pkgrel)
+	local e=$(_g $d epoch)
 
 	if [ "$e" ]; then
 		e=$e:
 	fi
 
 	echo ${e}${v}-${r}-*.pkg.tar.*
-}
-
-pkgsplitnames() {
-	local d=$1
-	awk -F= '/^pkgname=/ { gsub(/[()]/, ""); print $2 }' $d/PKGBUILD
 }
 
 pkgadd() {
@@ -79,7 +79,7 @@ for f in $ROOT/*/PKGBUILD $ROOT/../priv-pkgs/*/PKGBUILD; do
 
 
 	if grep -q ^pkgbase= $f; then
-		for s in $(pkgsplitnames $d); do
+		for s in $(_g $d pkgname); do
 			pkgadd $d $s-$pv
 		done
 	else
