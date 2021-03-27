@@ -3,7 +3,7 @@
 pkgname=sway-git
 _pkgname=sway
 pkgver=r6651.1d62d6bf
-pkgrel=1
+pkgrel=2
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager"
 makedepends=(
