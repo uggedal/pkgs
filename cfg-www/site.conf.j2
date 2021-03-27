@@ -40,29 +40,32 @@ server {
 	auth_basic_user_file /etc/nginx/conf.d/{{ _key }}.passwd;
 	{% endif %}
 
-	{% if proxy is defined %}
-	try_files $uri @{{ _key }}-proxy;
+	{% if proxies is defined %}
+	{% for proxy in proxies %}
+	location {{ proxy.location }} {
+		try_files $uri @{{ proxy.name }}-proxy;
+	}
 
-	location @{{ _key }}-proxy {
+	location @{{ proxy.name }}-proxy {
+		{% if 'scgi' in proxy %}
+		include scgi_params;
+		scgi_param DOCUMENT_ROOT {{ root}};
+		scgi_pass {{ scgi.uri }};
+		{% else %}
 		proxy_set_header HOST $host;
 		proxy_set_header X-Real-IP $remote_addr;
 		proxy_set_header X-Forwarded-Proto $scheme;
 		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-
-		proxy_pass {{ proxy }};
+		proxy_pass {{ proxy.uri }};
+		{% if 'nobuffer' in proxy %}
+		proxy_buffering off;
+		{% endif %}
+		{% if 'ws' in proxy %}
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection $http_connection;
+		{% endif %}
+		{% endif %}
 	}
-	{% endif %}
-	{% if scgi is defined %}
-	try_files $uri @{{ _key }}-scgi;
-
-	location @{{ _key }}-scgi {
-		include scgi_params;
-		scgi_param DOCUMENT_ROOT {{ root}};
-		scgi_pass {{ scgi }};
-	}
+	{% endfor %}
 	{% endif %}
 }
-
-{% if inline_conf is defined %}
-{{ inline_conf }}
-{% endif %}
