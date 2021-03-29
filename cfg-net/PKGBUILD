@@ -1,0 +1,16 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=cfg-net
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Net configuration"
+arch=(any)
+url="https://uggedal.com"
+license=(Unlicense)
+install=cfg-net.install
+
+rootdir="$PWD"
+
+package() {
+	install -D -m644 "$rootdir/resolved.conf" \
+		"$pkgdir/etc/systemd/resolved.conf.d/dns_servers.conf"
+}
