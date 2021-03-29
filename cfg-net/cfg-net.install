@@ -4,5 +4,5 @@ post_install() {
 
 post_upgrade() {
 	ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
-	systemctl enable --now systemd-resolved.timer
+	systemctl enable --now systemd-resolved.service
 }

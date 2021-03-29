@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-net
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Net configuration"
 arch=(any)
