@@ -1,12 +1,13 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-server
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Server configuration"
 arch=(any)
 url="https://uggedal.com"
 license=(Unlicense)
 depends=(
+	cfg-base
 	openssh
 )
 install=cfg-server.install
@@ -14,5 +15,5 @@ install=cfg-server.install
 rootdir="$PWD"
 
 package() {
-	install -D -m644 "$rootdir/sshd_config" "$pkgdir/etc/ssh/sshd_config"
+	install -D -m644 "$rootdir/sshd_config" "$pkgdir/usr/share/pacman/override/sshd_config"
 }

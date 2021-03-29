@@ -3,5 +3,6 @@ post_install() {
 }
 
 post_upgrade() {
+	pacoverride sshd_config /etc/sshd_config
 	systemctl enable --now sshd.service
 }
