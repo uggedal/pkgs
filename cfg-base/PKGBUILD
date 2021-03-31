@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-base
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Base configuration"
 arch=(any)
@@ -34,6 +34,7 @@ package() {
 	install -D -m644 "$rootdir/sysctl.conf" "$pkgdir/etc/sysctl.d/base.conf"
 
 	install -D -m644 "$rootdir/needrestart.hook" "$pkgdir/etc/pacman.d/hooks/needrestart.hook"
+	install -D -m644 "$rootdir/pacdiff.hook" "$pkgdir/etc/pacman.d/hooks/pacdiff.hook"
 
 	install -d -m750 "$pkgdir/etc/sudoers.d"
 	install -m640 "$rootdir/wheel.sudoers" "$pkgdir/etc/sudoers.d/wheel"

@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Checking pacorig, pacnew and pacsave files
+Exec = /usr/bin/pacdiff
+When = PostTransaction
+Depends = pacman-contrib
