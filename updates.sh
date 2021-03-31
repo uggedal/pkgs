@@ -2,6 +2,11 @@
 
 ROOT=$(cd "$(dirname "$0")"; pwd -P)
 
+ALL=no
+if [ "$1" = "-a" ]; then
+	ALL=yes
+fi
+
 _cmp() {
 	local t=$1
 	local n=$2
@@ -54,7 +59,9 @@ pypi() {
 }
 
 for f in $ROOT/*/PKGBUILD $ROOT/../priv-pkgs/*/PKGBUILD; do
-	grep -q '# Maintainer: Eivind Uggedal' $f || continue
+	if [ "$ALL" = "no" ] && ! grep -q '# Maintainer: Eivind Uggedal' $f; then
+		continue
+	fi
 
 	d=$(dirname $f)
 	n=$(basename $d)
