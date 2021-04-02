@@ -35,10 +35,13 @@ install=cfg-desktop.install
 rootdir="$PWD"
 
 package() {
-	install -D -m644 "$rootdir/profile.sh" "$pkgdir/etc/profile.d/desktop.sh"
-	install -D -m644 "$rootdir/bashrc" "$pkgdir/etc/bash.bashrc.d/desktop.sh"
+	install -D -m644 "$rootdir/profile.sh" \
+		"$pkgdir/etc/profile.d/desktop.sh"
+	install -D -m644 "$rootdir/bashrc" \
+		"$pkgdir/etc/bash.bashrc.d/desktop.sh"
 
-	install -D -m644 "$rootdir/uefi_capsule.conf" "$pkgdir/usr/share/pacman/override/uefi_capsule.conf"
+	install -D -m644 "$rootdir/uefi_capsule.conf" \
+		"$pkgdir/usr/share/pacman/override/uefi_capsule.conf"
 
 	install -D -m755 "$rootdir/kitty_menu" "$pkgdir/usr/bin/kitty_menu"
 

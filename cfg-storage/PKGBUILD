@@ -16,5 +16,6 @@ install=cfg-storage.install
 rootdir="$PWD"
 
 package() {
-	install -D -m644 "$rootdir/smartd.conf" "$pkgdir/usr/share/pacman/override/smartd.conf"
+	install -D -m644 "$rootdir/smartd.conf" \
+		"$pkgdir/usr/share/pacman/override/smartd.conf"
 }

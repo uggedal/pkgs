@@ -25,18 +25,27 @@ package() {
 	install -D -m755 "$rootdir/pacsize" "$pkgdir/usr/bin/pacsize"
 	install -D -m755 "$rootdir/pacoverride" "$pkgdir/usr/bin/pacoverride"
 
-	install -D -m644 "$rootdir/locale.conf" "$pkgdir/usr/share/pacman/override/locale.conf"
-	install -D -m644 "$rootdir/mirrorlist" "$pkgdir/usr/share/pacman/override/mirrorlist"
+	install -D -m644 "$rootdir/locale.conf" \
+		"$pkgdir/usr/share/pacman/override/locale.conf"
+	install -D -m644 "$rootdir/mirrorlist" \
+		"$pkgdir/usr/share/pacman/override/mirrorlist"
 
-	install -D -m644 "$rootdir/profile.sh" "$pkgdir/etc/profile.d/base.sh"
-	install -D -m644 "$rootdir/input.local.rc" "$pkgdir/etc/input.local.rc"
-	install -D -m644 "$rootdir/bashrc" "$pkgdir/etc/bash.bashrc.d/base.sh"
-	install -D -m644 "$rootdir/sysctl.conf" "$pkgdir/etc/sysctl.d/base.conf"
+	install -D -m644 "$rootdir/profile.sh" \
+		"$pkgdir/etc/profile.d/base.sh"
+	install -D -m644 "$rootdir/input.local.rc" \
+		"$pkgdir/etc/input.local.rc"
+	install -D -m644 "$rootdir/bashrc" \
+		"$pkgdir/etc/bash.bashrc.d/base.sh"
+	install -D -m644 "$rootdir/sysctl.conf" \
+		"$pkgdir/etc/sysctl.d/base.conf"
 
-	install -D -m644 "$rootdir/needrestart.hook" "$pkgdir/etc/pacman.d/hooks/needrestart.hook"
-	install -D -m644 "$rootdir/pacdiff.hook" "$pkgdir/etc/pacman.d/hooks/pacdiff.hook"
+	install -D -m644 "$rootdir/needrestart.hook" \
+		"$pkgdir/etc/pacman.d/hooks/needrestart.hook"
+	install -D -m644 "$rootdir/pacdiff.hook" \
+		"$pkgdir/etc/pacman.d/hooks/pacdiff.hook"
 
 	install -d -m750 "$pkgdir/etc/sudoers.d"
 	install -m640 "$rootdir/wheel.sudoers" "$pkgdir/etc/sudoers.d/wheel"
-	install -D -m644 "$rootdir/base.logrotate" "$pkgdir/etc/logrotate.d/base"
+	install -D -m644 "$rootdir/base.logrotate" \
+		"$pkgdir/etc/logrotate.d/base"
 }

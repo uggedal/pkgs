@@ -15,5 +15,6 @@ install=cfg-server.install
 rootdir="$PWD"
 
 package() {
-	install -D -m644 "$rootdir/sshd_config" "$pkgdir/usr/share/pacman/override/sshd_config"
+	install -D -m644 "$rootdir/sshd_config" \
+		"$pkgdir/usr/share/pacman/override/sshd_config"
 }
