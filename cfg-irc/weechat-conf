@@ -8,7 +8,7 @@ w_run() {
 		exit 1
 	fi
 
-	echo "$1" | sed 's/^/*/' > $f
+	echo "$1" | sed 's/^/*/' >$f
 }
 
 w_has() {
@@ -29,12 +29,11 @@ w_set() {
 		val="\"$val\""
 	fi
 
-	case  "$set_key" in
-		*nicks|*realname|*sasl_username|weechat.bar.buflist.items|*default_dict)
-			val="\"$val\""
-			;;
+	case "$set_key" in
+	*nicks | *realname | *sasl_username | weechat.bar.buflist.items | *default_dict)
+		val="\"$val\""
+		;;
 	esac
-
 
 	if ! w_has "$cfg_key = $val" $cfg; then
 		echo weechat $set_key $val
@@ -47,7 +46,7 @@ cmd=$1
 shift
 
 case "$cmd" in
-	has|set|run)
-		w_$cmd "$@"
-		;;
+has | set | run)
+	w_$cmd "$@"
+	;;
 esac

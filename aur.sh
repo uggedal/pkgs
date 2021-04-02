@@ -1,6 +1,9 @@
 #!/bin/sh -e
 
-ROOT=$(cd "$(dirname "$0")"; pwd -P)
+ROOT=$(
+	cd "$(dirname "$0")"
+	pwd -P
+)
 AUR_URL='https://aur.archlinux.org/cgit/aur.git/snapshot'
 AUR_PACKAGES='
 	azure-cli
@@ -39,9 +42,9 @@ done
 # Check -git packages for updates:
 for d in $ROOT/*-git $ROOT/../priv-pkgs/*-git; do
 	case "$d" in
-		*\**)
-			continue
-			;;
+	*\**)
+		continue
+		;;
 	esac
 	(
 		cd $d

@@ -1,6 +1,9 @@
 #!/bin/sh -e
 
-ROOT=$(cd "$(dirname "$0")"; pwd -P)
+ROOT=$(
+	cd "$(dirname "$0")"
+	pwd -P
+)
 
 CHROOT=$ROOT/chroot/root
 CHROOT_CONF=$CHROOT/root/etc/pacman.conf
@@ -16,13 +19,13 @@ if ! [ -e $REPODB ]; then
 fi
 
 mkdir -p ~/.gnupg
-echo 'keyserver-options auto-key-retrieve' > ~/.gnupg/gpg.conf
+echo 'keyserver-options auto-key-retrieve' >~/.gnupg/gpg.conf
 
 if ! grep -q $REPO $CHROOT_CONF; then
 	sudo tee -a $CHROOT_CONF <<-EOF
-	[custom]
-	SigLevel = Optional TrustAll
-	Server = file:///var/local/repo
+		[custom]
+		SigLevel = Optional TrustAll
+		Server = file:///var/local/repo
 	EOF
 fi
 
@@ -71,12 +74,11 @@ for f in $ROOT/*/PKGBUILD $ROOT/../priv-pkgs/*/PKGBUILD; do
 	(
 		cd $d
 		case $n in
-			*)
-				makechrootpkg -c -D $REPO -r $CHROOT || :
-				;;
+		*)
+			makechrootpkg -c -D $REPO -r $CHROOT || :
+			;;
 		esac
 	)
-
 
 	if grep -q ^pkgbase= $f; then
 		for s in $(_g $d pkgname); do

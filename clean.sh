@@ -1,12 +1,15 @@
 #!/bin/sh
 
-ROOT=$(cd "$(dirname "$0")"; pwd -P)
+ROOT=$(
+	cd "$(dirname "$0")"
+	pwd -P
+)
 
 REPO=/var/local/repo
 REPODB=/var/local/repo/custom.db.tar.gz
 
 repofiles() {
-	for f in  $REPO/*.pkg.tar.*; do basename $f; done | sort
+	for f in $REPO/*.pkg.tar.*; do basename $f; done | sort
 }
 
 dbfiles() {

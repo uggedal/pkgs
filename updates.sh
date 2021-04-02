@@ -1,6 +1,9 @@
 #!/bin/bash -e
 
-ROOT=$(cd "$(dirname "$0")"; pwd -P)
+ROOT=$(
+	cd "$(dirname "$0")"
+	pwd -P
+)
 
 ALL=no
 if [ "$1" = "-a" ]; then
@@ -67,9 +70,9 @@ for f in $ROOT/*/PKGBUILD $ROOT/../priv-pkgs/*/PKGBUILD; do
 	n=$(basename $d)
 
 	case "$n" in
-		*-git)
-			continue
-			;;
+	*-git)
+		continue
+		;;
 	esac
 
 	(
@@ -85,18 +88,18 @@ for f in $ROOT/*/PKGBUILD $ROOT/../priv-pkgs/*/PKGBUILD; do
 		src="${source[0]}"
 
 		case "$src" in
-			*github.com*)
-				s=(${src//\// })
-				gh ${s[2]} ${s[3]} $pkgver
-				;;
-			*/pypi/*)
-				s=(${src//\// })
-				pypi ${s[3]} $pkgver
-				;;
-			*/pypi.io*)
-				s=(${src//\// })
-				pypi ${s[5]} $pkgver
-				;;
+		*github.com*)
+			s=(${src//\// })
+			gh ${s[2]} ${s[3]} $pkgver
+			;;
+		*/pypi/*)
+			s=(${src//\// })
+			pypi ${s[3]} $pkgver
+			;;
+		*/pypi.io*)
+			s=(${src//\// })
+			pypi ${s[5]} $pkgver
+			;;
 		esac
 	)
 done
