@@ -12,14 +12,11 @@ AUR_PACKAGES='
 	needrestart
 	python-j2cli
 	python-tasklib
-	sway-git
-	swaybg-git
 	teams
 	vim-eunuch-git
 	vim-lastplace
 	vim-selenized-git
 	vim-vimwiki
-	wlroots-git
 	wlsunset
 '
 
