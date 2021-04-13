@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-cli
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)

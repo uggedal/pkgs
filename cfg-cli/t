@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if tmux has-session; then
+if env TERM=xterm tmux has-session; then
 	exec env TERM=xterm-256color tmux -u \
 		-f /etc/tmux.local.conf attach -d -t 0
 else
