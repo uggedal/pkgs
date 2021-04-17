@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-desktop
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Desktop user configuration"
 arch=(any)
@@ -17,6 +17,10 @@ package() {
 	install -d -o 1000 -g 1000 "$pkgdir/home/eu/pic"
 
 	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config"
+
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/environment.d"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/environment.conf" \
+		"$pkgdir/home/eu/.config/environment.d/desktop.conf"
 
 	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/sway"
 	install -D -m644 -o 1000 -g 1000 "$rootdir/sway" \
