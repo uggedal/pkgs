@@ -5,7 +5,7 @@ exec kitty \
 	-o remember_window_size=no \
 	-o initial_window_width=40c \
 	-o initial_window_height=11c \
-	-e /bin/bash -c '
+	-e /bin/bash -lc '
 		compgen -c |
 			sort -u |
 			fzy |
