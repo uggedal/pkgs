@@ -56,10 +56,11 @@ seat * hide_cursor 5000
 #
 # Basics:
 #
-bindsym $mod+Shift+Return exec kitty
+bindsym $mod+Shift+Return exec systemd-run --user kitty
 bindsym $mod+p exec kitty_menu
 bindsym Mod4+l exec swaylock -f
-bindsym Print exec grim -g "$(slurp)" ~/pic/sc_$(date +'%Y-%m-%d-%H%M%S.png')
+bindsym Print exec systemd-run --user grim \
+	-g "$(slurp)" ~/pic/sc_$(date +'%Y-%m-%d-%H%M%S.png')
 
 # Kill focused window
 bindsym $mod+Shift+c kill
