@@ -184,6 +184,9 @@ gaps inner 10px
 for_window [app_id="KittyMenu"] border pixel 2
 for_window [app_id="KittyMenu"] floating enable
 
+# Mark XWayland windows
+for_window [shell="xwayland"] title_format "[X] %title"
+
 # Include system config (environment setup):
 include /etc/sway/config.d/*
 
