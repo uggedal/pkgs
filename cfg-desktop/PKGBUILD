@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-desktop
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Desktop configuration"
 arch=(any)

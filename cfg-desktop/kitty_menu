@@ -9,5 +9,5 @@ exec kitty \
 		compgen -c |
 			sort -u |
 			fzy |
-			xargs -r swaymsg -t command exec systemd-run --user
+			xargs -r swaymsg -t command exec -- systemd-run --user
 	'
