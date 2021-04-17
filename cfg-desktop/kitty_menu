@@ -6,5 +6,8 @@ exec kitty \
 	-o initial_window_width=40c \
 	-o initial_window_height=11c \
 	-e /bin/bash -c '
-		compgen -c | sort -u | fzy | xargs -r swaymsg -t command exec
+		compgen -c |
+			sort -u |
+			fzy |
+			xargs -r swaymsg -t command exec systemd-run --user
 	'
