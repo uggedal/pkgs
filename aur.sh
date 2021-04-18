@@ -15,7 +15,6 @@ AUR_PACKAGES='
 	teams
 	vim-eunuch-git
 	vim-lastplace
-	vim-selenized-git
 	vim-vimwiki
 	wlsunset
 '
