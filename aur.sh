@@ -8,6 +8,7 @@ AUR_URL='https://aur.archlinux.org/cgit/aur.git/snapshot'
 AUR_PACKAGES='
 	azure-cli
 	inadyn-fork
+	neovim-git
 	mako-git
 	needrestart
 	python-j2cli
