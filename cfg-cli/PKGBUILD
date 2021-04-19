@@ -18,7 +18,8 @@ depends=(
 	neovim-gruvbox-git
 	ps_mem
 	tmux
-	the_silver_searcher vim
+	the_silver_searcher
+	vim
 	vim-buftabline-git
 	vim-commentary-git
 	vim-easydir
