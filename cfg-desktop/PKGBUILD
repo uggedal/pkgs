@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-desktop
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Desktop configuration"
 arch=(any)
@@ -15,6 +15,7 @@ depends=(
 	kitty
 	libnotify
 	mako-git
+	nerd-fonts-ibm-plex-mono
 	pipewire-pulse
 	pulsemixer
 	slurp
