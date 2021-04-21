@@ -16,7 +16,6 @@ depends=(
 	ncdu
 	neovim-git
 	neovim-bufferline-git
-	neovim-gruvbox-git
 	neovim-treesitter-git
 	ps_mem
 	tmux
