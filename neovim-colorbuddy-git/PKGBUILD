@@ -1,0 +1,28 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=neovim-colorbuddy-git
+_pkgname=neovim-colorbuddy
+pkgver=r55.87c80e3
+pkgrel=1
+arch=('any')
+url='https://github.com/tjdevries/colorbuddy.nvim'
+license=('MIT')
+makedepends=('git')
+pkgdesc="Your color buddy for making cool neovim color schemes"
+depends=('neovim')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "${srcdir}/${_pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" \
+		"$(git rev-parse --short HEAD)"
+}
+
+package() {
+	cd "${srcdir}/${_pkgname}"
+	find lua -type f -exec \
+		install -Dm 644 '{}' "${pkgdir}/usr/share/nvim/runtime/{}" \;
+	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
