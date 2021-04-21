@@ -1,7 +1,7 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=neovim-gruvbox-git
 _pkgname=neovim-gruvbox
-pkgver=r68.d789a80
+pkgver=r70.682f6ff
 pkgrel=1
 arch=('any')
 url='https://github.com/npxbr/gruvbox.nvim'
