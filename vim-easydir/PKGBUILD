@@ -1,12 +1,12 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=vim-easydir
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/duggiefresh/vim-easydir'
 license=('MIT')
 pkgdesc="Create parent dirs when saving files"
-depends=('vim')
+depends=('neovim')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('eaf89af07ba069f390c60d6772cea1c6679bdb1eb761d21c4924f232100658b2')
 
