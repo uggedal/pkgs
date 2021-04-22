@@ -14,7 +14,6 @@ AUR_PACKAGES='
 	nerd-fonts-ibm-plex-mono
 	python-j2cli
 	teams
-	vim-eunuch-git
 	vim-lastplace
 	vim-vimwiki
 	wlsunset
