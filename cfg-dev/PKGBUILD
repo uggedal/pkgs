@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-dev
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Dev configuration"
 arch=(any)
@@ -13,5 +13,4 @@ rootdir="$PWD"
 package() {
 	install -D -m644 "$rootdir/bashrc" "$pkgdir/etc/bash.bashrc.d/dev.sh"
 	install -D -m644 "$rootdir/gitconfig" "$pkgdir/etc/gitconfig"
-	install -D -m644 "$rootdir/dev.vim" "$pkgdir/etc/vim/vim.local.d/dev.vim"
 }
