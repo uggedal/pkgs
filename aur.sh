@@ -13,7 +13,6 @@ AUR_PACKAGES='
 	needrestart
 	nerd-fonts-ibm-plex-mono
 	python-j2cli
-	python-tasklib
 	teams
 	vim-eunuch-git
 	vim-lastplace
