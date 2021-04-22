@@ -15,7 +15,6 @@ AUR_PACKAGES='
 	python-j2cli
 	teams
 	vim-lastplace
-	vim-vimwiki
 	wlsunset
 '
 
