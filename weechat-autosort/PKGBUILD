@@ -1,12 +1,11 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=weechat-autosort
 pkgver=3.8
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/de-vri-es/weechat-autosort'
 license=('GPL3')
 pkgdesc="WeeChat autosort plugin"
-depends=('vim')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('b0286081a2c95aec242ee9fa7370a0a86846757d3d77a343a53987a2795365bf')
 
