@@ -27,7 +27,6 @@ depends=(
 	vim-easydir
 	vim-eunuch-git
 	vim-lastplace
-	vim-picker-git
 	vim-spell-nb
 	whois
 )
