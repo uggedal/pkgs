@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-cli
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)
@@ -22,11 +22,6 @@ depends=(
 	ps_mem
 	tmux
 	the_silver_searcher
-	vim-commentary-git
-	vim-easydir
-	vim-eunuch-git
-	vim-lastplace
-	vim-spell-nb
 	whois
 )
 
