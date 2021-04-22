@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-cli
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)
@@ -28,6 +28,9 @@ depends=(
 rootdir="$PWD"
 
 package() {
+	install -d -m755 "$pkgdir/usr/bin"
+	ln -s nvim "$pkgdir/usr/bin/vim"
+
 	install -D -m755 "$rootdir/f" "$pkgdir/usr/bin/f"
 	install -D -m755 "$rootdir/t" "$pkgdir/usr/bin/t"
 	install -D -m755 "$rootdir/pacup" "$pkgdir/usr/bin/pacup"
