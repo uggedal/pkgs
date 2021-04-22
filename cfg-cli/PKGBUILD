@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-cli
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)
@@ -36,6 +36,5 @@ package() {
 
 	install -D -m644 "$rootdir/profile.sh" "$pkgdir/etc/profile.d/cli.sh"
 	install -D -m644 "$rootdir/bashrc" "$pkgdir/etc/bash.bashrc.d/cli.sh"
-	install -D -m644 "$rootdir/vim.local.rc" "$pkgdir/etc/vim/vim.local.rc"
 	install -D -m644 "$rootdir/tmux.local.conf" "$pkgdir/etc/tmux.local.conf"
 }
