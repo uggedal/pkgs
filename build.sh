@@ -61,7 +61,13 @@ pkgadd() {
 
 arch-nspawn $CHROOT/root --bind-ro=$REPO pacman -Syu --noconfirm
 
-for f in $ROOT/*/PKGBUILD $ROOT/../priv-pkgs/*/PKGBUILD; do
+pkgbuilds="$ROOT/*/PKGBUILD $ROOT/../priv-pkgs/*/PKGBUILD"
+
+if [ -d "$1" ]; then
+	pkgbuilds="${1}/PKGBUILD"
+fi
+
+for f in $pkgbuilds; do
 	d=$(dirname $f)
 	n=$(basename $d)
 	pv=$(pkgver $d)
