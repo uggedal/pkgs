@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-cli
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="CLI user configuration"
 arch=(any)
@@ -13,8 +13,16 @@ rootdir="$PWD"
 package() {
 	install -d "$pkgdir/home"
 	install -d -m750 -o 1000 -g 1000 "$pkgdir/home/eu"
-	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.vim"
-	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.vim/tmp"
-	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.vim/tmp/swap"
-	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.vim/tmp/undo"
+
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config"
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/nvim"
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/nvim/colors"
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/nvim/lua"
+
+	install -D -m644 -o 1000 -g 1000 "$rootdir/init.lua" \
+		"$pkgdir/home/eu/.config/nvim/init.lua"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/gh.vim" \
+		"$pkgdir/home/eu/.config/nvim/colors/gh.vim"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/gh.lua" \
+		"$pkgdir/home/eu/.config/nvim/lua/gh.lua"
 }
