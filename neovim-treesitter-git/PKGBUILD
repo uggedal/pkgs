@@ -1,14 +1,14 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=neovim-treesitter-git
 _pkgname=neovim-treesitter
-pkgver=r1227.df189e2
+pkgver=r1281.79d38fe
 pkgrel=1
 arch=('any')
 url='https://github.com/nvim-treesitter/nvim-treesitter'
 license=('Apache')
-makedepends=('git' 'neovim-git')
+makedepends=('git' 'nodejs')
 pkgdesc="Neovim Treesitter configurations and abstraction layer "
-depends=('neovim')
+depends=('neovim-git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}.git")
