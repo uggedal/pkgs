@@ -113,9 +113,6 @@ vim.api.nvim_set_keymap('n', '<leader>g', ':call v:lua.gitci(4)<CR>', { noremap 
 
 require('colorbuddy').colorscheme('gh', true)
 
--- FIXME: rm when style includes it:
-vim.g.terminal_color_1 = "#ff0000"
-
 -- Highlight trailing space when not in insert mode:
 vim.cmd('augroup HighlightTrailing')
 vim.cmd('  autocmd!')
