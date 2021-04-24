@@ -61,51 +61,57 @@ vim.cmd('augroup END')
 -- Key bindings
 --
 
+local function map(mode, lhs, rhs, opts)
+	local options = {noremap = true}
+	if opts then options = vim.tbl_extend('force', options, opts) end
+	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
 -- Disable movement with cursor keys:
 for _, k in ipairs({'up', 'down', 'left', 'right'}) do
-	vim.api.nvim_set_keymap('n', '<' .. k .. '>', '<nop>', { noremap = true })
-	vim.api.nvim_set_keymap('i', '<' .. k .. '>', '<nop>', { noremap = true })
+	map('n', '<' .. k .. '>', '<nop>')
+	map('i', '<' .. k .. '>', '<nop>')
 end
 
 -- Disable man page lookup of word under cursor with K key:
-vim.api.nvim_set_keymap('n', 'K', '<nop>', { noremap = true })
+map('n', 'K', '<nop>')
 
 -- Disable tab cycling keys:
-vim.api.nvim_set_keymap('n', 'gT', '<nop>', { noremap = true })
-vim.api.nvim_set_keymap('n', 'gt', '<nop>', { noremap = true })
+map('n', 'gT', '<nop>')
+map('n', 'gt', '<nop>')
 
 -- Move up/down by display lines when long lines wrap:
-vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true })
-vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true })
+map('n', 'j', 'gj')
+map('n', 'k', 'gk')
 
 -- Shorter bindings for split navigation:
 for _, k in ipairs({'h', 'j', 'k', 'l'}) do
-	vim.api.nvim_set_keymap('n', '<C-' .. k .. '>', '<C-w>' .. k, { noremap = true })
+	map('n', '<C-' .. k .. '>', '<C-w>' .. k)
 end
 
 -- Keep search matches in the middle of the window:
 for _, k in ipairs({'*', '#', 'n', 'N'}) do
-	vim.api.nvim_set_keymap('n', k, k .. 'zzzv', { noremap = true })
+	map('n', k, k .. 'zzzv')
 end
 
 vim.g.mapleader = ','
 
 -- Convenience leader mappings for working with buffers:
-vim.api.nvim_set_keymap('n', '<leader>p', ':bp<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>n', ':bn<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>d', ':bd<CR>', { noremap = true })
+map('n', '<leader>p', ':bp<CR>')
+map('n', '<leader>n', ':bn<CR>')
+map('n', '<leader>d', ':bd<CR>')
 
 -- Convenience leader mapping for toggling paste mode (no auto indent):
-vim.api.nvim_set_keymap('n', '<leader>i', ':set invpaste<CR>', { noremap = true })
+map('n', '<leader>i', ':set invpaste<CR>')
 
 -- Convenience leader mapping for opening file based on current file's path:
-vim.api.nvim_set_keymap('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>', { noremap = true })
+map('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>')
 
 -- git sync commit leader binding:
 function _G.gitci()
        vim.cmd([[!cd %:p:h && git add . && git ci -am sync && git push]])
 end
-vim.api.nvim_set_keymap('n', '<leader>g', ':call v:lua.gitci(4)<CR>', { noremap = true })
+map('n', '<leader>g', ':call v:lua.gitci(4)<CR>')
 
 --
 -- Color scheme
