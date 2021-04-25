@@ -15,14 +15,22 @@ vim.o.termguicolors = true
 vim.g.colors_name = "gh"
 
 function hl(group, fg, bg, style, sp)
-  local buf = {'highlight', group}
+	local n = 'NONE'
 
-  if style then table.insert(buf, 'gui=' .. style) end
-  if fg then table.insert(buf, 'guifg=' .. fg) end
-  if bg then table.insert(buf, 'guibg=' .. bg) end
-  if sp then table.insert(buf, 'guisp=' .. sp) end
+	if not style then style = n end
+	if not fg then fg = n end
+	if not bg then bg = n end
+	if not sp then sp = n end
 
-  vim.cmd(table.concat(buf, ' '))
+	local buf = {
+		'highlight',
+		group,
+		'gui=' .. style,
+		'guifg=' .. fg,
+		'guibg=' .. bg,
+		'guisp=' .. sp
+	}
+	vim.cmd(table.concat(buf, ' '))
 end
 
 function li(group, link)
