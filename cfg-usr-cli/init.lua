@@ -31,6 +31,9 @@ vim.o.smartcase = true
 -- Substitute all matches on a line:
 vim.o.gdefault = true
 
+-- Live preview of substitutions:
+vim.o.inccommand = 'split'
+
 -- Completion settings with consecurive presses of TAB:
 --   1. Complete till longest common string
 --   2. When more than one match, list all matches
