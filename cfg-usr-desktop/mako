@@ -1,15 +1,17 @@
+background-color=#132e1f
+border-color=#226d32
+border-size=2
 font=JetBrains Mono
-background-color=#7ee787
+padding=10
 text-color=#c9d1d9
-border-size=0
 
 default-timeout=5000
 
 [urgency=low]
-background-color=#ffa657
-text-color=#c9d1d9
+background-color=#111d2f
+border-color=#2d465d
 
 [urgency=high]
-background-color=#ff7b72
-text-color=#c9d1d9
+background-color=#36181c
+border-color=#882727
 default-timeout=0

@@ -6,18 +6,14 @@ set $down j
 set $up k
 set $right l
 
-# GH light colorscheme for i3
 set $bg #0d1117
-set $black #30363d
-set $white #8b949e
 set $fg #c9d1d9
 
-set $green #7ee787
-set $yellow #ffa657
-set $blue #79c0ff
-set $cyan #ff9bce
-set $orange #ff7b72
-set $violet #d2a8ff
+set $grey #30363d
+set $green #226d32
+set $green_bright #7ee787
+set $blue #2d465d
+set $red_bright #ff7b72
 
 ### Output configuration
 #
@@ -158,10 +154,10 @@ bindsym XF86MonBrightnessUp exec light -A 5
 #
 
 # clientclass border backgr. text indicator
-client.focused $green $green $black $blue
-client.focused_inactive $cyan $cyan $black $violet
-client.unfocused $black $black $fg $white
-client.urgent $yellow $yellow $black $orange
+client.focused $green $green $bg $green_bright
+client.focused_inactive $blue $blue $fg $blue
+client.unfocused $grey $grey $fg $grey
+client.urgent $red_bright $red_bright $fg $red_bright
 
 default_border pixel 2
 

@@ -16,8 +16,9 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-    padding: 0 5px;
     background-color: transparent;
+    color: #c9d1d9;
+    padding: 0 5px;
 }
 
 #workspaces button:hover {
@@ -28,11 +29,12 @@ window#waybar.hidden {
 
 #workspaces button.focused {
     background-color: #7ee787;
-    color: #c9d1d9;
+    color: #0d1117;
 }
 
 #workspaces button.urgent {
     background-color: #ffa657;
+    color: #0d1117;
 }
 
 #mode,
