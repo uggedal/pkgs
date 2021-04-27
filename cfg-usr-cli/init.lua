@@ -54,11 +54,13 @@ vim.o.ttimeoutlen = 10
 vim.o.hidden = true
 
 -- Highlight the line of the cursor only in insert mode:
-vim.cmd('augroup ToggleCursorLine')
-vim.cmd('  autocmd!')
-vim.cmd('  autocmd InsertLeave * set nocursorline')
-vim.cmd('  autocmd InsertEnter * set cursorline')
-vim.cmd('augroup END')
+vim.cmd([[
+	augroup ToggleCursorLine
+		autocmd!
+		autocmd InsertLeave * set nocursorline
+		autocmd InsertEnter * set cursorline
+	augroup END
+]])
 
 --
 -- Key bindings
@@ -145,23 +147,29 @@ function _G.spaces(n)
 end
 
 -- Setup different levels of space based indent for some syntaxes:
-vim.cmd('augroup SpacesOrTabs')
-vim.cmd('  autocmd!')
-vim.cmd('  autocmd FileType python,html,jinja.html,css,markdown,vimwiki call v:lua.spaces(4)')
-vim.cmd('  autocmd FileType yaml call v:lua.spaces(2)')
-vim.cmd('augroup END')
+vim.cmd([[
+	augroup SpacesOrTabs
+		autocmd!
+		autocmd FileType python,html,jinja.html,css,markdown,vimwiki call v:lua.spaces(4)
+		autocmd FileType yaml call v:lua.spaces(2)
+	augroup END
+]])
 
 -- Textfiles should be broken to a limited width:
-vim.cmd('augroup TextWidth')
-vim.cmd('  autocmd!')
-vim.cmd('  autocmd FileType mail,markdown,vimwiki setlocal textwidth=72')
-vim.cmd('augroup END')
+vim.cmd([[
+	augroup TextWidth
+		autocmd!
+		autocmd FileType mail,markdown,vimwiki setlocal textwidth=72
+	augroup END
+]])
 
 -- Textfiles should not have line numbering
-vim.cmd('augroup NoNumber')
-vim.cmd('  autocmd!')
-vim.cmd('  autocmd FileType mail,markdown,vimwiki setlocal nonumber')
-vim.cmd('augroup END')
+vim.cmd([[
+	augroup NoNumber
+		autocmd!
+		autocmd FileType mail,markdown,vimwiki setlocal nonumber
+	augroup END
+]])
 
 --
 -- Plugins
