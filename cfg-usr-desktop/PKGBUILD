@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-desktop
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Desktop user configuration"
 arch=(any)
@@ -39,4 +39,8 @@ package() {
 	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/kitty"
 	install -D -m644 -o 1000 -g 1000 "$rootdir/kitty.conf" \
 		"$pkgdir/home/eu/.config/kitty/kitty.conf"
+
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/gtk-3.0"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/gtk-3.0.ini" \
+		"$pkgdir/home/eu/.config/gtk-3.0/settings.ini"
 }
