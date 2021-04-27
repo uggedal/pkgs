@@ -11,7 +11,6 @@ AUR_PACKAGES='
 	neovim-git
 	mako-git
 	needrestart
-	nerd-fonts-ibm-plex-mono
 	python-j2cli
 	teams
 	wlsunset
