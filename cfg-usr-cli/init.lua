@@ -120,7 +120,8 @@ map('n', '<leader>g', ':call v:lua.gitci(4)<CR>')
 -- Color scheme
 --
 
-require('colorbuddy').colorscheme('gh', true)
+vim.o.background = 'light'
+vim.cmd('colorscheme gh')
 
 -- Highlight trailing space when not in insert mode:
 vim.cmd('augroup HighlightTrailing')

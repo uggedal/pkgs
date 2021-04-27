@@ -1,18 +1,14 @@
--- TODO: look at undercurl/line sp style
--- TODO: spelling with undercurl/sp
--- TODO: make visual and search highlight different
--- TODO: check that all treesitter groups are present
--- TODO: implement non-treesitter per-language settings (matching gh web)
--- TODO: style all vim gui elements
+-- TODO: expand non-treesitter language specific styles matching gh web
+-- TODO: popular plugins
+-- TODO: dark dimmed
 
-vim.cmd("hi clear")
-if vim.fn.exists("syntax_on") then
-	vim.cmd("syntax reset")
+vim.cmd('hi clear')
+if vim.fn.exists('syntax_on') then
+	vim.cmd('syntax reset')
 end
 
-vim.o.background = "light"
 vim.o.termguicolors = true
-vim.g.colors_name = "gh"
+vim.g.colors_name = 'gh'
 
 function hl(group, fg, bg, style, sp)
 	local n = 'NONE'
@@ -37,216 +33,268 @@ function li(group, link)
 	vim.cmd('highlight! link ' .. group .. ' ' .. link)
 end
 
-c = {
-	fg_1      = '#24292e',
-	fg_2      = '#6a737d',
-	fg_3      = '#babbbc',
-	bg_1      = '#ffffff',
-	bg_2      = '#fafbfc',
-	bg_3      = '#e1e4e8',
-	blue_0    = '#05264c',
-	blue_1    = '#032f62',
-	blue_2    = '#005cc5',
-	blue_3    = '#c8e1ff',
-	blue_4    = '#f1f8ff',
-	red_1     = '#d73a49',
-	red_2     = '#fdb8c0',
-	red_3     = '#ffeef0',
-	green_1   = '#22863a',
-	green_2   = '#acf2bd',
-	green_3   = '#e6ffed',
-	orange_1  = '#e36209',
-	orange_2  = '#fab484',
-	purple_1  = '#6f42c1',
-	yellow_3  = '#fffbdd',
-}
-
--- Vim Primary Colors
-
--- Color.new('Red', "#e88388")
--- Color.new('DarkRed', "#e06c75")
--- Color.new('Blue', "#61afef")
--- Color.new('DarkBlue', "#528bff")
--- Color.new('Green', "#98c379")
--- Color.new('DarkGreen', "#50a14f")
--- Color.new('Orange', "#d19a66")
--- Color.new('DarkOrange', "#c18401")
--- Color.new('Yellow', "#e5c07b")
--- Color.new('DarkYellow', "#986801")
--- Color.new('Purple', "#a626a4")
--- Color.new('Violet', '#b294bb')
--- Color.new('Magenta', '#ff80ff')
--- Color.new('DarkMagenta', '#a626a4')
--- Color.new('Black', "#333841")
--- Color.new('Grey', "#636d83")
--- Color.new('White',  '#f2e5bc')
--- Color.new('Cyan', '#8abeb7')
--- Color.new('DarkCyan', '#80a0ff')
--- Color.new('Aqua', '#8ec07c')
--- Color.new('pink', "#d291e4")
+if vim.o.background == 'light' then
+	c = {
+		fg_1 = '#24292e',
+		fg_2 = '#6a737d',
+		fg_3 = '#babbbc',
+		bg_1 = '#ffffff',
+		bg_2 = '#fafbfc',
+		bg_3 = '#e1e4e8',
+		blue_0 = '#05264c',
+		blue_1 = '#032f62',
+		blue_2 = '#005cc5',
+		blue_3 = '#c8e1ff',
+		blue_4 = '#f1f8ff',
+		red_1 = '#d73a49',
+		red_2 = '#fdb8c0',
+		red_3 = '#ffeef0',
+		green_1 = '#22863a',
+		green_2 = '#acf2bd',
+		green_3 = '#e6ffed',
+		orange_1 = '#e36209',
+		orange_2 = '#ffab70',
+		purple_1 = '#6f42c1',
+		yellow_3 = '#fffbdd',
+	}
+else
+	c = {
+		fg_1 = '#c9d1d9',
+		fg_2 = '#8b949e',
+		fg_3 = '#585d64',
+		bg_1 = '#0d1117',
+		bg_2 = '#161b22',
+		bg_3 = '#30363d',
+		blue_0 = '#c8e1ff',
+		blue_1 = '#a5d6ff',
+		blue_2 = '#79c0ff',
+		blue_3 = '#2d465d',
+		blue_4 = '#111d2f',
+		red_1 = '#ff7b72',
+		red_2 = '#882727',
+		red_3 = '#36181c',
+		green_1 = '#7ee787',
+		green_2 = '#226d32',
+		green_3 = '#132e1f',
+		orange_1 = '#ffa657',
+		orange_2 = '#762d0a',
+		purple_1 = '#d2a8ff',
+		yellow_3 = '#533d11',
+	}
+end
 
 -- Vim Terminal
 
-vim.g.terminal_color_0  = c.bg_2
-vim.g.terminal_color_8  = c.bg_3
-vim.g.terminal_color_1  = c.red_1
-vim.g.terminal_color_9  = c.red_1
-vim.g.terminal_color_2  = c.green_1
+vim.g.terminal_color_0 = c.bg_2
+vim.g.terminal_color_8 = c.bg_3
+vim.g.terminal_color_1 = c.red_1
+vim.g.terminal_color_9 = c.red_1
+vim.g.terminal_color_2 = c.green_1
 vim.g.terminal_color_10 = c.green_1
-vim.g.terminal_color_3  = c.orange_1
+vim.g.terminal_color_3 = c.orange_1
 vim.g.terminal_color_11 = c.orange_1
-vim.g.terminal_color_4  = c.blue_2
+vim.g.terminal_color_4 = c.blue_2
 vim.g.terminal_color_12 = c.blue_2
-vim.g.terminal_color_5  = c.purple_1
+vim.g.terminal_color_5 = c.purple_1
 vim.g.terminal_color_13 = c.purple_1
-vim.g.terminal_color_6  = "#65c2cd"  -- FIXME
-vim.g.terminal_color_14 = "#65c2cd"  -- FIXME
-vim.g.terminal_color_7  = c.fg_2
+vim.g.terminal_color_6 = "#498d91"
+vim.g.terminal_color_14 = "#498d91"
+vim.g.terminal_color_7 = c.fg_2
 vim.g.terminal_color_15 = c.fg_1
 
 -- Editor
 
-hl('Normal',        c.fg_1,    c.bg_1)
-hl('bold',          nil,       nil,         'bold')
-hl('ColorColumn',   nil,       c.bg_2)
-hl('Conceal',       c.fg_3,    c.bg_1)
-hl('Cursor',        nil,       c.fg_1)
--- hl('CursorIM',      nil)
-hl('CursorColumn',  nil,       c.bg_2)
-hl('CursorLine',    nil,       c.bg_2)
-hl('Directory',     c.blue_2)
-hl('ErrorMsg',      c.red_1)
-hl('VertSplit',     c.fg_3)
-hl('Folded',        c.fg_3)
-hl('FoldColumn',    c.fg_3)
-hl('IncSearch',     nil,       c.orange_2)
-hl('LineNr',        c.fg_3)
-hl('CursorLineNr',  nil,       c.bg_2)
-hl('MatchParen',    nil,       c.yellow_3)
-hl('Italic',        nil,       nil,         'italic')
-hl('ModeMsg',       c.fg_1)
-hl('MoreMsg',       c.fg_1)
-hl('NonText',       c.fg_3)
-hl('PMenu',         nil,       c.bg_2)
-hl('PMenuSel',      nil,       c.blue_3)
-hl('PMenuSbar',     nil,       c.bg_3)
-hl('PMenuThumb',    nil,       c.fg_3)
-hl('Question',      c.blue_2)
-hl('Search',        nil,       c.yellow_3)
-hl('SpecialKey',    c.fg_2)
-hl('Whitespace',    c.fg_2)
-hl('StatusLine',    c.blue_0,  c.blue_4)
-hl('StatusLineNC',  c.fg_2,    c.bg_2)
-hl('TabLine',       nil,       c.blue_4)
--- hl('TabLineFill',   nil)
-hl('TabLineSel',    nil,       c.blue_3)
-hl('Title',         c.fg_1,    nil,         'bold')
-hl('Visual',        nil,       c.yellow_3)
-hl('VisualNOS',     nil,       c.yellow_3)
-hl('WarningMsg',    c.red_1)
-hl('TooLong',       c.red_1)
-hl('WildMenu',      c.fg_1,    c.blue_3)
--- hl('SignColumn',    nil)
+hl('ColorColumn', nil, c.bg_2) -- columns set with 'colorcolumn'
+hl('Conceal', c.fg_3, c.bg_1) -- placeholder characters for concealed text
+hl('Cursor', nil, c.fg_1) -- character under the cursor
+hl('CursorColumn', nil, c.bg_2) -- column following cursor
+hl('CursorLine', nil, c.bg_2) -- vertical line under cursor
+hl('Directory', c.blue_2) -- directory names in listsings
+hl('ErrorMsg', c.red_1) -- command line error messages
+hl('VertSplit', c.fg_3) -- column seperating vertical splits
+hl('Folded', c.fg_3) -- line for closed folds
+hl('FoldColumn', c.fg_3) -- gutter column showing folds
+hl('SignColumn', c.fg_2) -- gutter column showing signs
+hl('IncSearch', nil, c.orange_2)  -- incremental search
+hl('Substitute', nil, c.red_2) -- text replaced with :s
+hl('LineNr', c.fg_3)  -- gutter line numbers
+hl('CursorLineNr', nil, c.bg_2) -- gutter line number for current line
+hl('MatchParen', nil, c.yellow_3) -- current and matching bracket
+hl('ModeMsg', c.fg_1) -- mode message (-- INSERT --)
+hl('MsgArea', c.fg_1) -- area for messages and cmdline
+hl('MoreMsg', c.fg_1) -- text for pager prompt
+hl('NonText', c.fg_3) -- characters that are not part of the text
+hl('Normal', c.fg_1, c.bg_1) -- normal text
+hl('NormalFloat', c.fg_1, c.bg_1) -- normal text in floating windows
+hl('NormalNC', c.fg_1, c.bg_1) -- normal text in non-current windows
+hl('PMenu', nil, c.bg_2) -- popup menu, normal item
+hl('PMenuSel', nil, c.blue_3) -- popup menu, selected item
+hl('PMenuSbar', nil, c.bg_3) -- popup menu, scrollbar
+hl('PMenuThumb', nil, c.fg_3) -- popup menu, scrollbar indicator
+hl('Question', c.blue_2) -- prompts to continue with Enter or yes/no
+hl('QuickFixLine', nil, c.yellow_3) -- current quickfix item
+hl('Search', nil, c.yellow_3) -- last search pattern
+hl('SpecialKey', c.fg_2) -- unprintable characters
+hl('SpellBad', nil, nil, 'undercurl', c.red_1) -- unrecognized word
+hl('SpellCap', nil, nil, 'undercurl', c.orange_1) -- non-capitalized word
+hl('SpellLocal', nil, nil, 'undercurl', c.blue_2) -- used in other region
+hl('SpellRare', nil, nil, 'undercurl', c.fg_2) -- rarely used word
+hl('StatusLine', c.blue_0, c.blue_4) -- status line of current window
+hl('StatusLineNC', c.fg_2, c.bg_2)  -- status line of non-current window
+hl('TabLine', nil, c.blue_4) -- tab line
+-- hl('TabLineFill, nil) -- tab line outside tabs
+hl('TabLineSel', nil, c.blue_3) -- tabline, current buffer
+hl('Title', c.fg_1, nil, 'bold') -- tites from cmdline output
+hl('Visual', nil, c.blue_4) -- visual mode selection
+hl('VisualNOS', nil, c.blue_4) -- visual mode selection (not vim owned)
+hl('WarningMsg', c.red_1) -- warning messages
+hl('Whitespace', c.fg_2) -- whitespace (with 'listchars')
+hl('WildMenu', c.fg_1, c.blue_3) -- current match in wildmenu completion
 
 -- Standard Syntax
 
-hl('Comment',         c.fg_2,      nil,      'italic')
-hl('Constant',        c.orange_1)
-hl('String',          c.blue_1)
-li('Character',       'String')
-hl('Number',          c.blue_2)
-hl('Boolean',         c.blue_2)
-hl('Float',           c.blue_2)
-hl('Identifier',      c.red_1)
-hl('Function',        c.purple_1)
-hl('Statement',       c.red_1)
-hl('Conditional',     c.red_1)
-hl('Repeat',          c.red_1)
-hl('Label',           c.purple_1)
-hl('Operator',        c.blue_2)
-hl('Keyword',         c.red_1)
-hl('Exception',       c.red_1)
-hl('PreProc',         c.red_1)
-hl('Include',         c.red_1)
-hl('Define',          c.purple_1)
-hl('Macro',           c.purple_1)
-hl('PreCondit',       c.red_1)
-hl('Type',            c.blue_2)
-hl('StorageClass',    c.red_1)
-hl('Structure',       c.orange_1)
-hl('Typedef',         c.red_1)
-hl('Special',         c.blue_2)
-hl('SpecialChar',     c.blue_2)
--- hl('Tag',             nil)
-hl('Delimiter',       c.blue_2)
-hl('SpecialComment',  c.green_1)
--- hl('Debug',           nil)
-hl('Underlined',      nil,         nil,      'underline')
--- hl('Ignore',          nil)
-hl('Error',           nil,         c.red_3,  'bold')
-hl('Todo',            c.red_1,     nil,      'bold')
+hl('Comment', c.fg_2, nil, 'italic')
+hl('Constant', c.orange_1)
+hl('String', c.blue_1)
+li('Character', 'String')
+hl('Number', c.blue_2)
+hl('Boolean', c.blue_2)
+hl('Float', c.blue_2)
+hl('Identifier', c.red_1)
+hl('Function', c.purple_1)
+hl('Statement', c.red_1)
+hl('Conditional', c.red_1)
+hl('Repeat', c.red_1)
+hl('Label', c.purple_1)
+hl('Operator', c.blue_2)
+hl('Keyword', c.red_1)
+hl('Exception', c.red_1)
+hl('PreProc', c.red_1)
+hl('Include', c.red_1)
+hl('Define', c.purple_1)
+hl('Macro', c.purple_1)
+hl('PreCondit', c.red_1)
+hl('Type', c.blue_2)
+hl('StorageClass', c.red_1)
+hl('Structure', c.orange_1)
+hl('Typedef', c.red_1)
+hl('Special', c.blue_2)
+hl('SpecialChar', c.blue_2)
+-- hl('Tag', nil)
+hl('Delimiter', c.blue_2)
+hl('SpecialComment', c.green_1)
+-- hl('Debug', nil)
+hl('Bold', nil, nil, 'bold')
+hl('Italic', nil, nil, 'italic')
+hl('Underlined', nil, nil, 'underline')
+-- hl('Ignore', nil)
+hl('Error', nil, c.red_3, 'bold')
+hl('Todo', c.red_1, nil, 'bold')
 
 -- Diff
 
-hl('DiffAdd',     nil,  c.green_3)
-hl('DiffChange',  nil,  c.yellow_3)
-hl('DiffDelete',  nil,  c.red_3)
-hl('DiffText',    nil,  c.yellow_3,  'undercurl')
+hl('DiffAdd', nil, c.green_3)  -- added line
+hl('DiffChange', nil, c.yellow_3)  -- changed line
+hl('DiffDelete', nil, c.red_3)  -- deleted line
+hl('DiffText', nil, c.yellow_3, 'undercurl', c.blue_2)  -- changed text within changed line
 
-li('DiffAdded',    'DiffAdd')
-li('DiffRemoved',  'DiffDelete')
-hl('DiffFile',     c.green_1)
-hl('DiffNewFile',  c.red_1)
-hl('DiffLine',     c.blue_2)
+li('DiffAdded', 'DiffAdd')
+li('DiffRemoved', 'DiffDelete')
+hl('DiffFile', c.green_1)
+hl('DiffNewFile', c.red_1)
+hl('DiffLine', c.blue_2)
+
+-- HTML
+
+hl('htmlTag', c.fg_1)
+hl('htmlEndTag', c.fg_1)
+hl('htmlLink', c.fg_1)
+hl('htmlTagName', c.green_1)
+hl('htmlSpecialTagName', c.green_1)
+
+-- Markdown
+
+hl('markdownH1', c.blue_2, nil, 'bold')
+hl('markdownH2', c.blue_2, nil, 'bold')
+hl('markdownH3', c.blue_2, nil, 'bold')
+hl('markdownH4', c.blue_2, nil, 'bold')
+hl('markdownLinkText', c.purple_1)
+hl('markdownListMarker', c.orange_1)
+
+-- Vim help
+
+hl('helpCommand', c.blue_2)
+hl('helpExample', c.blue_2)
+hl('helpHeader', c.blue_2, nil, 'bold')
+hl('helpHeadline', c.fg_1)
+hl('helpHyperTextEntry', c.red_1)
+hl('helpHyperTextJump', c.blue_2)
+hl('helpOption', c.green_1)
+hl('helpSectionDelim', c.blue_2)
+hl('helpSpecial', c.purple_1)
+
+-- YAML
+
+hl('yamlBlockMappingKey', c.green_1)
+hl('yamlDocumentStart', c.fg_1)
+hl('yamlDocumentEnd', c.fg_1)
 
 -- TreeSitter
 
-hl('TSAnnotation',          c.blue_2)
-hl('TSAttribute',           c.blue_2)
-li('TSBoolean',             'Boolean')
-li('TSCharacter',           'String')
-li('TSConditional',         'Conditional')
-li('TSConstant',            'Constant')
-hl('TSConstBuiltin',        c.blue_2)
-hl('TSConstMacro',          c.blue_2)
-li('TSConstructor',         'Function')
-hl('TSEmphasis',            nil,            nil,      'italic')
-li('TSError',               'Error')
-li('TSException',           'Exception')
--- hl('TSField',               nil)
-li('TSFloat',               'Float')
-li('TSFunction',            'Function')
-li('TSFuncBuiltin',         'Function')
-hl('TSFuncMacro',           c.blue_2)
-li('TSInclude',             'Include')
-hl('TSKeyword',             c.red_1)
-hl('TSKeywordFunction',     c.red_1)
-li('TSKeywordOperator',     'Operator')
-hl('TSLabel',               c.blue_2)
-hl('TSLiteral',             c.orange_1)
-li('TSMethod',              'Function')
-hl('TSNamespace',           c.red_1)
-li('TSNumber',              'Number')
--- hl('TSOperator',            nil)
--- hl('TSParameter',           nil)
--- hl('TSParameterReference',  nil)
--- hl('TSProperty',            nil)
--- hl('TSPunctBracket',        nil)
--- hl('TSPunctDelimiter',      nil)
--- hl('TSPunctSpecial',        nil)
-li('TSRepeat',              'Repeat')
-li('TSString',              'String')
-hl('TSStringEscape',        c.blue_2)
-hl('TSStringRegex',         'String')
-hl('TSStrong',              nil,            nil,      'bold')
-li('TSStructure',           'Structure')
-hl('TSTag',                 c.green_1)
--- hl('TSTagDelimiter',        nil)
--- hl('TSText',                nil)
-hl('TSTitle',               c.blue_2,       nil,      'bold')
-hl('TSType',                c.orange_1)
-hl('TSTypeBuiltin',         c.orange_1)
-hl('TSUnderline',           nil,            nil,      'underline')
-hl('TSURI',                 c.blue_2)
--- hl('TSVariable',            nil)
--- hl('TSVariableBuiltin',     nil)
+hl('TSAnnotation', c.blue_2)
+hl('TSAttribute', c.blue_2) -- undocumented
+li('TSBoolean', 'Boolean')
+li('TSCharacter', 'String')
+li('TSComment', 'Comment')
+li('TSConditional', 'Conditional') -- conditional keywords
+li('TSConstant', 'Constant')
+hl('TSConstBuiltin', c.blue_2) -- contant built into the langauge (nil for Lua)
+hl('TSConstMacro', c.blue_2) -- constants defined by macros (NULL in C)
+li('TSConstructor', 'Function') -- constructor calls and definitions ({} in Lua)
+li('TSError', 'Error') -- syntax/parser errors
+li('TSException', 'Exception') -- exception keywords
+hl('TSField', c.fg_1)
+li('TSFloat', 'Float')
+li('TSFunction', 'Function') -- calls and definitions
+li('TSFuncBuiltin', 'Function') -- builtin functions (table.insert in Lua)
+hl('TSFuncMacro', c.blue_2) -- macro defined function call and definitions
+li('TSInclude', 'Include') -- include and imports
+hl('TSKeyword', c.red_1) -- keywords not in other categories
+hl('TSKeywordFunction', c.red_1) -- keywords used to define functions
+li('TSKeywordOperator', 'Operator') -- operators that are English words (and)
+hl('TSLabel', c.blue_2) -- labels (foo: in C)
+li('TSMethod', 'Function') -- method calls and definitions
+hl('TSNamespace', c.red_1) -- identifiers for modules or namespaces
+li('TSNone', 'Normal') -- no highligting
+li('TSNumber', 'Number')
+hl('TSOperator', c.blue_2) -- operators (+, -, etc and -> and * in C)
+hl('TSParameter', c.fg_1) -- parameters of a function
+hl('TSParameterReference', c.fg_1) -- references to parameters of a function
+hl('TSProperty', c.fg_1) -- same as TSField
+hl('TSPunctDelimiter', c.fg_1) -- Delimiters (i.e. .)
+hl('TSPunctBracket', c.fg_1) -- brackets and parens
+hl('TSPunctSpecial', c.fg_1) -- punctuation not in other categories
+li('TSRepeat', 'Repeat') -- keywords related to loops
+li('TSString', 'String')
+hl('TSStringRegex', 'String') -- regular expressions
+hl('TSStringEscape', c.blue_2) -- escape charactes within strings (i.e. \n)
+hl('TSTag', c.green_1) -- i.e. html tag names
+hl('TSTagDelimiter', c.fg_1) -- tag delimiters (<, >, /)
+li('TSText', 'String') -- strings considered text in markup languages
+hl('TSStrong', nil, nil, 'bold')
+hl('TSEmphasis', nil, nil, 'italic')
+hl('TSUnderline', nil, nil, 'underline')
+hl('TSStrike', nil, nil, 'strikethrough')
+hl('TSTitle', c.blue_2, nil, 'bold') -- text part of title
+hl('TSLiteral', c.orange_1) -- literal text
+hl('TSURI', c.blue_2) -- URI like link or email
+-- hl('TSMath', nil.blue_2) -- latex math
+hl('TSTextReference', c.blue_2) -- footnote, text references, citations
+-- hl('TSEnviroment', nil) -- text environments of markup langauges
+hl('TSNote', c.green_1, nil, 'bold') -- informatinal note (i.e. NOTE:)
+hl('TSWarning', c.orange_1, nil, 'bold') -- warning note (i.e. TODO)
+hl('TSDanger', c.red_1, nil, 'bold') -- danger note (i.e. FIXME)
+hl('TSType', c.fg_1)
+hl('TSTypeBuiltin', c.fg_1) -- built in types
+-- hl('TSVariable', nil) -- fallback for variable names
+-- hl('TSVariableBuiltin', nil) -- built in variables (i.e. this, self)
