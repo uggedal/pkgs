@@ -6,31 +6,18 @@ set $down j
 set $up k
 set $right l
 
-# Selenized white colorscheme for i3
+# GH light colorscheme for i3
 set $bg #ffffff
-set $black #ebebeb
-set $br_black #cdcdcd
-set $white #878787
-set $fg #474747
-set $br_white #282828
+set $black #e1e4e8
+set $white #6a737d
+set $fg #24292e
 
-set $red #d6000c
-set $green #1d9700
-set $yellow #c49700
-set $blue #0064e4
-set $magenta #dd0f9d
-set $cyan #00ad9c
-set $orange #d04a00
-set $violet #7f51d6
-
-set $br_red #bf0000
-set $br_green #008400
-set $br_yellow #af8500
-set $br_blue #0054cf
-set $br_magenta #c7008b
-set $br_cyan #009a8a
-set $br_orange #ba3700
-set $br_violet #6b40c3
+set $green #22863a
+set $yellow #e36209
+set $blue '#005cc5
+set $cyan #d03592
+set $orange #d73a49
+set $violet #6f42c1
 
 ### Output configuration
 #
