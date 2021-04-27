@@ -1,7 +1,7 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=neovim-bufferline-git
 _pkgname=neovim-bufferline
-pkgver=r255.78ffd34
+pkgver=r261.41debce
 pkgrel=1
 arch=('any')
 url='https://github.com/akinsho/nvim-bufferline.lua'
