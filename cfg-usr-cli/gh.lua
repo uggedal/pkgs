@@ -154,7 +154,7 @@ hl('SpellRare', nil, nil, 'undercurl', c.fg_2) -- rarely used word
 hl('StatusLine', c.fg_blue, c.blue_3) -- status line of current window
 hl('StatusLineNC', c.fg_2, c.bg_2)  -- status line of non-current window
 hl('TabLine', nil, c.blue_3) -- tab line
--- hl('TabLineFill, nil) -- tab line outside tabs
+hl('TabLineFill', nil, c.bg_1) -- tab line outside tabs
 hl('TabLineSel', nil, c.blue_2) -- tabline, current buffer
 hl('Title', c.fg_1, nil, 'bold') -- tites from cmdline output
 hl('Visual', nil, c.blue_3) -- visual mode selection

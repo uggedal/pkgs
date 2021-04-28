@@ -197,7 +197,8 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require'buftabline'.setup {
-	auto_hide = true
+	auto_hide = true,
+	hlgroup_normal = 'TabLine'
 }
 
 require'colorizer'.setup({}, {
