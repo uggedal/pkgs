@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-cli
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)
@@ -15,7 +15,7 @@ depends=(
 	moreutils
 	ncdu
 	neovim-git
-	neovim-bufferline-git
+	neovim-buftabline-git
 	neovim-bullets-git
 	neovim-colorizer-git
 	neovim-kommentary-git
