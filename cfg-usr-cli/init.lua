@@ -150,7 +150,7 @@ end
 vim.cmd([[
 	augroup SpacesOrTabs
 		autocmd!
-		autocmd FileType python,html,jinja.html,css,markdown,vimwiki call v:lua.spaces(4)
+		autocmd FileType python,html,jinja.html,css,markdown call v:lua.spaces(4)
 		autocmd FileType yaml call v:lua.spaces(2)
 	augroup END
 ]])
@@ -159,7 +159,7 @@ vim.cmd([[
 vim.cmd([[
 	augroup TextWidth
 		autocmd!
-		autocmd FileType mail,markdown,vimwiki setlocal textwidth=72
+		autocmd FileType mail,markdown setlocal textwidth=72
 	augroup END
 ]])
 
@@ -167,7 +167,7 @@ vim.cmd([[
 vim.cmd([[
 	augroup NoNumber
 		autocmd!
-		autocmd FileType mail,markdown,vimwiki setlocal nonumber
+		autocmd FileType mail,markdown setlocal nonumber
 	augroup END
 ]])
 
