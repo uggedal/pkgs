@@ -17,3 +17,7 @@
 /*/*/packed-refs
 
 /azure-cli/install-*.py
+
+/neovim-spell/*.txt
+/neovim-spell/*.sug
+/neovim-spell/*.spl

@@ -1,0 +1,46 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgbase=neovim-spell
+pkgver=20210428
+pkgrel=1
+pkgdesc='Language files for Neovim spell checking'
+arch=('any')
+url='ftp://ftp.vim.org/pub/vim/runtime/spell/'
+license=('LGPL' 'custom')
+depends=('neovim')
+
+pkgname=('neovim-spell-en' 'neovim-spell-nb')
+
+for _i in ${pkgname[@]}; do _j=${_i/neovim-spell-/}; eval "package_$_i() {
+	cd \"\$srcdir\"
+	install -d \"\$pkgdir\"/usr/share/nvim/runtime/spell
+	install -m644 $_j* \"\$pkgdir\"/usr/share/nvim/runtime/spell
+	[[ -f README_$_j.txt ]] \
+	&& install -Dm644 README_$_j.txt \"\$pkgdir\"/usr/share/licenses/$_i/README \
+	|| echo 'No README for $_j...'
+}"; done
+
+source=(
+        'ftp://ftp.vim.org/pub/vim/runtime/spell/README_en.txt'
+        'ftp://ftp.vim.org/pub/vim/runtime/spell/README_nb.txt'
+        'ftp://ftp.vim.org/pub/vim/runtime/spell/en.ascii.spl'
+        'ftp://ftp.vim.org/pub/vim/runtime/spell/en.ascii.sug'
+        'ftp://ftp.vim.org/pub/vim/runtime/spell/en.latin1.spl'
+        'ftp://ftp.vim.org/pub/vim/runtime/spell/en.latin1.sug'
+        # 'ftp://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.spl'
+        'ftp://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.sug'
+        'ftp://ftp.vim.org/pub/vim/runtime/spell/nb.latin1.spl'
+        'ftp://ftp.vim.org/pub/vim/runtime/spell/nb.latin1.sug'
+        'ftp://ftp.vim.org/pub/vim/runtime/spell/nb.utf-8.spl'
+        'ftp://ftp.vim.org/pub/vim/runtime/spell/nb.utf-8.sug'
+)
+sha256sums=('a80fc347354607ea4b63fb1a6c888e18cab8fcb77ec4893aefc1d85bbf65310a'
+            '067d07a96a1c935b400202087502cba4f6a3ed467cf0981e13b9697e4d1fddcf'
+            'cebcba489d45da3355940f340582e20ce35ecdcd44f9cc168be873f08e782449'
+            'b0d5d0ed19735f837248ef97bccb444ad730340b1785c8f6a8e4458f6872216c'
+            '620d9efcd79cfc9d639818fb52807e3dae61a37c800d694a010cd525a2161845'
+            'e6de97e4bcb3f9b4aaf7e1eb54a81b9390d5c231f427fa4be3798a25e4622b02'
+            '5b6e5e6165582d2fd7a1bfa41fbce8242c72476222c55d17c2aa2ba933c932ec'
+            '4bccaade5afd826e821411d59b31f081cb55d18e6597bc921a4a04460cfb8a98'
+            'd0e9012728abbd4e6f91a3afe2058367172c7b2c48df38cd21d7d00ca8f55a20'
+            '3c89a8f218ba5a4f4bb7e38ee8efb215ecdc136fd1e2515322284467b243ffcf'
+            '065706346f6e07b98bebe985c28791f33718e46520f95ef991c7b2efd6e11e28')
