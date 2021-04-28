@@ -1,14 +1,18 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgbase=neovim-spell
 pkgver=20210428
-pkgrel=1
+pkgrel=2
 pkgdesc='Language files for Neovim spell checking'
 arch=('any')
 url='ftp://ftp.vim.org/pub/vim/runtime/spell/'
 license=('LGPL' 'custom')
 depends=('neovim')
-
 pkgname=('neovim-spell-en' 'neovim-spell-nb')
+
+package_neovim-spell() {
+	depends=('neovim-spell-en' 'neovim-spell-nb')
+}
+
 
 for _i in ${pkgname[@]}; do _j=${_i/neovim-spell-/}; eval "package_$_i() {
 	cd \"\$srcdir\"
