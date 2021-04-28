@@ -196,19 +196,8 @@ require'nvim-treesitter.configs'.setup {
 	}
 }
 
-require'bufferline'.setup {
-	options = {
-		numbers = 'buffer_id',
-		number_style = 'none',
-		show_buffer_close_icons = false,
-		show_close_icon = false,
-		show_tab_indicators = false
-	},
-	highlights = {
-		buffer_selected = {
-			gui = 'bold'
-		}
-	}
+require'buftabline'.setup {
+	auto_hide = true
 }
 
 require'colorizer'.setup({}, {
