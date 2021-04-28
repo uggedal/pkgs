@@ -172,6 +172,19 @@ vim.cmd([[
 ]])
 
 --
+-- Spell
+--
+
+vim.bo.spelllang = 'en'
+vim.cmd([[
+	augroup NoNumber
+		autocmd!
+		autocmd FileType markdown setlocal spelllang=en,nb
+		autocmd FileType gitcommit,mail,markdown setlocal spell
+	augroup END
+]])
+
+--
 -- Plugins
 --
 
