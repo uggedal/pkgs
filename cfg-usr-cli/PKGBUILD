@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-cli
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="CLI user configuration"
 arch=(any)
@@ -25,4 +25,6 @@ package() {
 		"$pkgdir/home/eu/.config/nvim/colors/gh.vim"
 	install -D -m644 -o 1000 -g 1000 "$rootdir/gh.lua" \
 		"$pkgdir/home/eu/.config/nvim/lua/gh.lua"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/diary.lua" \
+		"$pkgdir/home/eu/.config/nvim/lua/diary.lua"
 }
