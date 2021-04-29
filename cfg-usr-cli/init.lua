@@ -214,7 +214,7 @@ local function telmap(keys, cmd)
 	map(
 		'n',
 		'<leader>' .. keys,
-		"<cmd>lua require('telescope.builtin').' .. cmd .. '()<cr>"
+		"<cmd>lua require('telescope.builtin')." .. cmd .. "()<cr>"
 	)
 end
 
