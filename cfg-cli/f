@@ -3,12 +3,12 @@
 # Recursively list files matching the given string(s).
 # Use -v as the first argument to list the matching lines.
 
-if command -v ag >/dev/null; then
+if command -v rg >/dev/null; then
 	if [ "$1" = -v ]; then
 		shift
-		exec ag -S --hidden --ignore .git "$@"
+		exec rg -S --hidden "$@"
 	else
-		exec ag -S --hidden --ignore .git -l "$@"
+		exec rg -S --hidden -l "$@"
 	fi
 
 fi
