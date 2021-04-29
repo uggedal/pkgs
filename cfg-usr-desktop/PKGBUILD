@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-desktop
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Desktop user configuration"
 arch=(any)
@@ -25,6 +25,10 @@ package() {
 	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/sway"
 	install -D -m644 -o 1000 -g 1000 "$rootdir/sway" \
 		"$pkgdir/home/eu/.config/sway/config"
+
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/swaylock"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/swaylock" \
+		"$pkgdir/home/eu/.config/swaylock/config"
 
 	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/waybar"
 	install -D -m644 -o 1000 -g 1000 "$rootdir/waybar" \
