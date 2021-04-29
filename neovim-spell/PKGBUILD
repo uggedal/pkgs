@@ -9,19 +9,25 @@ license=('LGPL' 'custom')
 depends=('neovim')
 pkgname=('neovim-spell' 'neovim-spell-en' 'neovim-spell-nb')
 
+_package() {
+	cd "${srcdir}"
+	install -d "${pkgdir}/usr/share/nvim/runtime/spell"
+	install -m644 ${1}* "${pkgdir}/usr/share/nvim/runtime/spell"
+	install -Dm644 README_${1}.txt \
+		"${pkgdir}/usr/share/licenses/${2}/README"
+}
+
 package_neovim-spell() {
 	depends=('neovim-spell-en' 'neovim-spell-nb')
 }
 
+package_neovim-spell-en() {
+	_package en neovim-spell-en
+}
 
-for _i in ${pkgname[@]}; do _j=${_i/neovim-spell-/}; eval "package_$_i() {
-	cd \"\$srcdir\"
-	install -d \"\$pkgdir\"/usr/share/nvim/runtime/spell
-	install -m644 $_j* \"\$pkgdir\"/usr/share/nvim/runtime/spell
-	[[ -f README_$_j.txt ]] \
-	&& install -Dm644 README_$_j.txt \"\$pkgdir\"/usr/share/licenses/$_i/README \
-	|| echo 'No README for $_j...'
-}"; done
+package_neovim-spell-nb() {
+	_package nb neovim-spell-nb
+}
 
 source=(
         'ftp://ftp.vim.org/pub/vim/runtime/spell/README_en.txt'
