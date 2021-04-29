@@ -63,7 +63,7 @@ post_upgrade() {
 	_w_set buflist.format.buffer \
 		'${format_number}${indent}${format_nick_prefix}${color_hotlist}${format_name}${if:${buffer.hotlist.1|count}? ${color:245}${buffer.hotlist.1|count}}'
 	_w_set buflist.format.buffer_current \
-		'${color:,229}${format_number}${indent}${color:default}${format_name}'
+		'${color:,100}${format_number}${indent}${color:default}${format_name}'
 	_w_set buflist.format.number '${color:245}${number}${if:${number_displayed}?.: }'
 	_w_set buflist.format.hotlist_highlight '${color:magenta}'
 	_w_set buflist.format.hotlist_low '${color:default}'

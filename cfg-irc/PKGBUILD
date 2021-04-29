@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-irc
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="IRC configuration"
 arch=(any)
