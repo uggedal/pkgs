@@ -219,7 +219,7 @@ local function telmap(keys, cmd)
 end
 
 telmap('f', 'find_files')
-telmap('s', 'live_grep')
+telmap('r', 'live_grep')
 telmap('l', 'file_browser')
 telmap('b', 'buffers')
 telmap('h', 'help_tags')
