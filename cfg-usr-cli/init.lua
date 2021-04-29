@@ -116,7 +116,7 @@ map('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>')
 function _G.gitci()
        vim.cmd([[!cd %:p:h && git add . && git ci -am sync && git push]])
 end
-map('n', '<leader>g', ':call v:lua.gitci(4)<CR>')
+map('n', '<leader>gc', ':call v:lua.gitci(4)<CR>')
 
 --
 -- Color scheme
@@ -210,8 +210,21 @@ require('kommentary.config').configure_language('default', {
 })
 
 -- Telescope bindings
-map('n', '<leader>ff', "<cmd>lua require('telescope.builtin').find_files()<cr>")
-map('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
-map('n', '<leader>fb', "<cmd>lua require('telescope.builtin').buffers()<cr>")
-map('n', '<leader>fh', "<cmd>lua require('telescope.builtin').help_tags()<cr>")
-map('n', '<leader>fs', "<cmd>lua require('telescope.builtin').spell_suggest()<cr>")
+local function telmap(keys, cmd)
+	map(
+		'n',
+		'<leader>' .. keys,
+		"<cmd>lua require('telescope.builtin').' .. cmd .. '()<cr>"
+	)
+end
+
+telmap('f', 'find_files')
+telmap('s', 'live_grep')
+telmap('l', 'file_browser')
+telmap('b', 'buffers')
+telmap('h', 'help_tags')
+telmap('s', 'spell_suggest')
+telmap('gL', 'git_commits')
+telmap('gl', 'git_bcommits')
+telmap('gb', 'git_branches')
+telmap('gs', 'git_status')
