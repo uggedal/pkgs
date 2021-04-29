@@ -7,7 +7,7 @@ arch=('any')
 url='ftp://ftp.vim.org/pub/vim/runtime/spell/'
 license=('LGPL' 'custom')
 depends=('neovim')
-pkgname=('neovim-spell-en' 'neovim-spell-nb')
+pkgname=('neovim-spell' 'neovim-spell-en' 'neovim-spell-nb')
 
 package_neovim-spell() {
 	depends=('neovim-spell-en' 'neovim-spell-nb')
