@@ -18,6 +18,6 @@
 
 /azure-cli/install-*.py
 
-/neovim-spell/*.txt
-/neovim-spell/*.sug
-/neovim-spell/*.spl
+/neovim-spell-nb/*.txt
+/neovim-spell-nb/*.sug
+/neovim-spell-nb/*.spl

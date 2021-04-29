@@ -1,0 +1,25 @@
+# Maintainer: Eivind Uggedal <eivind@uggedal.com>
+pkgname=neovim-spell-nb
+pkgver=20210428
+pkgrel=3
+pkgdesc='Norwegian language files for Neovim spell checking'
+arch=('any')
+url='ftp://ftp.vim.org/pub/vim/runtime/spell/'
+license=('LGPL')
+
+package() {
+	cd "${srcdir}"
+	install -d "${pkgdir}/usr/share/nvim/runtime/spell"
+	install -m644 nb.* "${pkgdir}/usr/share/nvim/runtime/spell"
+	install -Dm644 README_nb.txt \
+		"${pkgdir}/usr/share/licenses/${pkgname}/README"
+}
+
+source=(
+        'ftp://ftp.vim.org/pub/vim/runtime/spell/README_nb.txt'
+        'ftp://ftp.vim.org/pub/vim/runtime/spell/nb.utf-8.spl'
+        'ftp://ftp.vim.org/pub/vim/runtime/spell/nb.utf-8.sug'
+)
+sha256sums=('067d07a96a1c935b400202087502cba4f6a3ed467cf0981e13b9697e4d1fddcf'
+            '3c89a8f218ba5a4f4bb7e38ee8efb215ecdc136fd1e2515322284467b243ffcf'
+            '065706346f6e07b98bebe985c28791f33718e46520f95ef991c7b2efd6e11e28')
