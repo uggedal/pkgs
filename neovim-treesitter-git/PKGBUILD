@@ -1,7 +1,7 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=neovim-treesitter-git
 _pkgname=neovim-treesitter
-pkgver=r1289.5636167
+pkgver=r1296.2873d1e
 pkgrel=1
 arch=('any')
 url='https://github.com/nvim-treesitter/nvim-treesitter'
