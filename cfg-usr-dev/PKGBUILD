@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-dev
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Dev user configuration"
 arch=(any)
@@ -15,4 +15,13 @@ package() {
 	install -d -m750 -o 1000 -g 1000 "$pkgdir/home/eu"
 	install -D -m644 -o 1000 -g 1000 "$rootdir/gitconfig" \
 		"$pkgdir/home/eu/.gitconfig"
+
+	install -d -m750 -o 1000 -g 1000 "$pkgdir/home/eu"
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config"
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/nvim"
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/nvim/lua"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/dev.lua" \
+		"$pkgdir/home/eu/.config/nvim/lua/dev.lua"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/dev.vim" \
+		"$pkgdir/home/eu/.config/nvim/plugin/dev.vim"
 }
