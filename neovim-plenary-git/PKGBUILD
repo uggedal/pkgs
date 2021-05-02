@@ -1,7 +1,7 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=neovim-plenary-git
 _pkgname=neovim-plenary
-pkgver=r147.a0240b9
+pkgver=r148.d4476cd
 pkgrel=1
 arch=('any')
 url='https://github.com/nvim-lua/plenary.nvim'
