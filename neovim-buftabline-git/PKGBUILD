@@ -1,7 +1,7 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=neovim-buftabline-git
 _pkgname=neovim-buftabline
-pkgver=r40.e2335fd
+pkgver=r41.39507c3
 pkgrel=1
 arch=('any')
 url='https://github.com/jose-elias-alvarez/buftabline.nvim'
