@@ -7,8 +7,8 @@
 }
 
 window#waybar {
-    background-color: #0d1117;
-    color: #c9d1d9;
+    background-color: #fafbfc;
+    color: #24292e;
 }
 
 window#waybar.hidden {
@@ -17,7 +17,7 @@ window#waybar.hidden {
 
 #workspaces button {
     background-color: transparent;
-    color: #c9d1d9;
+    color: #6a737d;
     padding: 0 5px;
 }
 
@@ -28,13 +28,13 @@ window#waybar.hidden {
 }
 
 #workspaces button.focused {
-    background-color: #7ee787;
-    color: #0d1117;
+    background-color: #acf2bd;
+    color: #24292e;
 }
 
 #workspaces button.urgent {
-    background-color: #ffa657;
-    color: #0d1117;
+    background-color: #ffab70;
+    color: #24292e;
 }
 
 #mode,
@@ -51,14 +51,14 @@ window#waybar.hidden {
 }
 
 #idle_inhibitor.activated {
-    color: #79c0ff;
+    color: #005cc5;
 }
 
 #pulseaudio.warning,
 #cpu.warning,
 #memory.warning,
 #battery.warning {
-    color: #ffa657;
+    color: #e36209;
 }
 
 #pulseaudio.critical,
@@ -66,5 +66,5 @@ window#waybar.hidden {
 #memory.critical,
 #temperature.critical,
 #battery.critical {
-    color: #ff7b72;
+    color: #d73a49;
 }

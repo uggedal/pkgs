@@ -6,14 +6,14 @@ set $down j
 set $up k
 set $right l
 
-set $bg #0d1117
-set $fg #c9d1d9
+set $bg #ffffff
+set $fg #24292e
 
-set $grey #30363d
-set $green #226d32
-set $green_bright #7ee787
-set $blue #2d465d
-set $red_bright #ff7b72
+set $grey #e1e4e8
+set $green #22863a
+set $green_highlight #acf2bd
+set $blue #c8e1ff
+set $red #d73a49
 
 ### Output configuration
 #
@@ -154,10 +154,10 @@ bindsym XF86MonBrightnessUp exec light -A 5
 #
 
 # clientclass border backgr. text indicator
-client.focused $green $green $bg $green_bright
+client.focused $green $green $bg $green_highlight
 client.focused_inactive $blue $blue $fg $blue
 client.unfocused $grey $grey $fg $grey
-client.urgent $red_bright $red_bright $fg $red_bright
+client.urgent $red $red $fg $red
 
 default_border pixel 2
 
