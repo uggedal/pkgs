@@ -1,12 +1,19 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-dev
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Dev configuration"
 arch=(any)
 url="https://uggedal.com"
 license=(Unlicense)
-depends=(cfg-cli git python-black shfmt)
+depends=(
+	cfg-cli
+	git
+	neovim-lspconfig-git
+	python-black
+	python-language-server
+	shfmt
+)
 
 rootdir="$PWD"
 
