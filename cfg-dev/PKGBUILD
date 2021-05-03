@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-dev
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Dev configuration"
 arch=(any)
@@ -11,7 +11,10 @@ depends=(
 	git
 	neovim-lspconfig-git
 	python-language-server
+	python-pycodestyle
+	python-pyflakes
 	python-pyls-black
+	python-rope
 	shfmt
 )
 
