@@ -1,12 +1,14 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-desktop
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Desktop user configuration"
 arch=(any)
 url="https://uggedal.com"
 license=(Unlicense)
 depends=(cfg-desktop)
+source=('jan-folwarczny-ZXBPMnNVtlE-unsplash.jpg::https://unsplash.com/photos/ZXBPMnNVtlE/download?force=true')
+sha256sums=('2498141694872838a76e04903cceb68b274f14677e5aee0223f29541f8f75659')
 install=cfg-usr-desktop.install
 
 rootdir="$PWD"
@@ -29,6 +31,8 @@ package() {
 	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/swaylock"
 	install -D -m644 -o 1000 -g 1000 "$rootdir/swaylock" \
 		"$pkgdir/home/eu/.config/swaylock/config"
+	install -D -m644 -o 1000 -g 1000 jan-folwarczny-ZXBPMnNVtlE-unsplash.jpg \
+		"$pkgdir/home/eu/.config/swaylock/wall.jpg"
 
 	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/waybar"
 	install -D -m644 -o 1000 -g 1000 "$rootdir/waybar" \

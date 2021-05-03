@@ -1,4 +1,6 @@
 color=#fffbdd
+image=~/.config/swaylock/wall.jpg
+scaling=fill
 font=JetBrains Mono
 font-size=16
 indicator-radius=75

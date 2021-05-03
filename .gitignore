@@ -21,3 +21,5 @@
 /neovim-spell-nb/*.txt
 /neovim-spell-nb/*.sug
 /neovim-spell-nb/*.spl
+
+/cfg-usr-desktop/*.jpg
