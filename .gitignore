@@ -22,4 +22,6 @@
 /neovim-spell-nb/*.sug
 /neovim-spell-nb/*.spl
 
+/nerd-fonts-jetbrains-mono/LICENSE
+
 /cfg-usr-desktop/*.jpg
