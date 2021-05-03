@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-dev
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Dev user configuration"
 arch=(any)
@@ -24,4 +24,8 @@ package() {
 		"$pkgdir/home/eu/.config/nvim/lua/dev.lua"
 	install -D -m644 -o 1000 -g 1000 "$rootdir/dev.vim" \
 		"$pkgdir/home/eu/.config/nvim/plugin/dev.vim"
+
+	install -d -o 1000 -g 1000 "$pkgdir/home/eu/.config/yapf"
+	install -D -m644 -o 1000 -g 1000 "$rootdir/yapf" \
+		"$pkgdir/home/eu/.config/yapf/style"
 }
