@@ -310,3 +310,26 @@ hl('TSType', c.fg_1)
 hl('TSTypeBuiltin', c.fg_1) -- built in types
 -- hl('TSVariable', nil) -- fallback for variable names
 -- hl('TSVariableBuiltin', nil) -- built in variables (i.e. this, self)
+
+-- LSP
+
+li('LspReferenceText', 'CursorLine')
+li('LspReferenceRead', 'CursorLine')
+li('LspReferenceWrite', 'CursorLine')
+
+hl('LspDiagnosticsDefaultError', c.red_1)
+hl('LspDiagnosticsUnderlineError', nil, nil, 'underline', c.red_1)
+hl('LspDiagnosticsVirtualTextError', c.red_1, c.red_3)
+hl('LspDiagnosticsDefaultWarning', c.orange_1)
+hl('LspDiagnosticsUnderlineWarning', nil, nil, 'underline', c.orange_1)
+hl('LspDiagnosticsVirtualTextWarning', c.orange_1, c.yellow_3)
+hl('LspDiagnosticsDefaultInformation', c.blue_1)
+hl('LspDiagnosticsUnderlineInformation', nil, nil, 'underline', c.blue_1)
+hl('LspDiagnosticsVirtualTextInformation', c.blue_1, c.blue_3)
+hl('LspDiagnosticsDefaultHint', c.green_1)
+hl('LspDiagnosticsUnderlineHint', nil, nil, 'underline', c.green_1)
+hl('LspDiagnosticsVirtualTextHint', c.green_1, c.green_3)
+
+-- Telescope
+
+hl('TelescopeBorder', c.fg_2)
