@@ -10,6 +10,7 @@ AUR_PACKAGES='
 	inadyn-fork
 	neovim-git
 	libselinux
+	libsepol
 	mako-git
 	needrestart
 	nerd-fonts-jetbrains-mono
