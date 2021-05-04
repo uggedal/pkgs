@@ -11,6 +11,7 @@ AUR_PACKAGES='
 	libselinux
 	libsepol
 	mako-git
+	mdatp-bin
 	needrestart
 	neovim-git
 	nerd-fonts-jetbrains-mono
