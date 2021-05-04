@@ -8,11 +8,11 @@ AUR_URL='https://aur.archlinux.org/cgit/aur.git/snapshot'
 AUR_PACKAGES='
 	azure-cli
 	inadyn-fork
-	neovim-git
 	libselinux
 	libsepol
 	mako-git
 	needrestart
+	neovim-git
 	nerd-fonts-jetbrains-mono
 	python-j2cli
 	teams
