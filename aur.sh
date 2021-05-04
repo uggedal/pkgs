@@ -9,6 +9,7 @@ AUR_PACKAGES='
 	azure-cli
 	inadyn-fork
 	neovim-git
+	libselinux
 	mako-git
 	needrestart
 	nerd-fonts-jetbrains-mono
