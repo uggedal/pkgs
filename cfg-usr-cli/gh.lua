@@ -137,7 +137,7 @@ hl('MsgArea', c.fg_1) -- area for messages and cmdline
 hl('MoreMsg', c.fg_1) -- text for pager prompt
 hl('NonText', c.fg_3) -- characters that are not part of the text
 hl('Normal', c.fg_1, c.bg_1) -- normal text
-hl('NormalFloat', c.fg_1, c.bg_1) -- normal text in floating windows
+hl('NormalFloat', nil, c.bg_2) -- normal text in floating windows
 hl('NormalNC', c.fg_1, c.bg_1) -- normal text in non-current windows
 hl('PMenu', nil, c.bg_2) -- popup menu, normal item
 hl('PMenuSel', nil, c.blue_2) -- popup menu, selected item
