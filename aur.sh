@@ -10,7 +10,6 @@ AUR_PACKAGES='
 	inadyn-fork
 	libselinux
 	libsepol
-	mako-git
 	mdatp-bin
 	needrestart
 	neovim-git
