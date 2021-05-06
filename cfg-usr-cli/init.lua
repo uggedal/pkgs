@@ -206,9 +206,9 @@ require('kommentary.config').configure_language('default', {
 })
 
 -- Telescope bindings
-util.telmap('f', 'find_files')
-util.telmap('r', 'live_grep')
-util.telmap('F', 'file_browser')
+util.telmap('ff', 'find_files')
+util.telmap('fg', 'live_grep')
+util.telmap('fl', 'file_browser')
 util.telmap('b', 'buffers')
 util.telmap('h', 'help_tags')
 util.telmap('s', 'spell_suggest')
