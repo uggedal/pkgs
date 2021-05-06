@@ -146,7 +146,7 @@ end
 vim.cmd([[
 	augroup SpacesOrTabs
 		autocmd!
-		autocmd FileType python,html,jinja.html,css,markdown call v:lua.spaces(4)
+		autocmd FileType python,lua,html,jinja.html,css,markdown call v:lua.spaces(4)
 		autocmd FileType yaml call v:lua.spaces(2)
 	augroup END
 ]])
