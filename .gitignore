@@ -25,3 +25,6 @@
 /nerd-fonts-jetbrains-mono/LICENSE
 
 /cfg-usr-desktop/*.jpg
+
+/lua-format/args-*
+/lua-format/lua-format-*
