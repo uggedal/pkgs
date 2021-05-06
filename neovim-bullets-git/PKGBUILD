@@ -1,7 +1,7 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=neovim-bullets-git
 _pkgname=neovim-bullets
-pkgver=r208.486f97d
+pkgver=r215.174c944
 pkgrel=1
 arch=('any')
 url='https://github.com/dkarter/bullets.vim'
