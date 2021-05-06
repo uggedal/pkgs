@@ -1,98 +1,89 @@
 -- TODO: expand non-treesitter language specific styles matching gh web
 -- TODO: popular plugins
 -- TODO: dark dimmed
-
 vim.cmd('hi clear')
-if vim.fn.exists('syntax_on') then
-	vim.cmd('syntax reset')
-end
+if vim.fn.exists('syntax_on') then vim.cmd('syntax reset') end
 
 vim.o.termguicolors = true
 vim.g.colors_name = 'gh'
 
 function hl(group, fg, bg, style, sp)
-	local n = 'NONE'
+    local n = 'NONE'
 
-	if not style then style = n end
-	if not fg then fg = n end
-	if not bg then bg = n end
-	if not sp then sp = n end
+    if not style then style = n end
+    if not fg then fg = n end
+    if not bg then bg = n end
+    if not sp then sp = n end
 
-	local buf = {
-		'highlight',
-		group,
-		'gui=' .. style,
-		'guifg=' .. fg,
-		'guibg=' .. bg,
-		'guisp=' .. sp
-	}
-	vim.cmd(table.concat(buf, ' '))
+    local buf = {
+        'highlight', group, 'gui=' .. style, 'guifg=' .. fg, 'guibg=' .. bg,
+        'guisp=' .. sp
+    }
+    vim.cmd(table.concat(buf, ' '))
 end
 
-function li(group, link)
-	vim.cmd('highlight! link ' .. group .. ' ' .. link)
-end
+function li(group, link) vim.cmd('highlight! link ' .. group .. ' ' .. link) end
 
 if vim.o.background == 'light' then
-	c = {
-		fg_1 = '#24292e',
-		fg_2 = '#6a737d',
-		fg_3 = '#babbbc',
-		fg_blue = '#05264c',
-		bg_1 = '#ffffff',
-		bg_2 = '#fafbfc',
-		bg_3 = '#e1e4e8',
-		blue_0 = '#032f62',
-		blue_1 = '#005cc5',
-		blue_2 = '#c8e1ff',
-		blue_3 = '#f1f8ff',
-		red_0 = '#b31d28',
-		red_1 = '#d73a49',
-		red_2 = '#fdb8c0',
-		red_3 = '#ffeef0',
-		green_0 = '#165c26',
-		green_1 = '#22863a',
-		green_2 = '#acf2bd',
-		green_3 = '#e6ffed',
-		orange_0 = '#c24e00',
-		orange_1 = '#e36209',
-		orange_2 = '#ffab70',
-		purple_0 = '#4c2889',
-		purple_1 = '#6f42c1',
-		pink_0 = '#99306f',
-		pink_1 = '#d03592',
-		yellow_3 = '#fffbdd',
-	}
+    c = {
+        fg_1 = '#24292e',
+        fg_2 = '#6a737d',
+        fg_3 = '#babbbc',
+        fg_blue = '#05264c',
+        bg_1 = '#ffffff',
+        bg_2 = '#fafbfc',
+        bg_3 = '#e1e4e8',
+        blue_0 = '#032f62',
+        blue_1 = '#005cc5',
+        blue_2 = '#c8e1ff',
+        blue_3 = '#f1f8ff',
+        red_0 = '#b31d28',
+        red_1 = '#d73a49',
+        red_2 = '#fdb8c0',
+        red_3 = '#ffeef0',
+        green_0 = '#165c26',
+        green_1 = '#22863a',
+        green_2 = '#acf2bd',
+        green_3 = '#e6ffed',
+        orange_0 = '#c24e00',
+        orange_1 = '#e36209',
+        orange_2 = '#ffab70',
+        purple_0 = '#4c2889',
+        purple_1 = '#6f42c1',
+        pink_0 = '#99306f',
+        pink_1 = '#d03592',
+        yellow_3 = '#fffbdd'
+    }
 else
-	c = {
-		fg_1 = '#c9d1d9',
-		fg_2 = '#8b949e',
-		fg_3 = '#585d64',
-		fg_blue = '#c8e1ff',
-		bg_1 = '#0d1117',
-		bg_2 = '#161b22',
-		bg_3 = '#30363d',
-		blue_0 = '#a5d6ff',
-		blue_1 = '#79c0ff',
-		blue_2 = '#2d465d',
-		blue_3 = '#111d2f',
-		red_0 = '#ffc1ba',
-		red_1 = '#ff7b72',
-		red_2 = '#882727',
-		red_3 = '#36181c',
-		green_0 = '#aff5b4',
-		green_1 = '#7ee787',
-		green_2 = '#226d32',
-		green_3 = '#132e1f',
-		orange_0 = '#ffdfb6',
-		orange_1 = '#ffa657',
-		orange_2 = '#762d0a',
-		purple_0 = '#eddeff',
-		purple_1 = '#d2a8ff',
-		pink_0 = '#ffdaec',
-		pink_1 = '#ff9bce',
-		yellow_3 = '#533d11',
-	}
+    c = {
+        fg_1 = '#c9d1d9',
+        fg_2 = '#8b949e',
+        fg_3 = '#585d64',
+        fg_blue = '#c8e1ff',
+        bg_1 = '#0d1117',
+        bg_2 = '#161b22',
+        bg_3 = '#30363d',
+        blue_0 = '#a5d6ff',
+        blue_1 = '#79c0ff',
+        blue_2 = '#2d465d',
+        blue_3 = '#111d2f',
+        red_0 = '#ffc1ba',
+        red_1 = '#ff7b72',
+        red_2 = '#882727',
+        red_3 = '#36181c',
+        green_0 = '#aff5b4',
+        green_1 = '#7ee787',
+        green_2 = '#226d32',
+        green_3 = '#132e1f',
+        orange_0 = '#ffdfb6',
+        orange_1 = '#ffa657',
+        orange_2 = '#762d0a',
+        purple_0 = '#eddeff',
+        purple_1 = '#d2a8ff',
+        pink_0 = '#ffdaec',
+        pink_1 = '#ff9bce',
+        yellow_3 = '#533d11'
+    }
 end
 
 -- Vim Terminal
@@ -127,9 +118,9 @@ hl('VertSplit', c.fg_3) -- column seperating vertical splits
 hl('Folded', c.fg_3) -- line for closed folds
 hl('FoldColumn', c.fg_3) -- gutter column showing folds
 hl('SignColumn', c.fg_2) -- gutter column showing signs
-hl('IncSearch', nil, c.orange_2)  -- incremental search
+hl('IncSearch', nil, c.orange_2) -- incremental search
 hl('Substitute', nil, c.red_2) -- text replaced with :s
-hl('LineNr', c.fg_3)  -- gutter line numbers
+hl('LineNr', c.fg_3) -- gutter line numbers
 hl('CursorLineNr', nil, c.bg_2) -- gutter line number for current line
 hl('MatchParen', nil, c.yellow_3) -- current and matching bracket
 hl('ModeMsg', c.fg_1) -- mode message (-- INSERT --)
@@ -152,7 +143,7 @@ hl('SpellCap', nil, nil, 'undercurl', c.orange_1) -- non-capitalized word
 hl('SpellLocal', nil, nil, 'undercurl', c.blue_1) -- used in other region
 hl('SpellRare', nil, nil, 'undercurl', c.fg_2) -- rarely used word
 hl('StatusLine', c.fg_blue, c.blue_3) -- status line of current window
-hl('StatusLineNC', c.fg_2, c.bg_2)  -- status line of non-current window
+hl('StatusLineNC', c.fg_2, c.bg_2) -- status line of non-current window
 hl('TabLine', nil, c.blue_3) -- tab line
 hl('TabLineFill', nil, c.bg_1) -- tab line outside tabs
 hl('TabLineSel', nil, c.blue_2) -- tabline, current buffer
@@ -205,10 +196,10 @@ hl('Todo', c.red_1, nil, 'bold')
 
 -- Diff
 
-hl('DiffAdd', nil, c.green_3)  -- added line
-hl('DiffChange', nil, c.yellow_3)  -- changed line
-hl('DiffDelete', nil, c.red_3)  -- deleted line
-hl('DiffText', nil, c.yellow_3, 'undercurl', c.blue_1)  -- changed text within changed line
+hl('DiffAdd', nil, c.green_3) -- added line
+hl('DiffChange', nil, c.yellow_3) -- changed line
+hl('DiffDelete', nil, c.red_3) -- deleted line
+hl('DiffText', nil, c.yellow_3, 'undercurl', c.blue_1) -- changed text within changed line
 
 li('DiffAdded', 'DiffAdd')
 li('DiffRemoved', 'DiffDelete')

@@ -4,9 +4,7 @@ local util = require('util')
 -- General
 --
 
-if vim.fn.isdirectory(vim.o.undodir) == 0 then
-	vim.fn.mkdir(vim.o.undodir, 'p')
-end
+if vim.fn.isdirectory(vim.o.undodir) == 0 then vim.fn.mkdir(vim.o.undodir, 'p') end
 
 -- Save undo history to file (enables undo between sessions):
 vim.bo.undofile = true
@@ -24,7 +22,7 @@ vim.wo.linebreak = true
 vim.wo.breakindent = true
 
 -- Disable intro messages when starting vim without a file:
-vim.o.shortmess= vim.o.shortmess .. 'I'
+vim.o.shortmess = vim.o.shortmess .. 'I'
 
 -- Ignore case when searching with all lowercase queries:
 vim.o.ignorecase = true
@@ -70,8 +68,8 @@ vim.cmd([[
 
 -- Disable movement with cursor keys:
 for _, k in ipairs({'up', 'down', 'left', 'right'}) do
-	util.map('n', '<' .. k .. '>', '<nop>')
-	util.map('i', '<' .. k .. '>', '<nop>')
+    util.map('n', '<' .. k .. '>', '<nop>')
+    util.map('i', '<' .. k .. '>', '<nop>')
 end
 
 -- Disable man page lookup of word under cursor with K key:
@@ -87,13 +85,11 @@ util.map('n', 'k', 'gk')
 
 -- Shorter bindings for split navigation:
 for _, k in ipairs({'h', 'j', 'k', 'l'}) do
-	util.map('n', '<C-' .. k .. '>', '<C-w>' .. k)
+    util.map('n', '<C-' .. k .. '>', '<C-w>' .. k)
 end
 
 -- Keep search matches in the middle of the window:
-for _, k in ipairs({'*', '#', 'n', 'N'}) do
-	util.map('n', k, k .. 'zzzv')
-end
+for _, k in ipairs({'*', '#', 'n', 'N'}) do util.map('n', k, k .. 'zzzv') end
 
 vim.g.mapleader = ','
 
@@ -110,7 +106,7 @@ util.map('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>')
 
 -- git sync commit leader binding:
 function _G.gitci()
-       vim.cmd([[!cd %:p:h && git add . && git ci -am sync && git push]])
+    vim.cmd([[!cd %:p:h && git add . && git ci -am sync && git push]])
 end
 util.map('n', '<leader>gc', ':call v:lua.gitci(4)<CR>')
 
@@ -124,9 +120,11 @@ vim.cmd('colorscheme gh')
 -- Highlight trailing space when not in insert mode:
 vim.cmd('augroup HighlightTrailing')
 vim.cmd('  autocmd!')
-vim.cmd('  autocmd BufNewFile,BufRead * highlight trail_space guibg=' .. vim.g.terminal_color_1)
+vim.cmd('  autocmd BufNewFile,BufRead * highlight trail_space guibg=' ..
+            vim.g.terminal_color_1)
 vim.cmd('  autocmd InsertEnter * highlight trail_space guibg=NONE')
-vim.cmd('  autocmd InsertLeave * highlight trail_space guibg=' .. vim.g.terminal_color_1)
+vim.cmd('  autocmd InsertLeave * highlight trail_space guibg=' ..
+            vim.g.terminal_color_1)
 vim.cmd([[  autocmd BufNewFile,BufRead * match trail_space /\s\+$/]])
 vim.cmd('augroup END')
 
@@ -135,11 +133,11 @@ vim.cmd('augroup END')
 --
 
 function _G.spaces(n)
-	vim.bo.expandtab = true
-	vim.bo.softtabstop = n
-	vim.bo.tabstop = n
-	vim.bo.shiftwidth = n
-	vim.o.shiftround = true
+    vim.bo.expandtab = true
+    vim.bo.softtabstop = n
+    vim.bo.tabstop = n
+    vim.bo.shiftwidth = n
+    vim.o.shiftround = true
 end
 
 -- Setup different levels of space based indent for some syntaxes:
@@ -186,23 +184,14 @@ vim.cmd([[
 
 require'diary'.setup()
 
-require'nvim-treesitter.configs'.setup {
-	highlight = {
-		enable = true
-	}
-}
+require'nvim-treesitter.configs'.setup {highlight = {enable = true}}
 
-require'buftabline'.setup {
-	auto_hide = true,
-	hlgroup_normal = 'TabLine'
-}
+require'buftabline'.setup {auto_hide = true, hlgroup_normal = 'TabLine'}
 
-require'colorizer'.setup({}, {
-	names = false
-})
+require'colorizer'.setup({}, {names = false})
 
 require('kommentary.config').configure_language('default', {
-    prefer_single_line_comments = true,
+    prefer_single_line_comments = true
 })
 
 -- Telescope bindings
