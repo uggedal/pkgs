@@ -10,6 +10,7 @@ AUR_PACKAGES='
 	inadyn-fork
 	libselinux
 	libsepol
+	lua-format
 	mdatp-bin
 	needrestart
 	neovim-git
