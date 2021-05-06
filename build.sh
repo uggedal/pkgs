@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash -e
 
 ROOT=$(
 	cd "$(dirname "$0")"
@@ -32,7 +32,10 @@ fi
 _g() {
 	local d=$1
 	local k=$2
-	awk -F= "/^${k}=/ { gsub(/[()']/, \"\"); print \$2 }" $d/PKGBUILD
+	(
+		. $d/PKGBUILD
+		eval echo "\$$k"
+	)
 }
 
 pkgver() {
