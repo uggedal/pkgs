@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-usr-dev
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Dev user configuration"
 arch=(any)
