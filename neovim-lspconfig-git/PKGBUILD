@@ -1,7 +1,7 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=neovim-lspconfig-git
 _pkgname=neovim-lspconfig
-pkgver=r1006.61ec393
+pkgver=r1008.e6d61cf
 pkgrel=1
 arch=('any')
 url='https://github.com/neovim/nvim-lspconfig'
