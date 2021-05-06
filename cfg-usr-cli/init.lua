@@ -1,3 +1,5 @@
+local util = require('util')
+
 --
 -- General
 --
@@ -66,57 +68,51 @@ vim.cmd([[
 -- Key bindings
 --
 
-local function map(mode, lhs, rhs, opts)
-	local options = {noremap = true}
-	if opts then options = vim.tbl_extend('force', options, opts) end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
 -- Disable movement with cursor keys:
 for _, k in ipairs({'up', 'down', 'left', 'right'}) do
-	map('n', '<' .. k .. '>', '<nop>')
-	map('i', '<' .. k .. '>', '<nop>')
+	util.map('n', '<' .. k .. '>', '<nop>')
+	util.map('i', '<' .. k .. '>', '<nop>')
 end
 
 -- Disable man page lookup of word under cursor with K key:
-map('n', 'K', '<nop>')
+util.map('n', 'K', '<nop>')
 
 -- Disable tab cycling keys:
-map('n', 'gT', '<nop>')
-map('n', 'gt', '<nop>')
+util.map('n', 'gT', '<nop>')
+util.map('n', 'gt', '<nop>')
 
 -- Move up/down by display lines when long lines wrap:
-map('n', 'j', 'gj')
-map('n', 'k', 'gk')
+util.map('n', 'j', 'gj')
+util.map('n', 'k', 'gk')
 
 -- Shorter bindings for split navigation:
 for _, k in ipairs({'h', 'j', 'k', 'l'}) do
-	map('n', '<C-' .. k .. '>', '<C-w>' .. k)
+	util.map('n', '<C-' .. k .. '>', '<C-w>' .. k)
 end
 
 -- Keep search matches in the middle of the window:
 for _, k in ipairs({'*', '#', 'n', 'N'}) do
-	map('n', k, k .. 'zzzv')
+	util.map('n', k, k .. 'zzzv')
 end
 
 vim.g.mapleader = ','
 
 -- Convenience leader mappings for working with buffers:
-map('n', '<leader>p', ':bp<CR>')
-map('n', '<leader>n', ':bn<CR>')
-map('n', '<leader>d', ':bd<CR>')
+util.map('n', '<leader>p', ':bp<CR>')
+util.map('n', '<leader>n', ':bn<CR>')
+util.map('n', '<leader>d', ':bd<CR>')
 
 -- Convenience leader mapping for toggling paste mode (no auto indent):
-map('n', '<leader>i', ':set invpaste<CR>')
+util.map('n', '<leader>i', ':set invpaste<CR>')
 
 -- Convenience leader mapping for opening file based on current file's path:
-map('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>')
+util.map('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>')
 
 -- git sync commit leader binding:
 function _G.gitci()
        vim.cmd([[!cd %:p:h && git add . && git ci -am sync && git push]])
 end
-map('n', '<leader>gc', ':call v:lua.gitci(4)<CR>')
+util.map('n', '<leader>gc', ':call v:lua.gitci(4)<CR>')
 
 --
 -- Color scheme
@@ -210,21 +206,13 @@ require('kommentary.config').configure_language('default', {
 })
 
 -- Telescope bindings
-local function telmap(keys, cmd)
-	map(
-		'n',
-		'<leader>' .. keys,
-		"<cmd>lua require('telescope.builtin')." .. cmd .. "()<cr>"
-	)
-end
-
-telmap('f', 'find_files')
-telmap('r', 'live_grep')
-telmap('l', 'file_browser')
-telmap('b', 'buffers')
-telmap('h', 'help_tags')
-telmap('s', 'spell_suggest')
-telmap('gL', 'git_commits')
-telmap('gl', 'git_bcommits')
-telmap('gb', 'git_branches')
-telmap('gs', 'git_status')
+util.telmap('f', 'find_files')
+util.telmap('r', 'live_grep')
+util.telmap('F', 'file_browser')
+util.telmap('b', 'buffers')
+util.telmap('h', 'help_tags')
+util.telmap('s', 'spell_suggest')
+util.telmap('gL', 'git_commits')
+util.telmap('gl', 'git_bcommits')
+util.telmap('gb', 'git_branches')
+util.telmap('gs', 'git_status')
