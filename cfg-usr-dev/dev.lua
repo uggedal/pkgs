@@ -57,6 +57,7 @@ lspconf.efm.setup {
     on_attach = on_attach,
     init_options = {documentFormatting = true},
     filetypes = {'lua', 'sh'},
+    rootMarkers = {'.git/'},
     settings = {
         languages = {
             lua = {{formatCommand = 'lua-format -i', formatStdin = true}},
