@@ -83,9 +83,9 @@ for f in $pkgbuilds; do
 	(
 		cd $d
 		case $n in
-		*)
-			makechrootpkg -c -D $REPO -r $CHROOT || :
-			;;
+			*)
+				makechrootpkg -c -D $REPO -r $CHROOT || :
+				;;
 		esac
 	)
 
