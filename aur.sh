@@ -11,6 +11,7 @@ AUR_PACKAGES='
 	libselinux
 	libsepol
 	lua-format
+	lua-language-server
 	mdatp-bin
 	needrestart
 	neovim-git
