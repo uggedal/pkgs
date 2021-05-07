@@ -35,6 +35,24 @@ end
 
 lspconf.pyls.setup {on_attach = on_attach}
 
+lspconf.sumneko_lua.setup {
+    cmd = {'/usr/bin/lua-language-server'},
+    on_attach = on_attach,
+    settings = {
+        Lua = {
+            runtime = {version = 'LuaJIT', path = vim.split(package.path, ';')},
+            diagnostics = {globals = {'vim'}},
+            workspace = {
+                library = {
+                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
+                }
+            },
+            telemetry = {enable = false}
+        }
+    }
+}
+
 lspconf.efm.setup {
     on_attach = on_attach,
     init_options = {documentFormatting = true},
