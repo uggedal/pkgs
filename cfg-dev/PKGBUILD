@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-dev
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Dev configuration"
 arch=(any)
@@ -11,6 +11,7 @@ depends=(
 	efm-langserver
 	git
 	lua-format
+	lua-language-server
 	neovim-lspconfig-git
 	python-language-server
 	python-pycodestyle
