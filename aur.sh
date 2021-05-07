@@ -39,9 +39,9 @@ done
 # Check -git packages for updates:
 for d in $ROOT/*-git $ROOT/../priv-pkgs/*-git; do
 	case "$d" in
-	*\**)
-		continue
-		;;
+		*\**)
+			continue
+			;;
 	esac
 	(
 		cd $d
