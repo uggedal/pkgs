@@ -34,3 +34,15 @@ local on_attach = function(client, bufnr)
 end
 
 lspconf.pyls.setup {on_attach = on_attach}
+
+lspconf.efm.setup {
+    on_attach = on_attach,
+    init_options = {documentFormatting = true},
+    filetypes = {'lua', 'sh'},
+    settings = {
+        languages = {
+            lua = {{formatCommand = 'lua-format -i', formatStdin = true}},
+            sh = {{formatCommand = 'shfmt -ci -s -bn', formatStdin = true}}
+        }
+    }
+}
