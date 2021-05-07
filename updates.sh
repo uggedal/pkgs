@@ -33,16 +33,16 @@ gh() {
 	local _cur="$3"
 
 	local _latest=$(
-		curl -s https://api.github.com/repos/$u/$n/releases/latest |
-			jq .tag_name -j |
-			sed 's/^v//'
+		curl -s https://api.github.com/repos/$u/$n/releases/latest \
+			| jq .tag_name -j \
+			| sed 's/^v//'
 	)
 
 	if [ "$_latest" = null ]; then
 		_latest=$(
-			curl -s https://api.github.com/repos/$u/$n/tags |
-				jq '.[0].name' -j |
-				sed 's/^v//'
+			curl -s https://api.github.com/repos/$u/$n/tags \
+				| jq '.[0].name' -j \
+				| sed 's/^v//'
 		)
 	fi
 
@@ -54,8 +54,8 @@ pypi() {
 	local _cur="$2"
 
 	local _latest=$(
-		curl -s https://pypi.org/pypi/$n/json |
-			jq .info.version -r
+		curl -s https://pypi.org/pypi/$n/json \
+			| jq .info.version -r
 	)
 
 	_cmp py $n "$_latest" "$_cur"
@@ -70,9 +70,9 @@ for f in $ROOT/*/PKGBUILD $ROOT/../priv-pkgs/*/PKGBUILD; do
 	n=$(basename $d)
 
 	case "$n" in
-	*-git)
-		continue
-		;;
+		*-git)
+			continue
+			;;
 	esac
 
 	(
@@ -88,18 +88,18 @@ for f in $ROOT/*/PKGBUILD $ROOT/../priv-pkgs/*/PKGBUILD; do
 		src="${source[0]}"
 
 		case "$src" in
-		*github.com*)
-			s=(${src//\// })
-			gh ${s[2]} ${s[3]} $pkgver
-			;;
-		*/pypi/*)
-			s=(${src//\// })
-			pypi ${s[3]} $pkgver
-			;;
-		*/pypi.io*)
-			s=(${src//\// })
-			pypi ${s[5]} $pkgver
-			;;
+			*github.com*)
+				s=(${src//\// })
+				gh ${s[2]} ${s[3]} $pkgver
+				;;
+			*/pypi/*)
+				s=(${src//\// })
+				pypi ${s[3]} $pkgver
+				;;
+			*/pypi.io*)
+				s=(${src//\// })
+				pypi ${s[5]} $pkgver
+				;;
 		esac
 	)
 done
