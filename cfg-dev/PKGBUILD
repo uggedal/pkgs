@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-dev
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Dev configuration"
 arch=(any)
@@ -17,6 +17,7 @@ depends=(
 	python-pycodestyle
 	python-pyflakes
 	python-rope
+	shellcheck
 	shfmt
 	yapf
 )
