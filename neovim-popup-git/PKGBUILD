@@ -1,7 +1,7 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=neovim-popup-git
 _pkgname=neovim-popup
-pkgver=r14.bc98ca6
+pkgver=r15.5e3bece
 pkgrel=1
 arch=('any')
 url='https://github.com/nvim-lua/popup.nvim'
