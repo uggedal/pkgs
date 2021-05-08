@@ -53,7 +53,7 @@ lspconf.sumneko_lua.setup {
     }
 }
 
-local function shellcheck(ignores)
+local function shcfg(ignores)
     return {
         {formatCommand = 'shfmt -ci -s -bn', formatStdin = true}, {
             lintCommand = 'shellcheck -f gcc -x -e ' ..
@@ -75,8 +75,8 @@ lspconf.efm.setup {
     settings = {
         languages = {
             lua = {{formatCommand = 'lua-format -i', formatStdin = true}},
-            sh = shellcheck({'SC2086', 'SC2231', 'SC1091', 'SC1090'}),
-            PKGBUILD = shellcheck({'SC2034', 'SC2148', 'SC2154'})
+            sh = shcfg({'SC2086', 'SC2231', 'SC1091', 'SC1090'}),
+            PKGBUILD = shcfg({'SC2034', 'SC2148', 'SC2154'})
         }
     }
 }
