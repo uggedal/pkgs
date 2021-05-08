@@ -1,7 +1,7 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=neovim-telescope-git
 _pkgname=neovim-telescope
-pkgver=r557.88f7b27
+pkgver=r561.25a7ecc
 pkgrel=1
 arch=('any')
 url='https://github.com/nvim-telescope/telescope.nvim'
