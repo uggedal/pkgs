@@ -53,6 +53,8 @@ lspconf.sumneko_lua.setup {
     }
 }
 
+local shellcheck_ignores = {'SC2086', 'SC2231', 'SC1091', 'SC1090'}
+
 lspconf.efm.setup {
     on_attach = on_attach,
     init_options = {documentFormatting = true},
@@ -61,7 +63,17 @@ lspconf.efm.setup {
     settings = {
         languages = {
             lua = {{formatCommand = 'lua-format -i', formatStdin = true}},
-            sh = {{formatCommand = 'shfmt -ci -s -bn', formatStdin = true}}
+            sh = {
+                {formatCommand = 'shfmt -ci -s -bn', formatStdin = true}, {
+                    lintCommand = 'shellcheck -f gcc -x -e ' ..
+                        table.concat(shellcheck_ignores, ','),
+                    lintSource = '',
+                    lintFormats = {
+                        '%f:%l:%c: %trror: %m', '%f:%l:%c: %tarning: %m',
+                        '%f:%l:%c: %tote: %m'
+                    }
+                }
+            }
         }
     }
 }
