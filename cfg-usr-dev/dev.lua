@@ -53,27 +53,30 @@ lspconf.sumneko_lua.setup {
     }
 }
 
-local shellcheck_ignores = {'SC2086', 'SC2231', 'SC1091', 'SC1090'}
+local function shellcheck(ignores)
+    return {
+        {formatCommand = 'shfmt -ci -s -bn', formatStdin = true}, {
+            lintCommand = 'shellcheck -f gcc -x -e ' ..
+                table.concat(ignores, ','),
+            lintSource = '',
+            lintFormats = {
+                '%f:%l:%c: %trror: %m', '%f:%l:%c: %tarning: %m',
+                '%f:%l:%c: %tote: %m'
+            }
+        }
+    }
+end
 
 lspconf.efm.setup {
     on_attach = on_attach,
     init_options = {documentFormatting = true},
-    filetypes = {'lua', 'sh'},
+    filetypes = {'lua', 'sh', 'PKGBUILD'},
     rootMarkers = {'.git/'},
     settings = {
         languages = {
             lua = {{formatCommand = 'lua-format -i', formatStdin = true}},
-            sh = {
-                {formatCommand = 'shfmt -ci -s -bn', formatStdin = true}, {
-                    lintCommand = 'shellcheck -f gcc -x -e ' ..
-                        table.concat(shellcheck_ignores, ','),
-                    lintSource = '',
-                    lintFormats = {
-                        '%f:%l:%c: %trror: %m', '%f:%l:%c: %tarning: %m',
-                        '%f:%l:%c: %tote: %m'
-                    }
-                }
-            }
+            sh = shellcheck({'SC2086', 'SC2231', 'SC1091', 'SC1090'}),
+            PKGBUILD = shellcheck({'SC2034', 'SC2148', 'SC2154'})
         }
     }
 }
