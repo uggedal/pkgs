@@ -40,9 +40,10 @@ _g() {
 
 pkgver() {
 	local d=$1
-	local v=$(_g $d pkgver)
-	local r=$(_g $d pkgrel)
-	local e=$(_g $d epoch)
+	local v r e
+	v=$(_g $d pkgver)
+	r=$(_g $d pkgrel)
+	e=$(_g $d epoch)
 
 	if [ "$e" ]; then
 		e=$e:
@@ -55,7 +56,7 @@ pkgadd() {
 	local d=$1
 	local p=$2
 
-	[ -e $d/$p ] || continue
+	[ -e $d/$p ] || return
 
 	sudo cp $d/$p $REPO/
 	sudo repo-add $REPODB $REPO/$p

@@ -17,7 +17,7 @@ _cmp() {
 	local _cur="$4"
 
 	if [ -z "$_cur" ]; then
-		eval _cur=\$$(echo $n | tr '[a-z]' '[A-Z]' | sed 's/[^A-Z]//g')_V
+		eval _cur=\$$(echo $n | tr 'a-z' 'A-Z' | sed 's/[^A-Z]//g')_V
 	fi
 
 	if [ "$_cur" != "$_latest" ]; then
@@ -32,7 +32,8 @@ gh() {
 	local n=$2
 	local _cur="$3"
 
-	local _latest=$(
+	local _latest
+	_latest=$(
 		curl -s https://api.github.com/repos/$u/$n/releases/latest \
 			| jq .tag_name -j \
 			| sed 's/^v//'
@@ -53,7 +54,8 @@ pypi() {
 	local n=$1
 	local _cur="$2"
 
-	local _latest=$(
+	local _latest
+	_latest=$(
 		curl -s https://pypi.org/pypi/$n/json \
 			| jq .info.version -r
 	)
