@@ -182,6 +182,9 @@ vim.cmd([[
 -- Plugins
 --
 
+-- Make system wide plugins work as locally installed:
+vim.o.runtimepath = vim.o.runtimepath .. ',/usr/share/nvim/runtime/after'
+
 require'diary'.setup()
 
 require'nvim-treesitter.configs'.setup {highlight = {enable = true}}
