@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-dev
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Dev configuration"
 arch=(any)
@@ -8,7 +8,7 @@ url="https://uggedal.com"
 license=(Unlicense)
 depends=(
 	cfg-cli
-	efm-langserver
+	efm-langserver-git
 	git
 	lua-format
 	lua-language-server
