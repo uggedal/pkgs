@@ -76,7 +76,7 @@ lspconf.efm.setup {
         languages = {
             lua = {{formatCommand = 'lua-format -i', formatStdin = true}},
             sh = shcfg({'SC2086', 'SC2231', 'SC1091', 'SC1090'}),
-            PKGBUILD = shcfg({'SC2034', 'SC2148', 'SC2154'})
+            PKGBUILD = shcfg({'SC2034', 'SC2148', 'SC2154', 'SC2164'})
         }
     }
 }
