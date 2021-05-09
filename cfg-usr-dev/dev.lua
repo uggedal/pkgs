@@ -85,3 +85,22 @@ lspconf.efm.setup {
         }
     }
 }
+
+--
+-- Completion
+--
+
+vim.o.completeopt = 'menuone,noselect'
+
+-- require'compe'.setup {debug = true, source = {path = true, buffer = true}}
+
+require'compe'.setup {
+    documentation = false,
+    source = {
+        path = true,
+        buffer = true,
+        spell = {filetypes = {'markdown'}},
+        nvim_lsp = true,
+        nvim_treesitter = {ignored_filetypes = {'lua', 'python', 'sh'}}
+    }
+}
