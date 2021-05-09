@@ -1,12 +1,13 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-dev
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Dev configuration"
 arch=(any)
 url="https://uggedal.com"
 license=(Unlicense)
 depends=(
+	bash-language-server
 	cfg-cli
 	efm-langserver-git
 	git
