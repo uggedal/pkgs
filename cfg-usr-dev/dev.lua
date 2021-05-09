@@ -1,3 +1,6 @@
+--
+-- LSP
+--
 local lspconf = require('lspconfig')
 
 local on_attach = function(client, bufnr)
@@ -52,6 +55,8 @@ lspconf.sumneko_lua.setup {
         }
     }
 }
+
+lspconf.bashls.setup {filetypes = {'sh', 'PKGBUILD'}}
 
 local function shcfg(ignores)
     return {
