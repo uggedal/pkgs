@@ -17,7 +17,6 @@ AUR_PACKAGES='
 	neovim-git
 	nerd-fonts-jetbrains-mono
 	python-j2cli
-	teams
 	wlsunset
 '
 
