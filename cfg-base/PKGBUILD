@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-base
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Base configuration"
 arch=(any)
@@ -9,6 +9,7 @@ license=(Unlicense)
 depends=(
 	arch-audit
 	base
+	diffutils
 	logrotate
 	man-db
 	needrestart
