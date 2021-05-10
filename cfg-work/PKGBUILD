@@ -1,6 +1,6 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 pkgname=cfg-work
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="CLI configuration"
 arch=(any)
@@ -9,11 +9,6 @@ license=(Unlicense)
 depends=(
 	azure-cli
 	git-crypt
-	go
-	mdatp-bin
-	teams
-	tokei
-	xorg-xwayland
 )
 
 rootdir="$PWD"
