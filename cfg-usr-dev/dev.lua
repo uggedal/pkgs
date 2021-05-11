@@ -1,6 +1,9 @@
+local util = require('util')
+
 --
 -- LSP
 --
+
 local lspconf = require('lspconfig')
 
 local on_attach = function(client, bufnr)
@@ -95,6 +98,7 @@ vim.o.completeopt = 'menuone,noselect'
 -- require'compe'.setup {debug = true, source = {path = true, buffer = true}}
 
 require'compe'.setup {
+    autocomplete = false,
     documentation = false,
     source = {
         path = true,
@@ -104,3 +108,7 @@ require'compe'.setup {
         nvim_treesitter = {ignored_filetypes = {'lua', 'python', 'sh'}}
     }
 }
+
+util.map('i', '<C-Space>', 'compe#complete()', {silent = true, expr = true})
+util.map('i', '<CR>', "compe#confirm('<CR>')", {silent = true, expr = true})
+util.map('i', '<C-e>', "compe#close('<C-e>')", {silent = true, expr = true})
